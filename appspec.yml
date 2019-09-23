@@ -8,3 +8,5 @@ hooks:
   ApplicationStart:
   - location: docs-push.sh
     runas: rawengwww
+  - location: start-app.sh
+    runas: root
