@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Deployment CRUD operations
+        | Elasticsearch Service Documentation [2.5.0-NIGHTLY20191012T0231-gbe3fec4]
+      | Elastic
+    </title><link rel="home" href="index.html" title="Elasticsearch Service Documentation [2.5.0-NIGHTLY20191012T0231-gbe3fec4]" /><link rel="up" href="ec-api-examples.html" title="API examples" /><link rel="prev" href="ec-api-examples.html" title="API examples" /><link rel="next" href="ec-api-deployment-other.html" title="Other deployment operations" /><meta name="DC.type" content="Learn/Docs/Cloud/Reference/2.5.0-NIGHTLY20191012T0231-gbe3fec4" /><meta name="DC.subject" content="Elastic Cloud" /><meta name="DC.identifier" content="2.5.0-NIGHTLY20191012T0231-gbe3fec4" /></head><body><div class="page_header">You are looking at documentation for an older release.
+Not what you want? See the
+<a href="../current/index.html">current release documentation</a>.
+</div><div class="breadcrumbs"><span class="breadcrumb-link"><a href="index.html">Elasticsearch Service Documentation
+      [2.5.0-NIGHTLY20191012T0231-gbe3fec4]
+    </a></span> » <span class="breadcrumb-link"><a href="ec-restful-api.html">RESTful API</a></span> » <span class="breadcrumb-link"><a href="ec-api-examples.html">API examples</a></span> » <span class="breadcrumb-node">Deployment CRUD operations</span></div><div class="navheader"><span class="prev"><a href="ec-api-examples.html">
+              « 
+              API examples</a>
+           
+        </span><span class="next">
+           
+          <a href="ec-api-deployment-other.html">Other deployment operations
+               »
+            </a></span></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="ec-api-deployment-crud"></a>Deployment CRUD operations</h2></div></div></div><p>The following examples demonstrate Create, Read, Update and Delete operations on a <code class="literal">clusters</code> resource.</p><h4><a id="ec-listing_your_deployments"></a>Listing your deployments</h4><p>List the details about all of your Elasticsearch Service deployments.</p><div class="pre_wrapper lang-sh"><pre class="programlisting prettyprint lang-sh">curl \
+-H "Authorization: ApiKey $CLOUD_API_KEY" \
+https://api.elastic-cloud.com/api/v1/clusters/elasticsearch</pre></div><h4><a id="ec-getting_details_about_a_particular_deployment"></a>Getting details about a particular deployment</h4><p>List the details about a particular deployment identified by <code class="literal">cluster_id</code> in a region <code class="literal">region_id</code>.</p><div class="pre_wrapper lang-sh"><pre class="programlisting prettyprint lang-sh">curl \
+-H "Authorization: ApiKey $CLOUD_API_KEY" \
+"https://api.elastic-cloud.com/api/v1/regions/$REGION_ID/clusters/elasticsearch/$CLUSTER_ID"</pre></div><h4><a id="ec-using_the_api_to_create_your_first_deployment"></a>Using the API to create your first deployment</h4><p>The API request to create a new deployment is very descriptive, with many settings to tweak.
+To make things easier, you can use this API endpoint to fetch a list of the deployment templates.</p><h5><a id="ec-get_the_templates"></a>Get the templates</h5><div class="pre_wrapper lang-sh"><pre class="programlisting prettyprint lang-sh">curl \
+-H "Authorization: ApiKey $CLOUD_API_KEY" \
+https://api.elastic-cloud.com/api/v1/regions/$REGION_ID/platform/configuration/templates/deployments</pre></div><p>The <code class="literal">description</code> attribute helps you to determine which template you want to base your deployment on. After selecting a deployment, tune the <code class="literal">memory</code> size <code class="literal">value</code> and <code class="literal">zone</code> count to further customize the deployment.</p><h5><a id="ec-create_a_deployment"></a>Create a deployment</h5><p>This example creates a new deployment with the following characteristics:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+Version <code class="literal">7.3.2</code> of the Elastic Stack
+</li><li class="listitem">
+Elasticsearch cluster in two zones with 8 GB of memory for each node
+</li><li class="listitem">
+1 GB single zone Kibana instance and a 512 MB APM instance
+</li></ul></div><div class="pre_wrapper lang-sh"><pre class="programlisting prettyprint lang-sh">curl -XPOST \
+-H 'content-type:application/json' \
+-H "Authorization: ApiKey $CLOUD_API_KEY" \
+"https://api.elastic-cloud.com/api/v1/regions/$REGION_ID/clusters/elasticsearch" \
+-d '
+{
+  "cluster_name": "my-first-api-deployment",
+  "plan": {
+    "cluster_topology": [
+      {
+        "node_type": {
+          "data": true,
+          "master": true,
+          "ingest": true
+        },
+        "instance_configuration_id": "aws.data.highio.i3",
+        "zone_count": 2<a id="CO16-1"></a><i class="conum" data-value="1"></i>,
+        "size": {
+          "resource": "memory",
+          "value": 8192<a id="CO16-2"></a><i class="conum" data-value="2"></i>
+        },
+        "elasticsearch": {
+          "enabled_built_in_plugins": []
+        }
+      }
+    ],
+    "elasticsearch": {
+      "version": "7.3.2"
+    },
+    "transient": {},
+    "deployment_template": {
+      "id": "aws-io-optimized"
+    }
+  },
+  "settings": {
+    "dedicated_masters_threshold": 6
+  },
+  "kibana": {
+    "plan": {
+      "cluster_topology": [
+        {
+          "instance_configuration_id": "aws.kibana.r4",
+          "zone_count": 1<a id="CO16-3"></a><i class="conum" data-value="3"></i>,
+          "size": {
+            "resource": "memory",
+            "value": 1024<a id="CO16-4"></a><i class="conum" data-value="4"></i>
+          }
+        }
+      ],
+      "kibana": {
+        "version": "7.3.2"
+      }
+    }
+  },
+  "apm": {
+    "plan": {
+      "cluster_topology": [
+        {
+          "instance_configuration_id": "aws.apm.r4",
+          "zone_count": 1<a id="CO16-5"></a><i class="conum" data-value="5"></i>,
+          "size": {
+            "resource": "memory",
+            "value": 512<a id="CO16-6"></a><i class="conum" data-value="6"></i>
+          }
+        }
+      ],
+      "apm": {
+        "version": "7.3.2"
+      }
+    }
+  }
+}
+'</pre></div><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO16-1"><i class="conum" data-value="1"></i></a> </p></td><td valign="top" align="left"><p>
+The number of availability zones for the Elasticsearch cluster
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO16-2"><i class="conum" data-value="2"></i></a> </p></td><td valign="top" align="left"><p>
+The amount of memory allocated for each Elasticsearch node
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO16-3"><i class="conum" data-value="3"></i></a> </p></td><td valign="top" align="left"><p>
+The number of availability zones for Kibana
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO16-4"><i class="conum" data-value="4"></i></a> </p></td><td valign="top" align="left"><p>
+The amount of memory allocated for Kibana
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO16-5"><i class="conum" data-value="5"></i></a> </p></td><td valign="top" align="left"><p>
+The number of availability zones for APM
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO16-6"><i class="conum" data-value="6"></i></a> </p></td><td valign="top" align="left"><p>
+The amount of memory allocated for APM
+</p></td></tr></table></div><h4><a id="ec-update_a_deployment"></a>Update a deployment</h4><p>You can use the update plan API to apply a new plan which will update a current deployment component. An easier way to automate this process is:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+Call the Get plan API.
+</li><li class="listitem">
+Copy the API response and modify the settings that you want to change.
+</li><li class="listitem">
+Call the Update plan API using the modified JSON as the API payload.
+</li></ol></div><h5><a id="ec-get_current_plan_of_an_elasticsearch_cluster"></a>Get current plan of an Elasticsearch cluster</h5><div class="pre_wrapper lang-sh"><pre class="programlisting prettyprint lang-sh">curl \
+-H "Authorization: ApiKey $CLOUD_API_KEY" \
+"https://api.elastic-cloud.com/api/v1/regions/$REGION_ID/clusters/elasticsearch/$CLUSTER_ID/plan"</pre></div><p>Example response</p><div class="pre_wrapper lang-sh"><pre class="programlisting prettyprint lang-sh">{
+  "cluster_topology": [
+    {
+      "zone_count": 2,
+      "node_type": {
+        "data": true,
+        "master": true,
+        "ingest": true
+      },
+      "instance_configuration_id": "aws.data.highio.i3",
+      "elasticsearch": {
+        "system_settings": {
+          "use_disk_threshold": true,
+          "enable_close_index": true
+        },
+        "enabled_built_in_plugins": []
+      },
+      "size": {
+        "resource": "memory",
+        "value": 8192<a id="CO17-1"></a><i class="conum" data-value="1"></i>
+      }
+    }
+  ],
+  "elasticsearch": {
+    "system_settings": {
+      "use_disk_threshold": true,
+      "enable_close_index": true
+    },
+    "version": "7.3.2"
+  },
+  "deployment_template": {
+    "id": "aws-io-optimized"
+  }
+}</pre></div><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO17-1"><i class="conum" data-value="1"></i></a> </p></td><td valign="top" align="left"><p>
+The amount of memory allocated for each Elasticsearch node
+</p></td></tr></table></div><h5><a id="ec-update_the_cluster"></a>Update the cluster</h5><p>Modify the Elasticserarch cluster by increasing the amount of memory to 15 GB.</p><div class="pre_wrapper lang-sh"><pre class="programlisting prettyprint lang-sh">curl -XPOST \
+-H "Authorization: ApiKey $CLOUD_API_KEY" \
+"https://api.elastic-cloud.com/api/v1/regions/$REGION_ID/clusters/elasticsearch/$CLUSTER_ID/plan" \
+-d '
+{
+  "cluster_topology": [
+    {
+      "zone_count": 2,
+      "node_type": {
+        "data": true,
+        "master": true,
+        "ingest": true
+      },
+      "instance_configuration_id": "aws.data.highio.i3",
+      "elasticsearch": {
+        "system_settings": {
+          "use_disk_threshold": true,
+          "enable_close_index": true
+        },
+        "enabled_built_in_plugins": []
+      },
+      "size": {
+        "resource": "memory",
+        "value": 15360<a id="CO18-1"></a><i class="conum" data-value="1"></i>
+      }
+    }
+  ],
+  "elasticsearch": {
+    "system_settings": {
+      "use_disk_threshold": true,
+      "enable_close_index": true
+    },
+    "version": "7.3.2"
+  },
+  "deployment_template": {
+    "id": "aws-io-optimized"
+  }
+}
+'</pre></div><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO18-1"><i class="conum" data-value="1"></i></a> </p></td><td valign="top" align="left"><p>
+Increase the amount of memory allocated for each Elasticsearch node to 15 GB
+</p></td></tr></table></div><p>A 202 status code means that the plan was accepted.</p><h4><a id="ec-get_the_pending_plan_of_a_cluster"></a>Get the pending plan of a cluster</h4><p>Get the pending plan of a cluster.</p><div class="pre_wrapper lang-sh"><pre class="programlisting prettyprint lang-sh">curl \
+-H "Authorization: ApiKey $CLOUD_API_KEY" \
+"https://api.elastic-cloud.com/api/v1/regions/$REGION_ID/clusters/elasticsearch/$CLUSTER_ID/plan/pending"</pre></div></div><div class="navfooter"><span class="prev"><a href="ec-api-examples.html">
+              « 
+              API examples</a>
+           
+        </span><span class="next">
+           
+          <a href="ec-api-deployment-other.html">Other deployment operations
+               »
+            </a></span></div></body></html>
