@@ -1,6 +1,5 @@
 <div class="toc">
-<ul class="toc">
-<li><span class="part"><a href="ec-getting-started.html">Getting started</a></span>
+<ul class="toc"><li id="book_title"><span>Elasticsearch Service - Hosted Elasticsearch and Kibana: <select id="live_versions"><option value="release-ms-34">release-ms-34</option><option value="master" selected>master (current)</option></select></span></li><li><span class="part"><a href="ec-getting-started.html">Getting started</a></span>
 <ul>
 <li><span class="chapter"><a href="ec-getting-started-trial.html">How do I sign up?</a></span>
 </li>
@@ -30,13 +29,23 @@
 </li>
 <li><span class="chapter"><a href="ec-access-kibana.html">Access Kibana</a></span>
 </li>
-<li><span class="chapter"><a href="ec-getting-started-connect.html">Connect to Elasticsearch</a></span>
+<li><span class="chapter"><a href="ec-working-with-elasticsearch.html">Work with Elasticsearch</a></span>
 </li>
-<li><span class="chapter"><a href="ec-api-console.html">Access the Elasticsearch API</a></span>
+<li><span class="chapter"><a href="ec-working-with-elasticsearch-clients.html">Work with Elasticsearch clients</a></span>
+<ul>
+<li><span class="section"><a href="ec_connect_a_client.html">Connect a client</a></span>
+</li>
+<li><span class="section"><a href="ec-security-transport.html">Configure the Java transport client (deprecated)</a></span>
+</li>
+</ul>
+</li>
+<li><span class="chapter"><a href="ec-api-console.html">Access the Elasticsearch API console</a></span>
 </li>
 <li><span class="chapter"><a href="ec-getting-started-next-steps.html">Next steps</a></span>
 </li>
 <li><span class="chapter"><a href="ec-migrate-data.html">Migrating your Elasticsearch data</a></span>
+</li>
+<li><span class="chapter"><a href="ec-faq-getting-started.html">Getting started FAQ</a></span>
 </li>
 <li><span class="chapter"><a href="ec-glossary.html">Basic terms</a></span>
 </li>
@@ -114,6 +123,8 @@
 </li>
 </ul>
 </li>
+<li><span class="chapter"><a href="ec-faq-technical.html">Technical FAQ</a></span>
+</li>
 </ul>
 </li>
 <li><span class="part"><a href="ec-security.html">Securing your deployment</a></span>
@@ -125,8 +136,6 @@
 <li><span class="chapter"><a href="ec-users-manage-x-pack.html">Version 5.0 and later, manage users and roles in X-Pack</a></span>
 </li>
 <li><span class="chapter"><a href="ec-users-manage-shield.html">Before Version 5.0, manage users and roles in Shield</a></span>
-</li>
-<li><span class="chapter"><a href="ec-security-transport.html">Configure the Java transport client</a></span>
 </li>
 <li><span class="chapter"><a href="ec-sanitize_requests.html">Sanitize requests</a></span>
 </li>
@@ -162,7 +171,7 @@
 </li>
 <li><span class="part"><a href="ec-snapshot-restore.html">Snapshot and restore</a></span>
 <ul>
-<li><span class="chapter"><a href="ec-restoring-snapshots.html">Restoring snapshots</a></span>
+<li><span class="chapter"><a href="ec_share_a_repository_across_clusters.html">Share a repository across clusters</a></span>
 </li>
 <li><span class="chapter"><a href="ec-custom-repository.html">Snapshot and restore with custom repositories</a></span>
 <ul>
@@ -171,6 +180,8 @@
 <li><span class="section"><a href="ec-gcs-snapshotting.html">Configure a snapshot repository using GCS</a></span>
 </li>
 </ul>
+</li>
+<li><span class="chapter"><a href="ec-restoring-snapshots.html">Work with snapshots</a></span>
 </li>
 </ul>
 </li>
@@ -192,6 +203,8 @@
 </li>
 <li><span class="chapter"><a href="ec-billing-gcp.html">GCP Marketplace billing</a></span>
 </li>
+<li><span class="chapter"><a href="ec-faq-billing.html">Billing FAQ</a></span>
+</li>
 </ul>
 </li>
 <li><span class="part"><a href="ec-about.html">About Elasticsearch Service</a></span>
@@ -204,11 +217,53 @@
 </li>
 <li><span class="chapter"><a href="ec-reference-regions.html">Elasticsearch Service regions</a></span>
 </li>
-<li><span class="chapter"><a href="ec-faq.html">Elasticsearch Service FAQ</a></span>
+<li><span class="chapter"><a href="ec-operational-emails.html">Operational emails</a></span>
 </li>
 <li><span class="chapter"><a href="ec-service-status.html">Service status</a></span>
 </li>
 <li><span class="chapter"><a href="ec-get-help.html">Getting help</a></span>
+</li>
+</ul>
+</li>
+<li><span class="part"><a href="ec-restful-api.html">RESTful API</a></span>
+<ul>
+<li><span class="chapter"><a href="ec-api-principles.html">Principles</a></span>
+</li>
+<li><span class="chapter"><a href="ec-api-authentication.html">Authentication</a></span>
+</li>
+<li><span class="chapter"><a href="ec-openapi-specification.html">OpenAPI specification</a></span>
+</li>
+<li><span class="chapter"><a href="ec-api-rate-limiting.html">Rate limiting</a></span>
+</li>
+<li><span class="chapter"><a href="ec-api-examples.html">API examples</a></span>
+<ul>
+<li><span class="section"><a href="ec-api-deployment-crud.html">Deployment CRUD operations</a></span>
+</li>
+<li><span class="section"><a href="ec-api-deployment-other.html">Other deployment operations</a></span>
+</li>
+</ul>
+</li>
+<li><span class="chapter"><a href="ec-api-swagger.html">API reference documentation</a></span>
+<ul>
+<li><span class="section"><a href="Authentication.html">Authentication</a></span>
+</li>
+<li><span class="section"><a href="Deployment_-_CRUD.html">Deployment - CRUD</a></span>
+</li>
+<li><span class="section"><a href="Deployment_-_Commands.html">Deployment - Commands</a></span>
+</li>
+<li><span class="section"><a href="Deployment_-_Info.html">Deployment - Info</a></span>
+</li>
+<li><span class="section"><a href="Deployment_Resources_-_CRUD.html">Deployment Resources - CRUD</a></span>
+</li>
+<li><span class="section"><a href="Platform_-_Configuration_-_Instances_-_CRUD.html">Platform - Configuration - Instances - CRUD</a></span>
+</li>
+<li><span class="section"><a href="Stack_-_Versions_-_CRUD.html">Stack - Versions - CRUD</a></span>
+</li>
+<li><span class="section"><a href="Templates_-_Deployments.html">Templates - Deployments</a></span>
+</li>
+<li><span class="section"><a href="definitions.html">Definitions</a></span>
+</li>
+</ul>
 </li>
 </ul>
 </li>

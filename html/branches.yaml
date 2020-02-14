@@ -1282,11 +1282,13 @@ cloud:
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.2': 4d93a2c7daa31183d8c420617c5493d74c8eeff4
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.3': 49da0230b697fcac1ac296060aba10ec655904df
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.4': e5dbb7762ac456662941b35c15c0c54de9dc27ed
-  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/heroku/release-ms-31': 3d2fc12b64c89bc580fbd27a828c7ad23cf35390
-  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/saas/release-ms-31': 3d2fc12b64c89bc580fbd27a828c7ad23cf35390
-  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/shared/release-ms-31': 3d2fc12b64c89bc580fbd27a828c7ad23cf35390
-  'Elasticsearch Service - Hosted Elasticsearch and Kibana/docs/saas/release-ms-31': 3d2fc12b64c89bc580fbd27a828c7ad23cf35390
-  'Elasticsearch Service - Hosted Elasticsearch and Kibana/docs/shared/release-ms-31': 3d2fc12b64c89bc580fbd27a828c7ad23cf35390
+  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/heroku/release-ms-34': local
+  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/saas/release-ms-34': local
+  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/shared/release-ms-34': local
+  'Elasticsearch Service - Hosted Elasticsearch and Kibana/docs/saas/master': 6469f0bff35d86216e5af086b3d3136f95578c8d
+  'Elasticsearch Service - Hosted Elasticsearch and Kibana/docs/saas/release-ms-34': local
+  'Elasticsearch Service - Hosted Elasticsearch and Kibana/docs/shared/master': 6469f0bff35d86216e5af086b3d3136f95578c8d
+  'Elasticsearch Service - Hosted Elasticsearch and Kibana/docs/shared/release-ms-34': local
 cloud-assets:
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/master': c0a00edaf28d19490a7fc1c9e3d082fe32755233
 cloud-on-k8s:
@@ -2624,7 +2626,7 @@ elasticsearch-hadoop:
   Installation and Upgrade Guide/docs/src/reference/asciidoc/master: 4a4e94b1b5df606cffd00f513e9ac8badda2fe47
 elasticsearch-js:
   Elasticsearch Reference/docs/doc_examples/master: b2c85f7797eabcf25cea1e193cb06e35210aaa8f
-  JavaScript API/docs/16.x: 388c5e8e7ec1c0a097ee4960b2297073a484a33e
+  JavaScript API/docs/16.x: 8c359aeb7e90fbc8c4ef4de08ea14d3b02942269
   JavaScript API/docs/5.x: 7aebd6b9802f8575ebf450ce6f31baf86604f0ef
   JavaScript API/docs/6.x: e7a22a929020597711c64d6736307564260ce82d
   JavaScript API/docs/7.x: 8bd5c4c4ce81db7dded26dc609e280c68d4e63f6

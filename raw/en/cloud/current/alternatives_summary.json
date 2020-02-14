@@ -1,27 +1,27 @@
 {
   "console": {
-    "total": 0,
+    "total": 2,
     "alternatives": {
       "php": {
-        "found": 0
+        "found": 2
       },
       "go": {
-        "found": 0
+        "found": 2
       },
       "ruby": {
-        "found": 0
+        "found": 1
       },
       "java": {
-        "found": 0
+        "found": 2
       },
       "javascript": {
-        "found": 0
+        "found": 2
       },
       "python": {
-        "found": 0
+        "found": 2
       },
       "csharp": {
-        "found": 0
+        "found": 2
       }
     }
   }
