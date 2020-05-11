@@ -20,12 +20,12 @@ apm-agent-java:
 apm-agent-nodejs:
   APM Node.js Agent/CHANGELOG.asciidoc/2.x: c0b2e47a6899f0d91eb3be520b8acf660c5d7c56
   APM Node.js Agent/CHANGELOG.asciidoc/3.x: 2830ac2e4210af7291d3ae54387f404450020d78
-  APM Node.js Agent/CHANGELOG.asciidoc/master: 04430a13ba015be48172dbc1e26b0de642d73b96
+  APM Node.js Agent/CHANGELOG.asciidoc/master: 121f48b2d81b9d34300a255417b5b27a5a4f6b86
   APM Node.js Agent/docs/0.x: 635eae53d69db8ceee35a9311ddc1986425d842d
   APM Node.js Agent/docs/1.x: e757d1b35724763fff086274b9cda9bdd2837aeb
   APM Node.js Agent/docs/2.x: c0b2e47a6899f0d91eb3be520b8acf660c5d7c56
   APM Node.js Agent/docs/3.x: 2830ac2e4210af7291d3ae54387f404450020d78
-  APM Node.js Agent/docs/master: 04430a13ba015be48172dbc1e26b0de642d73b96
+  APM Node.js Agent/docs/master: 121f48b2d81b9d34300a255417b5b27a5a4f6b86
 apm-agent-python:
   APM Python Agent/CHANGELOG.asciidoc/5.x: fc222a3d6ac3ffde40a98550b32a48e7ee1c5cf4
   APM Python Agent/CHANGELOG.asciidoc/master: a577638c6ec4520560e61fc01ad5f1eb594f97e4
@@ -1437,20 +1437,20 @@ clients-team:
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/php/master': 7d77afe584de378b74d527e25e9f63a9bee9609c
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/python/master': 7d77afe584de378b74d527e25e9f63a9bee9609c
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/ruby/master': 7d77afe584de378b74d527e25e9f63a9bee9609c
-  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/csharp/master': 06484a1244176e39447e853b634645852a57e97a
-  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/go/master': 06484a1244176e39447e853b634645852a57e97a
-  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/java/master': 06484a1244176e39447e853b634645852a57e97a
-  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/javascript/master': 06484a1244176e39447e853b634645852a57e97a
-  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/php/master': 06484a1244176e39447e853b634645852a57e97a
-  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/python/master': 06484a1244176e39447e853b634645852a57e97a
-  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/ruby/master': 06484a1244176e39447e853b634645852a57e97a
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/csharp/master': 06484a1244176e39447e853b634645852a57e97a
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/go/master': 06484a1244176e39447e853b634645852a57e97a
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/java/master': 06484a1244176e39447e853b634645852a57e97a
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/javascript/master': 06484a1244176e39447e853b634645852a57e97a
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/php/master': 06484a1244176e39447e853b634645852a57e97a
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/python/master': 06484a1244176e39447e853b634645852a57e97a
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/ruby/master': 06484a1244176e39447e853b634645852a57e97a
+  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/csharp/master': 328cd8436f68cbc28b602542c586efe81a93b6f3
+  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/go/master': 328cd8436f68cbc28b602542c586efe81a93b6f3
+  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/java/master': 328cd8436f68cbc28b602542c586efe81a93b6f3
+  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/javascript/master': 328cd8436f68cbc28b602542c586efe81a93b6f3
+  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/php/master': 328cd8436f68cbc28b602542c586efe81a93b6f3
+  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/python/master': 328cd8436f68cbc28b602542c586efe81a93b6f3
+  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/ruby/master': 328cd8436f68cbc28b602542c586efe81a93b6f3
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/csharp/master': 328cd8436f68cbc28b602542c586efe81a93b6f3
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/go/master': 328cd8436f68cbc28b602542c586efe81a93b6f3
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/java/master': 328cd8436f68cbc28b602542c586efe81a93b6f3
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/javascript/master': 328cd8436f68cbc28b602542c586efe81a93b6f3
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/php/master': 328cd8436f68cbc28b602542c586efe81a93b6f3
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/python/master': 328cd8436f68cbc28b602542c586efe81a93b6f3
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/ruby/master': 328cd8436f68cbc28b602542c586efe81a93b6f3
 cloud:
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/cloud-enterprise/1.0': b4cdeadfc88bbf40073d51a4a34b505923142926
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/cloud-enterprise/1.1': fc5f9901851d85b1562172c4048212b82e1a8215
@@ -1467,11 +1467,11 @@ cloud:
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.3': 4418e7a851c5256ca45d44da9325bf03ae6b505e
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.4': a05eb232689f9798ec947e6329588aaaca4edad4
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.5': 17590dc498f8b31c271fc527403af19390217d5b
-  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/heroku/release-ms-34': b5ae4cef9ee5bd5a354ff6aaa2895476460ee090
-  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/saas/release-ms-34': b5ae4cef9ee5bd5a354ff6aaa2895476460ee090
-  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/shared/release-ms-34': b5ae4cef9ee5bd5a354ff6aaa2895476460ee090
-  'Elasticsearch Service - Hosted Elastic Stack/docs/saas/release-ms-34': b5ae4cef9ee5bd5a354ff6aaa2895476460ee090
-  'Elasticsearch Service - Hosted Elastic Stack/docs/shared/release-ms-34': b5ae4cef9ee5bd5a354ff6aaa2895476460ee090
+  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/heroku/release-ms-36': local
+  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/saas/release-ms-36': local
+  'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/shared/release-ms-36': local
+  'Elasticsearch Service - Hosted Elastic Stack/docs/saas/release-ms-36': local
+  'Elasticsearch Service - Hosted Elastic Stack/docs/shared/release-ms-36': local
 cloud-assets:
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/master': 2b03a3f7b9f0fbae0539423583b92e9173ed3781
 cloud-on-k8s:
@@ -2404,8 +2404,8 @@ elasticsearch:
   Elasticsearch Reference/docs/Versions.asciidoc/7.3: 1706998dac45d8e8336309dc8a1fa8b227abea2b
   Elasticsearch Reference/docs/Versions.asciidoc/7.4: f2816846ab04add2224a707b68138ddfb57d45e6
   Elasticsearch Reference/docs/Versions.asciidoc/7.5: bac61b95aa5ea617f7591babee2397a03424cec6
-  Elasticsearch Reference/docs/Versions.asciidoc/7.6: a8c94510caf8619eeed7d71992d8f8740d35d2c4
-  Elasticsearch Reference/docs/Versions.asciidoc/7.7: bd4d01ebda7f91aa79f9cb08fcb4cdcb0340a64d
+  Elasticsearch Reference/docs/Versions.asciidoc/7.6: b5103ddb494d7ea80dccc02ecd421efe93e78cf0
+  Elasticsearch Reference/docs/Versions.asciidoc/7.7: 88a54e720f862a0edeed950215cb749360ed4530
   Elasticsearch Reference/docs/Versions.asciidoc/7.8: 7809c51eb74b87f36451ee5149d05fb973a180fe
   Elasticsearch Reference/docs/Versions.asciidoc/7.x: 2be6d7b8b60af0b63ba7438e978c55b06ab3fff7
   Elasticsearch Reference/docs/Versions.asciidoc/master: c0e8c088fc2072462ba4f4db2cf563803640e720
@@ -2426,8 +2426,8 @@ elasticsearch:
   Elasticsearch Reference/docs/painless/7.3: 1706998dac45d8e8336309dc8a1fa8b227abea2b
   Elasticsearch Reference/docs/painless/7.4: f2816846ab04add2224a707b68138ddfb57d45e6
   Elasticsearch Reference/docs/painless/7.5: bac61b95aa5ea617f7591babee2397a03424cec6
-  Elasticsearch Reference/docs/painless/7.6: a8c94510caf8619eeed7d71992d8f8740d35d2c4
-  Elasticsearch Reference/docs/painless/7.7: bd4d01ebda7f91aa79f9cb08fcb4cdcb0340a64d
+  Elasticsearch Reference/docs/painless/7.6: b5103ddb494d7ea80dccc02ecd421efe93e78cf0
+  Elasticsearch Reference/docs/painless/7.7: 88a54e720f862a0edeed950215cb749360ed4530
   Elasticsearch Reference/docs/painless/7.8: 7809c51eb74b87f36451ee5149d05fb973a180fe
   Elasticsearch Reference/docs/painless/7.x: 2be6d7b8b60af0b63ba7438e978c55b06ab3fff7
   Elasticsearch Reference/docs/painless/master: c0e8c088fc2072462ba4f4db2cf563803640e720
@@ -2464,8 +2464,8 @@ elasticsearch:
   Elasticsearch Reference/docs/reference/7.3: 1706998dac45d8e8336309dc8a1fa8b227abea2b
   Elasticsearch Reference/docs/reference/7.4: f2816846ab04add2224a707b68138ddfb57d45e6
   Elasticsearch Reference/docs/reference/7.5: bac61b95aa5ea617f7591babee2397a03424cec6
-  Elasticsearch Reference/docs/reference/7.6: a8c94510caf8619eeed7d71992d8f8740d35d2c4
-  Elasticsearch Reference/docs/reference/7.7: bd4d01ebda7f91aa79f9cb08fcb4cdcb0340a64d
+  Elasticsearch Reference/docs/reference/7.6: b5103ddb494d7ea80dccc02ecd421efe93e78cf0
+  Elasticsearch Reference/docs/reference/7.7: 88a54e720f862a0edeed950215cb749360ed4530
   Elasticsearch Reference/docs/reference/7.8: 7809c51eb74b87f36451ee5149d05fb973a180fe
   Elasticsearch Reference/docs/reference/7.x: 2be6d7b8b60af0b63ba7438e978c55b06ab3fff7
   Elasticsearch Reference/docs/reference/master: c0e8c088fc2072462ba4f4db2cf563803640e720
@@ -2488,8 +2488,8 @@ elasticsearch:
   Elasticsearch Reference/docs/src/test/cluster/config/7.3: 1706998dac45d8e8336309dc8a1fa8b227abea2b
   Elasticsearch Reference/docs/src/test/cluster/config/7.4: f2816846ab04add2224a707b68138ddfb57d45e6
   Elasticsearch Reference/docs/src/test/cluster/config/7.5: bac61b95aa5ea617f7591babee2397a03424cec6
-  Elasticsearch Reference/docs/src/test/cluster/config/7.6: a8c94510caf8619eeed7d71992d8f8740d35d2c4
-  Elasticsearch Reference/docs/src/test/cluster/config/7.7: bd4d01ebda7f91aa79f9cb08fcb4cdcb0340a64d
+  Elasticsearch Reference/docs/src/test/cluster/config/7.6: b5103ddb494d7ea80dccc02ecd421efe93e78cf0
+  Elasticsearch Reference/docs/src/test/cluster/config/7.7: 88a54e720f862a0edeed950215cb749360ed4530
   Elasticsearch Reference/docs/src/test/cluster/config/7.8: 7809c51eb74b87f36451ee5149d05fb973a180fe
   Elasticsearch Reference/docs/src/test/cluster/config/7.x: 2be6d7b8b60af0b63ba7438e978c55b06ab3fff7
   Elasticsearch Reference/docs/src/test/cluster/config/master: c0e8c088fc2072462ba4f4db2cf563803640e720
@@ -2510,8 +2510,8 @@ elasticsearch:
   Elasticsearch Reference/plugins/examples/7.3: 1706998dac45d8e8336309dc8a1fa8b227abea2b
   Elasticsearch Reference/plugins/examples/7.4: f2816846ab04add2224a707b68138ddfb57d45e6
   Elasticsearch Reference/plugins/examples/7.5: bac61b95aa5ea617f7591babee2397a03424cec6
-  Elasticsearch Reference/plugins/examples/7.6: a8c94510caf8619eeed7d71992d8f8740d35d2c4
-  Elasticsearch Reference/plugins/examples/7.7: bd4d01ebda7f91aa79f9cb08fcb4cdcb0340a64d
+  Elasticsearch Reference/plugins/examples/7.6: b5103ddb494d7ea80dccc02ecd421efe93e78cf0
+  Elasticsearch Reference/plugins/examples/7.7: 88a54e720f862a0edeed950215cb749360ed4530
   Elasticsearch Reference/plugins/examples/7.8: 7809c51eb74b87f36451ee5149d05fb973a180fe
   Elasticsearch Reference/plugins/examples/7.x: 2be6d7b8b60af0b63ba7438e978c55b06ab3fff7
   Elasticsearch Reference/plugins/examples/master: c0e8c088fc2072462ba4f4db2cf563803640e720
@@ -2527,8 +2527,8 @@ elasticsearch:
   Elasticsearch Reference/x-pack/docs/7.3: 1706998dac45d8e8336309dc8a1fa8b227abea2b
   Elasticsearch Reference/x-pack/docs/7.4: f2816846ab04add2224a707b68138ddfb57d45e6
   Elasticsearch Reference/x-pack/docs/7.5: bac61b95aa5ea617f7591babee2397a03424cec6
-  Elasticsearch Reference/x-pack/docs/7.6: a8c94510caf8619eeed7d71992d8f8740d35d2c4
-  Elasticsearch Reference/x-pack/docs/7.7: bd4d01ebda7f91aa79f9cb08fcb4cdcb0340a64d
+  Elasticsearch Reference/x-pack/docs/7.6: b5103ddb494d7ea80dccc02ecd421efe93e78cf0
+  Elasticsearch Reference/x-pack/docs/7.7: 88a54e720f862a0edeed950215cb749360ed4530
   Elasticsearch Reference/x-pack/docs/7.8: 7809c51eb74b87f36451ee5149d05fb973a180fe
   Elasticsearch Reference/x-pack/docs/7.x: 2be6d7b8b60af0b63ba7438e978c55b06ab3fff7
   Elasticsearch Reference/x-pack/docs/master: c0e8c088fc2072462ba4f4db2cf563803640e720
@@ -2541,8 +2541,8 @@ elasticsearch:
   Elasticsearch Reference/x-pack/plugin/sql/qa/7.3: 1706998dac45d8e8336309dc8a1fa8b227abea2b
   Elasticsearch Reference/x-pack/plugin/sql/qa/7.4: f2816846ab04add2224a707b68138ddfb57d45e6
   Elasticsearch Reference/x-pack/plugin/sql/qa/7.5: bac61b95aa5ea617f7591babee2397a03424cec6
-  Elasticsearch Reference/x-pack/plugin/sql/qa/7.6: a8c94510caf8619eeed7d71992d8f8740d35d2c4
-  Elasticsearch Reference/x-pack/plugin/sql/qa/7.7: bd4d01ebda7f91aa79f9cb08fcb4cdcb0340a64d
+  Elasticsearch Reference/x-pack/plugin/sql/qa/7.6: b5103ddb494d7ea80dccc02ecd421efe93e78cf0
+  Elasticsearch Reference/x-pack/plugin/sql/qa/7.7: 88a54e720f862a0edeed950215cb749360ed4530
   Elasticsearch Reference/x-pack/plugin/sql/qa/7.8: 7809c51eb74b87f36451ee5149d05fb973a180fe
   Elasticsearch Reference/x-pack/plugin/sql/qa/7.x: 2be6d7b8b60af0b63ba7438e978c55b06ab3fff7
   Elasticsearch Reference/x-pack/plugin/sql/qa/master: c0e8c088fc2072462ba4f4db2cf563803640e720
@@ -2594,8 +2594,8 @@ elasticsearch:
   Installation and Upgrade Guide/docs/7.3: 1706998dac45d8e8336309dc8a1fa8b227abea2b
   Installation and Upgrade Guide/docs/7.4: f2816846ab04add2224a707b68138ddfb57d45e6
   Installation and Upgrade Guide/docs/7.5: bac61b95aa5ea617f7591babee2397a03424cec6
-  Installation and Upgrade Guide/docs/7.6: a8c94510caf8619eeed7d71992d8f8740d35d2c4
-  Installation and Upgrade Guide/docs/7.7: bd4d01ebda7f91aa79f9cb08fcb4cdcb0340a64d
+  Installation and Upgrade Guide/docs/7.6: b5103ddb494d7ea80dccc02ecd421efe93e78cf0
+  Installation and Upgrade Guide/docs/7.7: 88a54e720f862a0edeed950215cb749360ed4530
   Installation and Upgrade Guide/docs/7.8: 7809c51eb74b87f36451ee5149d05fb973a180fe
   Installation and Upgrade Guide/docs/7.x: 2be6d7b8b60af0b63ba7438e978c55b06ab3fff7
   Installation and Upgrade Guide/docs/master: c0e8c088fc2072462ba4f4db2cf563803640e720
@@ -2810,8 +2810,8 @@ elasticsearch:
   Machine Learning/docs/7.3: 1706998dac45d8e8336309dc8a1fa8b227abea2b
   Machine Learning/docs/7.4: f2816846ab04add2224a707b68138ddfb57d45e6
   Machine Learning/docs/7.5: bac61b95aa5ea617f7591babee2397a03424cec6
-  Machine Learning/docs/7.6: a8c94510caf8619eeed7d71992d8f8740d35d2c4
-  Machine Learning/docs/7.7: bd4d01ebda7f91aa79f9cb08fcb4cdcb0340a64d
+  Machine Learning/docs/7.6: b5103ddb494d7ea80dccc02ecd421efe93e78cf0
+  Machine Learning/docs/7.7: 88a54e720f862a0edeed950215cb749360ed4530
   Machine Learning/docs/7.8: 7809c51eb74b87f36451ee5149d05fb973a180fe
   Machine Learning/docs/7.x: 2be6d7b8b60af0b63ba7438e978c55b06ab3fff7
   Machine Learning/docs/master: c0e8c088fc2072462ba4f4db2cf563803640e720
@@ -2984,7 +2984,7 @@ elasticsearch-hadoop:
   Installation and Upgrade Guide/docs/src/reference/asciidoc/master: 796286b88feecb30d06833b80e6856e15bf0db6d
 elasticsearch-js:
   Elasticsearch Reference/docs/doc_examples/master: b109f6076347527f6f7f7290685bc136ca931cd7
-  JavaScript API/docs/16.x: 388c5e8e7ec1c0a097ee4960b2297073a484a33e
+  JavaScript API/docs/16.x: 8c359aeb7e90fbc8c4ef4de08ea14d3b02942269
   JavaScript API/docs/5.x: 37042aea33099b356692236e2d701971df8b4020
   JavaScript API/docs/6.x: be2a7ab5445eb70c611aeede949b80de7b1262ca
   JavaScript API/docs/7.x: be6257380eb75c071db95916062ab89fcd590301
