@@ -735,6 +735,147 @@ greater than or equal to
 </div>
 <p>&#160;</p>
 <p>For additional information on Timelion conditional capabilities, go to <a href="/blog/timeseries-if-then-else-with-timelion" class="ulink" target="_top">I have but one .condition()</a>.</p>
+<h4><a id="customizing-data-series-y-axis"></a>Customize data series y-axis<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/kibana/edit/master/docs/visualize/timelion.asciidoc">edit</a></h4>
+<p>Use different y-axis scales and ranges for your data series.
+The <code class="literal">.yaxis()</code> function supports the following parameters:</p>
+<div class="informaltable">
+<table border="0" cellpadding="4px">
+<colgroup>
+<col/>
+<col/>
+</colgroup>
+<tbody valign="top">
+<tr>
+<td valign="top">
+<p>
+yaxis
+</p>
+</td>
+<td valign="top">
+<p>
+The numbered y-axis to plot this series on, eg .yaxis(2) for a second y-axis.
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+min
+</p>
+</td>
+<td valign="top">
+<p>
+Minimum value for y-axis range
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+max
+</p>
+</td>
+<td valign="top">
+<p>
+Maximum value for y-axis range
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+position
+</p>
+</td>
+<td valign="top">
+<p>
+<code class="literal">left</code> or <code class="literal">right</code>
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+label
+</p>
+</td>
+<td valign="top">
+<p>
+Label for axis
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+color
+</p>
+</td>
+<td valign="top">
+<p>
+Color of axis label
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+units
+</p>
+</td>
+<td valign="top">
+<p>
+The function to use for formatting y-axis labels. One of: <code class="literal">bits</code>, <code class="literal">bits/s</code>, <code class="literal">bytes</code>, <code class="literal">bytes/s</code>, <code class="literal">currency(:ISO 4217 currency code)</code>, <code class="literal">percent</code>, <code class="literal">custom(:prefix:suffix)</code>
+</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>
+tickDecimals
+</p>
+</td>
+<td valign="top">
+<p>
+Tick decimal precision
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Example:</p>
+<div class="pre_wrapper lang-text">
+<pre class="programlisting prettyprint lang-text">.es(index= kibana_sample_data_logs,
+    timefield='@timestamp',
+    metric='avg:bytes')
+  .label('Average Bytes for request')
+  .title('Memory consumption over time in bytes').yaxis(1,units=bytes,position=left), <a id="CO15-1"></a><i class="conum" data-value="1"></i>
+.es(index= kibana_sample_data_logs,
+    timefield='@timestamp',
+    metric=avg:machine.ram)
+  .label('Average Machine RAM amount').yaxis(2,units=bytes,position=right) <a id="CO15-2"></a><i class="conum" data-value="2"></i></pre>
+</div>
+<div class="calloutlist">
+<table border="0" summary="Callout list">
+<tr>
+<td align="left" valign="top" width="5%">
+<p><a href="#CO15-1"><i class="conum" data-value="1"></i></a></p>
+</td>
+<td align="left" valign="top">
+<p><code class="literal">.yaxis(1,units=bytes,position=left)</code> sets the first y-axis for the first data series, and changes the units on the left</p>
+</td>
+</tr>
+<tr>
+<td align="left" valign="top" width="5%">
+<p><a href="#CO15-2"><i class="conum" data-value="2"></i></a></p>
+</td>
+<td align="left" valign="top">
+<p><code class="literal">.yaxis(2,units=bytes,position=left)</code> allows to set a second Y axis for the second series, changing the units, on the right</p>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="navfooter">
 <span class="prev">
