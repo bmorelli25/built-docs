@@ -1329,11 +1329,13 @@ If the first argument is <code class="literal">week</code> and the second argume
 
 <div class="section">
 <div class="titlepage"><div><div>
-<h3 class="title"><a id="sql-functions-datetime-day"></a><code class="literal">DAY_OF_MONTH/DOM/DAY</code><a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/sql/functions/date-time.asciidoc">edit</a></h3>
+<h3 class="title"><a id="sql-functions-datetime-format"></a><code class="literal">FORMAT</code><a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/sql/functions/date-time.asciidoc">edit</a></h3>
 </div></div></div>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
-<pre class="programlisting prettyprint lang-sql">DAY_OF_MONTH(datetime_exp) <a id="CO94-1"></a><i class="conum" data-value="1"></i></pre>
+<pre class="programlisting prettyprint lang-sql">FORMAT(
+    date_exp/datetime_exp/time_exp, <a id="CO94-1"></a><i class="conum" data-value="1"></i>
+    string_exp) <a id="CO94-2"></a><i class="conum" data-value="2"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
@@ -1341,6 +1343,70 @@ If the first argument is <code class="literal">week</code> and the second argume
 <tr>
 <td align="left" valign="top" width="5%">
 <p><a href="#CO94-1"><i class="conum" data-value="1"></i></a></p>
+</td>
+<td align="left" valign="top">
+<p>date/datetime/time expression</p>
+</td>
+</tr>
+<tr>
+<td align="left" valign="top" width="5%">
+<p><a href="#CO94-2"><i class="conum" data-value="2"></i></a></p>
+</td>
+<td align="left" valign="top">
+<p>format pattern</p>
+</td>
+</tr>
+</table>
+</div>
+<p><span class="strong strong"><strong>Output</strong></span>: string</p>
+<p><span class="strong strong"><strong>Description</strong></span>: Returns the date/datetime/time as a string using the format specified in the 2nd argument. The formatting
+pattern used is the one from
+<a href="https://docs.microsoft.com/en-us/sql/t-sql/functions/format-transact-sql?view=sql-server-ver15#ExampleD" class="ulink" target="_top">Microsoft SQL Server Format Specification</a>.
+If any of the two arguments is <code class="literal">null</code> or the pattern is an empty string <code class="literal">null</code> is returned.</p>
+<div class="note admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>If the 1st argument is of type <code class="literal">time</code>, then pattern specified by the 2nd argument cannot contain date related units
+(e.g. <em>dd</em>, <em>MM</em>, <em>YYYY</em>, etc.). If it contains such units an error is returned.</p>
+</div>
+</div>
+<div class="pre_wrapper lang-sql">
+<pre class="programlisting prettyprint lang-sql">SELECT FORMAT(CAST('2020-04-05' AS DATE), 'dd/MM/YYYY') AS "date";
+
+      date
+------------------
+05/04/2020</pre>
+</div>
+<div class="pre_wrapper lang-sql">
+<pre class="programlisting prettyprint lang-sql">SELECT FORMAT(CAST('2020-04-05T11:22:33.987654' AS DATETIME), 'dd/MM/YYYY HH:mm:ss.ff') AS "datetime";
+
+      datetime
+------------------
+05/04/2020 11:22:33.98</pre>
+</div>
+<div class="pre_wrapper lang-sql">
+<pre class="programlisting prettyprint lang-sql">SELECT FORMAT(CAST('11:22:33.987' AS TIME), 'HH mm ss.f') AS "time";
+
+      time
+------------------
+11 22 33.9</pre>
+</div>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="sql-functions-datetime-day"></a><code class="literal">DAY_OF_MONTH/DOM/DAY</code><a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/sql/functions/date-time.asciidoc">edit</a></h3>
+</div></div></div>
+<p><strong>Synopsis:</strong></p>
+<div class="pre_wrapper lang-sql">
+<pre class="programlisting prettyprint lang-sql">DAY_OF_MONTH(datetime_exp) <a id="CO95-1"></a><i class="conum" data-value="1"></i></pre>
+</div>
+<p><span class="strong strong"><strong>Input</strong></span>:</p>
+<div class="calloutlist">
+<table border="0" summary="Callout list">
+<tr>
+<td align="left" valign="top" width="5%">
+<p><a href="#CO95-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
@@ -1365,14 +1431,14 @@ If the first argument is <code class="literal">week</code> and the second argume
 </div></div></div>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
-<pre class="programlisting prettyprint lang-sql">DAY_OF_WEEK(datetime_exp) <a id="CO95-1"></a><i class="conum" data-value="1"></i></pre>
+<pre class="programlisting prettyprint lang-sql">DAY_OF_WEEK(datetime_exp) <a id="CO96-1"></a><i class="conum" data-value="1"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
 <table border="0" summary="Callout list">
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO95-1"><i class="conum" data-value="1"></i></a></p>
+<p><a href="#CO96-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
@@ -1397,14 +1463,14 @@ If the first argument is <code class="literal">week</code> and the second argume
 </div></div></div>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
-<pre class="programlisting prettyprint lang-sql">DAY_OF_YEAR(datetime_exp) <a id="CO96-1"></a><i class="conum" data-value="1"></i></pre>
+<pre class="programlisting prettyprint lang-sql">DAY_OF_YEAR(datetime_exp) <a id="CO97-1"></a><i class="conum" data-value="1"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
 <table border="0" summary="Callout list">
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO96-1"><i class="conum" data-value="1"></i></a></p>
+<p><a href="#CO97-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
@@ -1429,14 +1495,14 @@ If the first argument is <code class="literal">week</code> and the second argume
 </div></div></div>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
-<pre class="programlisting prettyprint lang-sql">DAY_NAME(datetime_exp) <a id="CO97-1"></a><i class="conum" data-value="1"></i></pre>
+<pre class="programlisting prettyprint lang-sql">DAY_NAME(datetime_exp) <a id="CO98-1"></a><i class="conum" data-value="1"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
 <table border="0" summary="Callout list">
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO97-1"><i class="conum" data-value="1"></i></a></p>
+<p><a href="#CO98-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
@@ -1461,14 +1527,14 @@ Monday</pre>
 </div></div></div>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
-<pre class="programlisting prettyprint lang-sql">HOUR_OF_DAY(datetime_exp) <a id="CO98-1"></a><i class="conum" data-value="1"></i></pre>
+<pre class="programlisting prettyprint lang-sql">HOUR_OF_DAY(datetime_exp) <a id="CO99-1"></a><i class="conum" data-value="1"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
 <table border="0" summary="Callout list">
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO98-1"><i class="conum" data-value="1"></i></a></p>
+<p><a href="#CO99-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
@@ -1493,14 +1559,14 @@ Monday</pre>
 </div></div></div>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
-<pre class="programlisting prettyprint lang-sql">ISO_DAY_OF_WEEK(datetime_exp) <a id="CO99-1"></a><i class="conum" data-value="1"></i></pre>
+<pre class="programlisting prettyprint lang-sql">ISO_DAY_OF_WEEK(datetime_exp) <a id="CO100-1"></a><i class="conum" data-value="1"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
 <table border="0" summary="Callout list">
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO99-1"><i class="conum" data-value="1"></i></a></p>
+<p><a href="#CO100-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
@@ -1526,14 +1592,14 @@ Monday is <code class="literal">1</code>, Tuesday is <code class="literal">2</co
 </div></div></div>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
-<pre class="programlisting prettyprint lang-sql">ISO_WEEK_OF_YEAR(datetime_exp) <a id="CO100-1"></a><i class="conum" data-value="1"></i></pre>
+<pre class="programlisting prettyprint lang-sql">ISO_WEEK_OF_YEAR(datetime_exp) <a id="CO101-1"></a><i class="conum" data-value="1"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
 <table border="0" summary="Callout list">
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO100-1"><i class="conum" data-value="1"></i></a></p>
+<p><a href="#CO101-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
@@ -1559,14 +1625,14 @@ of a year is the first week with a majority (4 or more) of its days in January.<
 </div></div></div>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
-<pre class="programlisting prettyprint lang-sql">MINUTE_OF_DAY(datetime_exp) <a id="CO101-1"></a><i class="conum" data-value="1"></i></pre>
+<pre class="programlisting prettyprint lang-sql">MINUTE_OF_DAY(datetime_exp) <a id="CO102-1"></a><i class="conum" data-value="1"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
 <table border="0" summary="Callout list">
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO101-1"><i class="conum" data-value="1"></i></a></p>
+<p><a href="#CO102-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
@@ -1591,14 +1657,14 @@ of a year is the first week with a majority (4 or more) of its days in January.<
 </div></div></div>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
-<pre class="programlisting prettyprint lang-sql">MINUTE_OF_HOUR(datetime_exp) <a id="CO102-1"></a><i class="conum" data-value="1"></i></pre>
+<pre class="programlisting prettyprint lang-sql">MINUTE_OF_HOUR(datetime_exp) <a id="CO103-1"></a><i class="conum" data-value="1"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
 <table border="0" summary="Callout list">
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO102-1"><i class="conum" data-value="1"></i></a></p>
+<p><a href="#CO103-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
@@ -1623,14 +1689,14 @@ of a year is the first week with a majority (4 or more) of its days in January.<
 </div></div></div>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
-<pre class="programlisting prettyprint lang-sql">MONTH(datetime_exp) <a id="CO103-1"></a><i class="conum" data-value="1"></i></pre>
+<pre class="programlisting prettyprint lang-sql">MONTH(datetime_exp) <a id="CO104-1"></a><i class="conum" data-value="1"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
 <table border="0" summary="Callout list">
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO103-1"><i class="conum" data-value="1"></i></a></p>
+<p><a href="#CO104-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
@@ -1655,14 +1721,14 @@ of a year is the first week with a majority (4 or more) of its days in January.<
 </div></div></div>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
-<pre class="programlisting prettyprint lang-sql">MONTH_NAME(datetime_exp) <a id="CO104-1"></a><i class="conum" data-value="1"></i></pre>
+<pre class="programlisting prettyprint lang-sql">MONTH_NAME(datetime_exp) <a id="CO105-1"></a><i class="conum" data-value="1"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
 <table border="0" summary="Callout list">
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO104-1"><i class="conum" data-value="1"></i></a></p>
+<p><a href="#CO105-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
@@ -1722,14 +1788,14 @@ Arumugam</pre>
 </div></div></div>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
-<pre class="programlisting prettyprint lang-sql">SECOND_OF_MINUTE(datetime_exp) <a id="CO105-1"></a><i class="conum" data-value="1"></i></pre>
+<pre class="programlisting prettyprint lang-sql">SECOND_OF_MINUTE(datetime_exp) <a id="CO106-1"></a><i class="conum" data-value="1"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
 <table border="0" summary="Callout list">
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO105-1"><i class="conum" data-value="1"></i></a></p>
+<p><a href="#CO106-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
@@ -1754,14 +1820,14 @@ Arumugam</pre>
 </div></div></div>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
-<pre class="programlisting prettyprint lang-sql">QUARTER(datetime_exp) <a id="CO106-1"></a><i class="conum" data-value="1"></i></pre>
+<pre class="programlisting prettyprint lang-sql">QUARTER(datetime_exp) <a id="CO107-1"></a><i class="conum" data-value="1"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
 <table border="0" summary="Callout list">
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO106-1"><i class="conum" data-value="1"></i></a></p>
+<p><a href="#CO107-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
@@ -1821,14 +1887,14 @@ Arumugam</pre>
 </div></div></div>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
-<pre class="programlisting prettyprint lang-sql">WEEK_OF_YEAR(datetime_exp) <a id="CO107-1"></a><i class="conum" data-value="1"></i></pre>
+<pre class="programlisting prettyprint lang-sql">WEEK_OF_YEAR(datetime_exp) <a id="CO108-1"></a><i class="conum" data-value="1"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
 <table border="0" summary="Callout list">
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO107-1"><i class="conum" data-value="1"></i></a></p>
+<p><a href="#CO108-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
@@ -1853,14 +1919,14 @@ Arumugam</pre>
 </div></div></div>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
-<pre class="programlisting prettyprint lang-sql">YEAR(datetime_exp) <a id="CO108-1"></a><i class="conum" data-value="1"></i></pre>
+<pre class="programlisting prettyprint lang-sql">YEAR(datetime_exp) <a id="CO109-1"></a><i class="conum" data-value="1"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
 <table border="0" summary="Callout list">
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO108-1"><i class="conum" data-value="1"></i></a></p>
+<p><a href="#CO109-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
@@ -1886,15 +1952,15 @@ Arumugam</pre>
 <p><strong>Synopsis:</strong></p>
 <div class="pre_wrapper lang-sql">
 <pre class="programlisting prettyprint lang-sql">EXTRACT(
-    datetime_function  <a id="CO109-1"></a><i class="conum" data-value="1"></i>
-    FROM datetime_exp) <a id="CO109-2"></a><i class="conum" data-value="2"></i></pre>
+    datetime_function  <a id="CO110-1"></a><i class="conum" data-value="1"></i>
+    FROM datetime_exp) <a id="CO110-2"></a><i class="conum" data-value="2"></i></pre>
 </div>
 <p><span class="strong strong"><strong>Input</strong></span>:</p>
 <div class="calloutlist">
 <table border="0" summary="Callout list">
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO109-1"><i class="conum" data-value="1"></i></a></p>
+<p><a href="#CO110-1"><i class="conum" data-value="1"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/time function name</p>
@@ -1902,7 +1968,7 @@ Arumugam</pre>
 </tr>
 <tr>
 <td align="left" valign="top" width="5%">
-<p><a href="#CO109-2"><i class="conum" data-value="2"></i></a></p>
+<p><a href="#CO110-2"><i class="conum" data-value="2"></i></a></p>
 </td>
 <td align="left" valign="top">
 <p>date/datetime expression</p>
