@@ -1470,7 +1470,9 @@ cloud:
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/heroku/release-ms-36': 50810bf7ab0162f0aeefadfcc5379acf08b60d25
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/saas/release-ms-36': 50810bf7ab0162f0aeefadfcc5379acf08b60d25
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/shared/release-ms-36': 50810bf7ab0162f0aeefadfcc5379acf08b60d25
+  'Elasticsearch Service - Hosted Elastic Stack/docs/saas/master': local
   'Elasticsearch Service - Hosted Elastic Stack/docs/saas/release-ms-36': 50810bf7ab0162f0aeefadfcc5379acf08b60d25
+  'Elasticsearch Service - Hosted Elastic Stack/docs/shared/master': local
   'Elasticsearch Service - Hosted Elastic Stack/docs/shared/release-ms-36': 50810bf7ab0162f0aeefadfcc5379acf08b60d25
 cloud-assets:
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/master': 45d186ca159d3142a62f85631490bad61d450ad4
@@ -2991,7 +2993,7 @@ elasticsearch-hadoop:
   Installation and Upgrade Guide/docs/src/reference/asciidoc/master: 5c90e6daaa45bac6dc722f8fb213649370500fa5
 elasticsearch-js:
   Elasticsearch Reference/docs/doc_examples/master: 191b8fb9fb1a190788252523e01bcb3fda6312b8
-  JavaScript API/docs/16.x: 388c5e8e7ec1c0a097ee4960b2297073a484a33e
+  JavaScript API/docs/16.x: 8c359aeb7e90fbc8c4ef4de08ea14d3b02942269
   JavaScript API/docs/5.x: 37042aea33099b356692236e2d701971df8b4020
   JavaScript API/docs/6.x: be2a7ab5445eb70c611aeede949b80de7b1262ca
   JavaScript API/docs/7.x: 8de6f137dea7ab61be23cec45505f298de9dae71
@@ -3029,7 +3031,7 @@ enterprise-search-pubs:
   App Search Guide/app-search-docs/7.7: 9bdf45c1095e2d12626ef5743e89b95f7bf53655
   Enterprise Search Guide/enterprise-search-docs/7.7: 9bdf45c1095e2d12626ef5743e89b95f7bf53655
   Workplace Search Guide/workplace-search-docs/7.6: b6d2517d2bfb0178d799934aae0a3751ed5b32b3
-  Workplace Search Guide/workplace-search-docs/7.7: 9bdf45c1095e2d12626ef5743e89b95f7bf53655
+  Workplace Search Guide/workplace-search-docs/7.7: 0ecdf3b25c383f04f89f35da9f03c618ea2c8e42
 go-elasticsearch:
   Elasticsearch Reference/.doc/examples/doc/master: c61e61962819f9d83e4c1d9db91d7ad3bad61b55
 guide:
