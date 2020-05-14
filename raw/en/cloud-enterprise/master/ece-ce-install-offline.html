@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Install ECE offline | Elastic Cloud Enterprise Reference (install reorg draft 2020-05-14) [master] | Elastic</title>
+<link rel="home" href="index.html" title="Elastic Cloud Enterprise Reference (install reorg draft 2020-05-14) [master]"/>
+<link rel="up" href="ece-install-your-infra.html" title="Install on your own premises"/>
+<link rel="prev" href="ece-ce-install-onprem.html" title="Install ECE online"/>
+<link rel="next" href="ece-ce-ui-onprem.html" title="Log into the Cloud UI"/>
+<meta name="DC.type" content="Learn/Docs/CloudEnterprise/Reference/master"/>
+<meta name="DC.subject" content="ECE"/>
+<meta name="DC.identifier" content="master"/>
+</head>
+<body><div class="page_header">
+You are looking at preliminary documentation for a future release.
+Not what you want? See the
+<a href="../current/index.html">current release documentation</a>.
+</div>
+<div id="content">
+<div class="breadcrumbs">
+<span class="breadcrumb-link"><a href="index.html">Elastic Cloud Enterprise Reference (install reorg draft 2020-05-14) [master]</a></span>
+»
+<span class="breadcrumb-link"><a href="ece-ce-install-ece.html">Installing Elastic Cloud Enterprise</a></span>
+»
+<span class="breadcrumb-link"><a href="ece-install-your-infra.html">Install on your own premises</a></span>
+»
+<span class="breadcrumb-node">Install ECE offline</span>
+</div>
+<div class="navheader">
+<span class="prev">
+<a href="ece-ce-install-onprem.html">« Install ECE online</a>
+</span>
+<span class="next">
+<a href="ece-ce-ui-onprem.html">Log into the Cloud UI »</a>
+</span>
+</div>
+<div class="section">
+<div class="titlepage"><div><div>
+<h2 class="title"><a id="ece-ce-install-offline"></a>Install ECE offline</h2>
+</div></div></div>
+<p>Installing ECE on hosts without internet access is commonly referred to as an <em>offline</em> or <em>air-gapped installation</em>.</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+<a class="xref" href="ece-ce-install-offline.html#ece-before-you-begin" title="Before you begin">Before you begin</a>
+</li>
+<li class="listitem">
+<a class="xref" href="ece-ce-install-offline.html#ece-ce-install-offline-with-registry" title="With your private Docker registry">With your private Docker registry</a>
+</li>
+<li class="listitem">
+<a class="xref" href="ece-ce-install-offline.html#ece-ce-install-offline-no-registry" title="Without your private Docker registry">Without your private Docker registry</a>
+</li>
+</ul>
+</div>
+<h4><a id="ece-before-you-begin"></a>Before you begin</h4>
+<p>To install ECE offline, you must:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+<p>Download the Elasticsearch and Kibana images and installation script from Elastic and load them on your hosts. You need to download both the Elastic Stack pack and the Docker images for the same version.</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+For versions before 5.0, refer to the <a href="/support/matrix#show_compatibility" class="ulink" target="_top">Support Matrix</a> to see which versions can be used together.
+</li>
+<li class="listitem">
+For version 5.0 and later, the versioning of Elasticsearch and Kibana is synchronized and versions where the major, minor, and patch levels match can be used together. Differences in build versions indicated by a dash do not affect compatibility. For example, Elasticsearch 5.1.2-2 can be used with Kibana 5.1.2.
+</li>
+</ul>
+</div>
+</li>
+<li class="listitem">
+Be part of the <code class="literal">docker</code> group to run the installation script. You should not install Elastic Cloud Enterprise as the <code class="literal">root</code> user.
+</li>
+<li class="listitem">
+Set up your <a class="xref" href="ece-ce-dns.html" title="Wildcard DNS record">wildcard DNS record</a>.
+</li>
+</ul>
+</div>
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="ece-ce-install-offline-with-registry"></a>With your private Docker registry</h3>
+</div></div></div>
+<p>Installing ECE on multiple hosts with your own registry server is simpler, because you do not have to load the Docker images on each host.</p>
+<div class="olist orderedlist">
+<ol class="orderedlist">
+<li class="listitem">
+Set up your private Docker registry. To learn more, see <a href="https://docs.docker.com/registry/deploying/" class="ulink" target="_top">Deploy a registry server</a>
+</li>
+<li class="listitem">
+<p>On an internet-connected host that has Docker installed, download the <a class="xref" href="ece-ce-install-offline.html#ece-ce-install-offline-images" title="Available Docker images">Available Docker Images</a> and push them to your private Docker registry.</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:2.6.0
+docker pull docker.elastic.co/cloud-assets/elasticsearch:7.6.2-0
+docker pull docker.elastic.co/cloud-assets/kibana:7.6.2-0
+docker pull docker.elastic.co/cloud-assets/apm:7.6.2-0
+docker pull docker.elastic.co/cloud-assets/app-search:7.6.2
+docker pull docker.elastic.co/cloud-assets/elasticsearch:6.8.8-0
+docker pull docker.elastic.co/cloud-assets/kibana:6.8.8-0</pre>
+</div>
+<p>For example, for Elastic Cloud Enterprise 2.6.0 and the Elastic Stack versions it shipped with, you need:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+Elastic Cloud Enterprise 2.6.0
+</li>
+<li class="listitem">
+Elasticsearch 7.6.2-0, Kibana 7.6.2-0, APM 7.6.2-0, and App Search 7.6.2
+</li>
+<li class="listitem">
+Elasticsearch 6.8.8-0 and Kibana 6.8.8-0
+</li>
+</ul>
+</div>
+</li>
+<li class="listitem">
+<p>Tag the Docker images with your private registry, where <code class="literal">REGISTRY</code> is <code class="literal">my.private.repo:5000</code>, for example:</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">docker tag docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:2.6.0 REGISTRY/cloud-enterprise/elastic-cloud-enterprise:2.6.0
+docker tag docker.elastic.co/cloud-assets/elasticsearch:7.6.2-0 REGISTRY/cloud-assets/elasticsearch:7.6.2-0
+docker tag docker.elastic.co/cloud-assets/kibana:7.6.2-0 REGISTRY/cloud-assets/kibana:7.6.2-0
+docker tag docker.elastic.co/cloud-assets/apm:7.6.2-0 REGISTRY/cloud-assets/apm:7.6.2-0
+docker tag docker.elastic.co/cloud-assets/app-search:7.6.2 REGISTRY/cloud-assets/app-search:7.6.2
+docker tag docker.elastic.co/cloud-assets/elasticsearch:6.8.8-0 REGISTRY/cloud-assets/elasticsearch:6.8.8-0
+docker tag docker.elastic.co/cloud-assets/kibana:6.8.8-0 REGISTRY/cloud-assets/kibana:6.8.8-0</pre>
+</div>
+</li>
+<li class="listitem">
+<p>Push the Docker images to your private Docker registry, where <code class="literal">REGISTRY</code> is <code class="literal">my.private.repo:5000</code>, for example:</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">docker push REGISTRY/cloud-enterprise/elastic-cloud-enterprise:2.6.0
+docker push REGISTRY/cloud-assets/elasticsearch:7.6.2-0
+docker push REGISTRY/cloud-assets/kibana:7.6.2-0
+docker push REGISTRY/cloud-assets/apm:7.6.2-0
+docker push REGISTRY/cloud-assets/app-search:7.6.2
+docker push REGISTRY/cloud-assets/elasticsearch:6.8.8-0
+docker push REGISTRY/cloud-assets/kibana:6.8.8-0</pre>
+</div>
+</li>
+<li class="listitem">
+<p>On an internet-connected host, download the installation script:</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">curl -L -O https://download.elastic.co/cloud/elastic-cloud-enterprise.sh</pre>
+</div>
+</li>
+<li class="listitem">
+Copy the installation script to each host where you plan to install Elastic Cloud Enterprise. (Alternatively, you can place the installation script in a secure network location where your other hosts can access it.)
+</li>
+<li class="listitem">
+<p>Invoke the installation script on each host with the <code class="literal">--docker-registry REGISTRY</code> parameter, where <code class="literal">REGISTRY</code> is <code class="literal">my.private.repo:5000</code>, for example:</p>
+<div class="olist orderedlist">
+<ol class="orderedlist">
+<li class="listitem">
+<p>On the first host:</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">bash elastic-cloud-enterprise.sh install --docker-registry REGISTRY</pre>
+</div>
+</li>
+<li class="listitem">
+<p>On additional hosts, include the <code class="literal">--coordinator-host HOST_IP</code> and <code class="literal">--roles-token 'TOKEN'</code> parameters provided to you when you installed on the first host, along with the <code class="literal">--docker-registry REGISTRY</code> parameter:</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">bash elastic-cloud-enterprise.sh install --coordinator-host HOST_IP  --roles-token 'TOKEN' --docker-registry REGISTRY</pre>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="ece-ce-install-offline-no-registry"></a>Without your private Docker registry</h3>
+</div></div></div>
+<p>To perform an offline installation without a private Docker registry, you have to download the available Docker Images on each host.</p>
+<div class="olist orderedlist">
+<ol class="orderedlist">
+<li class="listitem">
+<p>On an internet-connected host that has Docker installed, download the <a class="xref" href="ece-ce-install-offline.html#ece-ce-install-offline-images" title="Available Docker images">Available Docker Images</a>.</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">docker pull docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:2.6.0
+docker pull docker.elastic.co/cloud-assets/elasticsearch:7.6.2-0
+docker pull docker.elastic.co/cloud-assets/kibana:7.6.2-0
+docker pull docker.elastic.co/cloud-assets/apm:7.6.2-0
+docker pull docker.elastic.co/cloud-assets/app-search:7.6.2
+docker pull docker.elastic.co/cloud-assets/elasticsearch:6.8.8-0
+docker pull docker.elastic.co/cloud-assets/kibana:6.8.8-0</pre>
+</div>
+<p>For example, for Elastic Cloud Enterprise 2.6.0 and the Elastic Stack versions it shipped with, you need:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+Elastic Cloud Enterprise 2.6.0
+</li>
+<li class="listitem">
+Elasticsearch 7.6.2-0, Kibana 7.6.2-0, APM 7.6.2-0, and App Search 7.6.2
+</li>
+<li class="listitem">
+Elasticsearch 6.8.8-0 and Kibana 6.8.8-0
+</li>
+</ul>
+</div>
+</li>
+<li class="listitem">
+<p>Create .tar files of the images:</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">docker save -o ece.2.6.0.tar docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:2.6.0
+docker save -o es.7.6.2-0.tar docker.elastic.co/cloud-assets/elasticsearch:7.6.2-0
+docker save -o kibana.7.6.2-0.tar docker.elastic.co/cloud-assets/kibana:7.6.2-0
+docker save -o apm:7.6.2-0.tar docker.elastic.co/cloud-assets/apm:7.6.2-0
+docker save -o app-search:7.6.2.tar docker.elastic.co/cloud-assets/app-search:7.6.2
+docker save -o es.6.8.8-0.tar docker.elastic.co/cloud-assets/elasticsearch:6.8.8-0
+docker save -o kibana.6.8.8-0.tar docker.elastic.co/cloud-assets/kibana:6.8.8-0</pre>
+</div>
+</li>
+<li class="listitem">
+Copy the .tar files to a location on your network where they are available to each host where you plan to install Elastic Cloud Enterprise. Alternatively, you can copy the .tar files to each host directly.
+</li>
+<li class="listitem">
+<p>On each host, load the images into Docker, replacing <code class="literal">FILE_PATH</code> with the correct path to the .tar files:</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">docker load &lt; FILE_PATH/ece.2.6.0.tar
+docker load &lt; FILE_PATH/es.7.6.2-0.tar
+docker load &lt; FILE_PATH/kibana.7.6.2-0.tar
+docker load &lt; FILE_PATH/apm.7.6.2-0.tar
+docker load &lt; FILE_PATH/app-search.7.6.2.tar
+docker load &lt; FILE_PATH/es.6.8.8-0.tar
+docker load &lt; FILE_PATH/kibana.6.8.8-0.tar</pre>
+</div>
+</li>
+<li class="listitem">
+Optional: Remove the .tar files after installation.
+</li>
+<li class="listitem">
+<p>On an internet-connected host, download the installation script:</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">curl -L -O https://download.elastic.co/cloud/elastic-cloud-enterprise.sh</pre>
+</div>
+</li>
+<li class="listitem">
+Copy the installation script to each host where you plan to install Elastic Cloud Enterprise or make it available on your network.
+</li>
+<li class="listitem">
+<p>Invoke the installation script on each host:</p>
+<div class="olist orderedlist">
+<ol class="orderedlist">
+<li class="listitem">
+<p>On the first host:</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">bash elastic-cloud-enterprise.sh install</pre>
+</div>
+</li>
+<li class="listitem">
+<p>On additional hosts, include the <code class="literal">--coordinator-host HOST_IP</code> and <code class="literal">--roles-token 'TOKEN'</code> parameters provided to you when you installed on the first host:</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">bash elastic-cloud-enterprise.sh install --coordinator-host HOST_IP  --roles-token 'TOKEN'</pre>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="ece-ce-install-offline-images"></a>Available Docker images</h3>
+</div></div></div>
+<p>The first table contains the versions shipped with Elastic Cloud Enterprise. You can also see the <a class="xref" href="ece-ce-install-offline.html#ece-full-download-list" title="All Elastic Stack packs and Docker images">full list of available stack packs and Docker images</a>.</p>
+<div class="informaltable">
+<table border="1" cellpadding="4px">
+<colgroup>
+<col class="col_1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" valign="top">Elastic Cloud Enterprise 2.5.0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p>docker.elastic.co/cloud-enterprise/elastic-cloud-enterprise:2.5.0</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p>docker.elastic.co/cloud-assets/elasticsearch:6.8.8-0</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p>docker.elastic.co/cloud-assets/kibana:6.8.8-0</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p>docker.elastic.co/cloud-assets/apm:6.8.8-0</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p>docker.elastic.co/cloud-assets/elasticsearch:7.6.2-0</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p>docker.elastic.co/cloud-assets/kibana:7.6.2-0</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p>docker.elastic.co/cloud-assets/apm:7.6.2-0</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p>docker.elastic.co/app-search/app-search:7.6.2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5><a id="ece-full-download-list"></a>All Elastic Stack packs and Docker images</h5>
+<p><a id="ece-all-stacks"></a>Additional Elastic Stack versions are available as Docker images that you can use with ECE. For offline installations, you need to download both the Elastic Stack pack and the Docker images for the same version.</p>
+</div>
+
+</div>
+<div class="navfooter">
+<span class="prev">
+<a href="ece-ce-install-onprem.html">« Install ECE online</a>
+</span>
+<span class="next">
+<a href="ece-ce-ui-onprem.html">Log into the Cloud UI »</a>
+</span>
+</div>
+</div>
+</body>
+</html>

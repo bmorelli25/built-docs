@@ -1460,6 +1460,7 @@ cloud:
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/cloud-enterprise/2.3': 4418e7a851c5256ca45d44da9325bf03ae6b505e
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/cloud-enterprise/2.4': a05eb232689f9798ec947e6329588aaaca4edad4
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/cloud-enterprise/2.5': 045478c04f582af350a06b59773c497719918e04
+  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/cloud-enterprise/master': local
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/1.1': fc5f9901851d85b1562172c4048212b82e1a8215
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.0': 6319c7f3673a7a11f2f1db42f1121305db4ac3cb
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.1': 128b7ed4eb7c3f0026b5c22400eead78f759e589
@@ -1467,6 +1468,7 @@ cloud:
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.3': 4418e7a851c5256ca45d44da9325bf03ae6b505e
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.4': a05eb232689f9798ec947e6329588aaaca4edad4
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.5': 045478c04f582af350a06b59773c497719918e04
+  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/master': local
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/heroku/release-ms-36': dd1b3f16d24f232ff76ddb715c2d181ccd12acd5
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/saas/release-ms-36': dd1b3f16d24f232ff76ddb715c2d181ccd12acd5
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/shared/release-ms-36': dd1b3f16d24f232ff76ddb715c2d181ccd12acd5
@@ -2991,7 +2993,7 @@ elasticsearch-hadoop:
   Installation and Upgrade Guide/docs/src/reference/asciidoc/master: 5c90e6daaa45bac6dc722f8fb213649370500fa5
 elasticsearch-js:
   Elasticsearch Reference/docs/doc_examples/master: 191b8fb9fb1a190788252523e01bcb3fda6312b8
-  JavaScript API/docs/16.x: 388c5e8e7ec1c0a097ee4960b2297073a484a33e
+  JavaScript API/docs/16.x: 8c359aeb7e90fbc8c4ef4de08ea14d3b02942269
   JavaScript API/docs/5.x: 37042aea33099b356692236e2d701971df8b4020
   JavaScript API/docs/6.x: be2a7ab5445eb70c611aeede949b80de7b1262ca
   JavaScript API/docs/7.x: 8de6f137dea7ab61be23cec45505f298de9dae71
