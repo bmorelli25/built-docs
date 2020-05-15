@@ -2384,7 +2384,7 @@ ecs:
   Elastic Common Schema (ECS) Reference/docs/1.3: f1461ec8db2abeeead866b963418c1e5842c4c07
   Elastic Common Schema (ECS) Reference/docs/1.4: 006b93c5e62826ebda8a538f51b6edef8cb683d4
   Elastic Common Schema (ECS) Reference/docs/1.5: bad59d843cfc4f52bd72f6fae00fb4165a454bd8
-  Elastic Common Schema (ECS) Reference/docs/master: 3c20a9c09d408cbe57becf3c9a7a7cfa056a83b1
+  Elastic Common Schema (ECS) Reference/docs/master: local
 eland-docs:
   eland Client/docs/en/7.x: 3b2b4ced3bc2f1af6edd0c1d449c48f4417bdb83
 elasticsearch:
