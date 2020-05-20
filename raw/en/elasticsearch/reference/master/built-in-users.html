@@ -167,6 +167,11 @@ new bootstrap password:</p>
 <div class="pre_wrapper lang-shell">
 <pre class="programlisting prettyprint lang-shell">bin/elasticsearch-keystore add "bootstrap.password"</pre>
 </div>
+<p>Alternatively you can set the bootstrap password by passing the password to stdin.
+This can be useful for scripted or automated deployments.</p>
+<div class="pre_wrapper lang-shell">
+<pre class="programlisting prettyprint lang-shell">bash -c 'printf &lt;PASSWORD&gt; | bin/elasticsearch-keystore add bootstrap.password -x -f -v'</pre>
+</div>
 <p>You can then start Elasticsearch and Kibana and use the <code class="literal">elastic</code> user and bootstrap
 password to log into Kibana and change the passwords. Alternatively, you can
 submit Change Password API requests for each built-in user. These methods are
