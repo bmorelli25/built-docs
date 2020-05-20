@@ -49,14 +49,14 @@ to see the current state of ILM.</p>
 <div class="pre_wrapper lang-console">
 <pre class="programlisting prettyprint lang-console">GET _ilm/status</pre>
 </div>
-<div class="console_widget" data-snippet="snippets/943.console"></div>
+<div class="console_widget" data-snippet="snippets/944.console"></div>
 <p>If the request does not encounter errors, you receive the following result:</p>
 <div class="pre_wrapper lang-console">
 <pre class="programlisting prettyprint lang-console">{
   "operation_mode": "RUNNING"
 }</pre>
 </div>
-<div class="console_widget" data-snippet="snippets/944.console"></div>
+<div class="console_widget" data-snippet="snippets/945.console"></div>
 <p>The operating modes of ILM:</p>
 <div class="table">
 <a id="ilm-operating-modes"></a>
@@ -96,7 +96,7 @@ using the <a class="xref" href="ilm-stop.html" title="Stop index lifecycle manag
 <div class="pre_wrapper lang-console">
 <pre class="programlisting prettyprint lang-console">POST _ilm/stop</pre>
 </div>
-<div class="console_widget" data-snippet="snippets/945.console"></div>
+<div class="console_widget" data-snippet="snippets/946.console"></div>
 <p>When stopped, all further policy actions will be halted. This will
 be reflected in the Status API</p>
 <div class="pre_wrapper lang-console">
@@ -104,7 +104,7 @@ be reflected in the Status API</p>
   "operation_mode": "STOPPING"
 }</pre>
 </div>
-<div class="console_widget" data-snippet="snippets/946.console"></div>
+<div class="console_widget" data-snippet="snippets/947.console"></div>
 <p>The ILM service will then, asynchronously, run all policies to a point
 where it is safe to stop. After ILM verifies that it is safe, it will
 move to the <code class="literal">STOPPED</code> mode.</p>
@@ -113,13 +113,13 @@ move to the <code class="literal">STOPPED</code> mode.</p>
   "operation_mode": "STOPPED"
 }</pre>
 </div>
-<div class="console_widget" data-snippet="snippets/947.console"></div>
+<div class="console_widget" data-snippet="snippets/948.console"></div>
 <h3><a id="_starting_ilm"></a>Starting ILM</h3>
 <p>To start ILM and continue executing policies, use the <a class="xref" href="ilm-start.html" title="Start index lifecycle management API">Start API</a>.</p>
 <div class="pre_wrapper lang-console">
 <pre class="programlisting prettyprint lang-console">POST _ilm/start</pre>
 </div>
-<div class="console_widget" data-snippet="snippets/948.console"></div>
+<div class="console_widget" data-snippet="snippets/949.console"></div>
 <p>The Start API will send a request to the ILM service to immediately begin
 normal operations.</p>
 <div class="pre_wrapper lang-console">
@@ -127,7 +127,7 @@ normal operations.</p>
   "operation_mode": "RUNNING"
 }</pre>
 </div>
-<div class="console_widget" data-snippet="snippets/949.console"></div>
+<div class="console_widget" data-snippet="snippets/950.console"></div>
 </div>
 <div class="navfooter">
 <span class="prev">

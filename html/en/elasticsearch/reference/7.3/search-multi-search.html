@@ -344,7 +344,7 @@ in the header. For example:</p>
 {"index" : "twitter2"}
 {"query" : {"match_all" : {}}}</pre>
 </div>
-<div class="console_widget" data-snippet="snippets/1771.console"></div>
+<div class="console_widget" data-snippet="snippets/1772.console"></div>
 <p>The above will execute the search against the <code class="literal">twitter</code> index for all the
 requests that don&#8217;t define an index, and the last one will be executed
 against the <code class="literal">twitter2</code> index.</p>
@@ -373,7 +373,7 @@ templates:</p>
 {"index" : "twitter"}
 { "source" : "{ \"query\": { \"match_{{template}}\": {} } }", "params": { "template": "all" } }</pre>
 </div>
-<div class="console_widget" data-snippet="snippets/1772.console"></div>
+<div class="console_widget" data-snippet="snippets/1773.console"></div>
 <p>You can also create search templates:</p>
 <div class="pre_wrapper lang-console">
 <pre class="programlisting prettyprint lang-console">POST /_scripts/my_template_1
@@ -390,7 +390,7 @@ templates:</p>
     }
 }</pre>
 </div>
-<div class="console_widget" data-snippet="snippets/1773.console"></div>
+<div class="console_widget" data-snippet="snippets/1774.console"></div>
 <div class="pre_wrapper lang-console">
 <pre class="programlisting prettyprint lang-console">POST /_scripts/my_template_2
 {
@@ -406,7 +406,7 @@ templates:</p>
     }
 }</pre>
 </div>
-<div class="console_widget" data-snippet="snippets/1774.console"></div>
+<div class="console_widget" data-snippet="snippets/1775.console"></div>
 <p>You can use search templates in a _msearch:</p>
 <div class="pre_wrapper lang-console">
 <pre class="programlisting prettyprint lang-console">GET _msearch/template
@@ -415,7 +415,7 @@ templates:</p>
 {"index" : "main"}
 { "id": "my_template_2", "params": { "field": "user", "value": "test" } }</pre>
 </div>
-<div class="console_widget" data-snippet="snippets/1775.console"></div>
+<div class="console_widget" data-snippet="snippets/1776.console"></div>
 </div>
 
 <div class="section">

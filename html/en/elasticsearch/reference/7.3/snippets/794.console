@@ -1,4 +1,9 @@
-PUT /twitter/_settings
+# Do not allocate shards by moving shards away (excluding) from the node
+# Define `cluster.routing.allocation.exclude.{attribute}` using one of the
+# supported attributes:  `_name`, `_ip`, and `_host`
+PUT _cluster/settings
 {
-  "index.blocks.read_only_allow_delete": null
+  "transient" : {
+    "cluster.routing.allocation.exclude._name" : "name_of_node_being_removed"
+  }
 }
