@@ -1431,13 +1431,13 @@ beats:
   Winlogbeat Reference/x-pack/libbeat/processors/*/docs/*/7.x: c8810780dfaa2593b5c77cf6c222babee52b38bf
   Winlogbeat Reference/x-pack/libbeat/processors/*/docs/*/master: e9c57bf7d96462719daf83644af395b2cc9cabd6
 clients-team:
-  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/csharp/master': 674764df22ce482c9e5fa41a2a70a48ed920e95d
-  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/go/master': 674764df22ce482c9e5fa41a2a70a48ed920e95d
-  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/java/master': 674764df22ce482c9e5fa41a2a70a48ed920e95d
-  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/javascript/master': 674764df22ce482c9e5fa41a2a70a48ed920e95d
-  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/php/master': 674764df22ce482c9e5fa41a2a70a48ed920e95d
-  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/python/master': 674764df22ce482c9e5fa41a2a70a48ed920e95d
-  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/ruby/master': 674764df22ce482c9e5fa41a2a70a48ed920e95d
+  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/csharp/master': af8fdc047c4351d1c8182439e38befd4e9f497b6
+  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/go/master': af8fdc047c4351d1c8182439e38befd4e9f497b6
+  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/java/master': af8fdc047c4351d1c8182439e38befd4e9f497b6
+  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/javascript/master': af8fdc047c4351d1c8182439e38befd4e9f497b6
+  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/php/master': af8fdc047c4351d1c8182439e38befd4e9f497b6
+  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/python/master': af8fdc047c4351d1c8182439e38befd4e9f497b6
+  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/examples/elastic-cloud/ruby/master': af8fdc047c4351d1c8182439e38befd4e9f497b6
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/csharp/master': 120fe07d5855e9c47beea45a044bd5d9355935f7
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/go/master': 120fe07d5855e9c47beea45a044bd5d9355935f7
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/java/master': 120fe07d5855e9c47beea45a044bd5d9355935f7
@@ -1445,13 +1445,13 @@ clients-team:
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/php/master': 120fe07d5855e9c47beea45a044bd5d9355935f7
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/python/master': 120fe07d5855e9c47beea45a044bd5d9355935f7
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/ruby/master': 120fe07d5855e9c47beea45a044bd5d9355935f7
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/csharp/master': 120fe07d5855e9c47beea45a044bd5d9355935f7
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/go/master': 120fe07d5855e9c47beea45a044bd5d9355935f7
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/java/master': 120fe07d5855e9c47beea45a044bd5d9355935f7
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/javascript/master': 120fe07d5855e9c47beea45a044bd5d9355935f7
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/php/master': 120fe07d5855e9c47beea45a044bd5d9355935f7
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/python/master': 120fe07d5855e9c47beea45a044bd5d9355935f7
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/ruby/master': 120fe07d5855e9c47beea45a044bd5d9355935f7
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/csharp/master': af8fdc047c4351d1c8182439e38befd4e9f497b6
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/go/master': af8fdc047c4351d1c8182439e38befd4e9f497b6
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/java/master': af8fdc047c4351d1c8182439e38befd4e9f497b6
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/javascript/master': af8fdc047c4351d1c8182439e38befd4e9f497b6
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/php/master': af8fdc047c4351d1c8182439e38befd4e9f497b6
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/python/master': af8fdc047c4351d1c8182439e38befd4e9f497b6
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/ruby/master': af8fdc047c4351d1c8182439e38befd4e9f497b6
 cloud:
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/cloud-enterprise/1.0': b4cdeadfc88bbf40073d51a4a34b505923142926
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/cloud-enterprise/1.1': fc5f9901851d85b1562172c4048212b82e1a8215
@@ -1461,6 +1461,7 @@ cloud:
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/cloud-enterprise/2.3': 4418e7a851c5256ca45d44da9325bf03ae6b505e
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/cloud-enterprise/2.4': c452250b7ad32b2cc4f1bc1584de7b191545c49a
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/cloud-enterprise/2.5': 9ba3c16c14c536dd87a9cbe33f0a6db489d60f5a
+  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/cloud-enterprise/master': local
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/1.1': fc5f9901851d85b1562172c4048212b82e1a8215
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.0': 6319c7f3673a7a11f2f1db42f1121305db4ac3cb
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.1': 128b7ed4eb7c3f0026b5c22400eead78f759e589
@@ -1468,13 +1469,16 @@ cloud:
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.3': 4418e7a851c5256ca45d44da9325bf03ae6b505e
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.4': c452250b7ad32b2cc4f1bc1584de7b191545c49a
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/2.5': 9ba3c16c14c536dd87a9cbe33f0a6db489d60f5a
+  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/shared/master': local
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/heroku/release-ms-36': 2ea6c11b18a096e1e0ee4da5ee513cbc87ea2009
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/saas/release-ms-36': 2ea6c11b18a096e1e0ee4da5ee513cbc87ea2009
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/shared/release-ms-36': 2ea6c11b18a096e1e0ee4da5ee513cbc87ea2009
+  'Elasticsearch Service - Hosted Elastic Stack/docs/saas/master': local
   'Elasticsearch Service - Hosted Elastic Stack/docs/saas/release-ms-36': 2ea6c11b18a096e1e0ee4da5ee513cbc87ea2009
+  'Elasticsearch Service - Hosted Elastic Stack/docs/shared/master': local
   'Elasticsearch Service - Hosted Elastic Stack/docs/shared/release-ms-36': 2ea6c11b18a096e1e0ee4da5ee513cbc87ea2009
 cloud-assets:
-  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/master': b3277c800d4a2b2cb33bdfbaa4611bf1ec2fa620
+  'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/master': 4066340dec0ea9cefaae9b9745f23d9130c911c2
 cloud-on-k8s:
   Elastic Cloud on Kubernetes/docs/0.8: fc35d61f68945d334ffcb7d07e86f8fb4cbeec53
   Elastic Cloud on Kubernetes/docs/0.9: cf0137640ea245e3440370f89a9e8163f2a4da8f
@@ -2996,7 +3000,7 @@ elasticsearch-hadoop:
   Installation and Upgrade Guide/docs/src/reference/asciidoc/master: 5c90e6daaa45bac6dc722f8fb213649370500fa5
 elasticsearch-js:
   Elasticsearch Reference/docs/doc_examples/master: 1a25b623b06fd609a5b96c4367c9a4613b1b4a38
-  JavaScript API/docs/16.x: 388c5e8e7ec1c0a097ee4960b2297073a484a33e
+  JavaScript API/docs/16.x: 8c359aeb7e90fbc8c4ef4de08ea14d3b02942269
   JavaScript API/docs/5.x: 37042aea33099b356692236e2d701971df8b4020
   JavaScript API/docs/6.x: be2a7ab5445eb70c611aeede949b80de7b1262ca
   JavaScript API/docs/7.x: 57fbbd0a8f7f2716583b403966ed61f04164420d
