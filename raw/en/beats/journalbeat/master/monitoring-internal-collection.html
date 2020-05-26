@@ -149,7 +149,9 @@ example:</p>
       ssl.key: "/etc/pki/client/cert.key"</pre>
 </div>
 <p>You must specify the <code class="literal">username</code> as <code class="literal">""</code> explicitly so that
-the username from the client certificate (<code class="literal">CN</code>) is used. See
+Journalbeat does not attempt to authenticate using a
+username and password (HTTP basic authentication) and instead
+relies on PKI authentication using the client certificate. See
 <a class="xref" href="configuration-ssl.html" title="Configure SSL"><em>SSL</em></a> for more information about SSL settings.</p>
 </li>
 <li class="listitem">
