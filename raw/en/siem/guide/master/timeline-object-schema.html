@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Timeline object schema | SIEM Guide [master] | Elastic</title>
+<link rel="home" href="index.html" title="SIEM Guide [master]"/>
+<link rel="up" href="siem-ref-intro.html" title="SIEM field and object reference guide"/>
+<link rel="prev" href="siem-field-reference.html" title="General field reference and mappings"/>
+<meta name="DC.type" content="Learn/Docs/SIEM/Guide/master"/>
+<meta name="DC.subject" content="SIEM"/>
+<meta name="DC.identifier" content="master"/>
+</head>
+<body><div class="page_header">
+You are looking at preliminary documentation for a future release.
+Not what you want? See the
+<a href="../current/index.html">current release documentation</a>.
+</div>
+<div id="content">
+<div class="breadcrumbs">
+<span class="breadcrumb-link"><a href="index.html">SIEM Guide [master]</a></span>
+»
+<span class="breadcrumb-link"><a href="siem-ref-intro.html">SIEM field and object reference guide</a></span>
+»
+<span class="breadcrumb-node">Timeline object schema</span>
+</div>
+<div class="navheader">
+<span class="prev">
+<a href="siem-field-reference.html">« General field reference and mappings</a>
+</span>
+<span class="next">
+</span>
+</div>
+<div class="chapter xpack">
+<div class="titlepage"><div><div>
+<h2 class="title"><a id="timeline-object-schema"></a>Timeline object schema<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/stack-docs/edit/master/docs/en/siem/reference/timeline-schema.asciidoc">edit</a><a class="xpack_tag" href="/subscriptions"></a></h2>
+</div></div></div>
+<div class="informaltable">
+<table border="1" cellpadding="4px" width="100%">
+<colgroup>
+<col class="col_1"/>
+<col class="col_2"/>
+<col class="col_3"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" valign="top">Name</th>
+<th align="left" valign="top">Type</th>
+<th align="left" valign="top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p><code class="literal">columns</code></p></td>
+<td align="left" valign="top"><p>Object[]</p></td>
+<td align="left" valign="top"><p>The timeline&#8217;s displayed columns.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">created</code></p></td>
+<td align="left" valign="top"><p>Float</p></td>
+<td align="left" valign="top"><p>The time the timeline was created, using a
+13-digit Epoch timestamp.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">createdBy</code></p></td>
+<td align="left" valign="top"><p>String</p></td>
+<td align="left" valign="top"><p>The user who created the timeline.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">dataProviders</code></p></td>
+<td align="left" valign="top"><p>Object[]</p></td>
+<td align="left" valign="top"><p>The dropzone query.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">dateRange</code></p></td>
+<td align="left" valign="top"><p>Object</p></td>
+<td align="left" valign="top"><p>The timeline&#8217;s range.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">description</code></p></td>
+<td align="left" valign="top"><p>String</p></td>
+<td align="left" valign="top"><p>The timeline&#8217;s description.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">eventNotes</code></p></td>
+<td align="left" valign="top"><p>Object[]</p></td>
+<td align="left" valign="top"><p>Ben: ??Notes added to specific events.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">eventType</code></p></td>
+<td align="left" valign="top"><p>String</p></td>
+<td align="left" valign="top">
+<p>Event types displayed in the timeline, which can be:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+<code class="literal">all</code>: all events
+</li>
+<li class="listitem">
+<code class="literal">raw</code>: raw events only
+</li>
+<li class="listitem">
+<code class="literal">signal</code>: signals only
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">filters</code></p></td>
+<td align="left" valign="top"><p>Object[]</p></td>
+<td align="left" valign="top"><p>Filters used in addition to the dropzone query.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">globalNotes</code></p></td>
+<td align="left" valign="top"><p>Object[]</p></td>
+<td align="left" valign="top"><p>Notes added to the timeline.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">kqlMode</code></p></td>
+<td align="left" valign="top"><p>String</p></td>
+<td align="left" valign="top">
+<p>Determines whether the dropzone queries are filtered (<code class="literal">and</code>) or additional search results are displayed (<code class="literal">or</code>), can be:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+<code class="literal">filter</code>: filters dropzone query results
+</li>
+<li class="listitem">
+<code class="literal">search</code>: displays additional search results
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">kqlQuery</code></p></td>
+<td align="left" valign="top"><p>Object</p></td>
+<td align="left" valign="top"><p>Determines whether additional filters use KQL or Lucene
+queries.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">pinnedEventIds</code></p></td>
+<td align="left" valign="top"><p>Object[]</p></td>
+<td align="left" valign="top"><p>Pinned events</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">savedObjectId</code></p></td>
+<td align="left" valign="top"><p>String</p></td>
+<td align="left" valign="top"><p>Saved object ID.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">savedQueryId</code></p></td>
+<td align="left" valign="top"><p>String</p></td>
+<td align="left" valign="top"><p>If used, the saved query ID used to filter or search
+dropzone query results.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">sort</code></p></td>
+<td align="left" valign="top"><p>Object</p></td>
+<td align="left" valign="top"><p>Determines how rows are sorted in the result&#8217;s grid.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">templateTimelineId</code></p></td>
+<td align="left" valign="top"><p>Ben: ???</p></td>
+<td align="left" valign="top"><p></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">templateTimelineVersion</code></p></td>
+<td align="left" valign="top"><p>Ben: ???</p></td>
+<td align="left" valign="top"><p></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">timelineType</code></p></td>
+<td align="left" valign="top"><p>String</p></td>
+<td align="left" valign="top"><p>Ben: ????</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">title</code></p></td>
+<td align="left" valign="top"><p>String</p></td>
+<td align="left" valign="top"><p>The timeline&#8217;s title.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">updated</code></p></td>
+<td align="left" valign="top"><p>Float</p></td>
+<td align="left" valign="top"><p>The time the timeline was last updated, using a
+13-digit Epoch timestamp.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">updatedBy</code></p></td>
+<td align="left" valign="top"><p>String</p></td>
+<td align="left" valign="top"><p>The user who last updated the timeline.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">version</code></p></td>
+<td align="left" valign="top"><p>String</p></td>
+<td align="left" valign="top"><p>Timeline version.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="navfooter">
+<span class="prev">
+<a href="siem-field-reference.html">« General field reference and mappings</a>
+</span>
+<span class="next">
+</span>
+</div>
+</div>
+</body>
+</html>
