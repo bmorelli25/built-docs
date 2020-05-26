@@ -2337,9 +2337,8 @@ the <code class="literal">setup.ilm</code> namespace.</p>
 </table>
 </div>
 </div>
-<h4><a id="_auditbeat_type_changes"></a>Auditbeat type changes<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/beats/edit/master/libbeat/docs/release-notes/breaking/breaking-7.0.asciidoc">edit</a></h4>
-<p>The Auditbeat JSON data types produced by the output have been changed to align
-with the data types used in the Elasticsearch index template.</p>
+<h4><a id="_field_type_changes"></a>Field type changes<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/beats/edit/master/libbeat/docs/release-notes/breaking/breaking-7.0.asciidoc">edit</a></h4>
+<p>The following fields have type changes in 7.0.</p>
 <div class="table">
 <p class="title"><strong>Table 8. Auditbeat Type Changes in 7.0</strong></p>
 <div class="table-contents">
@@ -2376,6 +2375,178 @@ with the data types used in the Elasticsearch index template.</p>
 <td align="left" valign="top"><p><code class="literal">process.ppid</code></p></td>
 <td align="left" valign="top"><p>string</p></td>
 <td align="left" valign="top"><p>number</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="table">
+<p class="title"><strong>Table 9. Filebeat Type Changes in 7.0</strong></p>
+<div class="table-contents">
+<table border="1" cellpadding="4px" summary="Filebeat Type Changes in 7.0">
+<colgroup>
+<col class="col_1"/>
+<col class="col_2"/>
+<col class="col_3"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" valign="top">Field</th>
+<th align="left" valign="top">Old Type</th>
+<th align="left" valign="top">New Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p><code class="literal">auditd.log.pid</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>long</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">auditd.log.ppid</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>long</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">elasticsearch.audit.request</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>object</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">error.code</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>long</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">haproxy.destination.ip</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>ip</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">mysql.slowlog.ip</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>ip</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">read_timestamp</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>date</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">source</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>object</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">system.auth.groupadd.gid</code></p></td>
+<td align="left" valign="top"><p>long</p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">system.auth.timestamp</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>date</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">system.auth.useradd.gid</code></p></td>
+<td align="left" valign="top"><p>long</p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">system.auth.useradd.uid</code></p></td>
+<td align="left" valign="top"><p>long</p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">system.syslog.pid</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>long</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">system.syslog.timestamp</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>date</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">user_agent.device</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>object</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="table">
+<p class="title"><strong>Table 10. Packetbeat Type Changes in 7.0</strong></p>
+<div class="table-contents">
+<table border="1" cellpadding="4px" summary="Packetbeat Type Changes in 7.0">
+<colgroup>
+<col class="col_1"/>
+<col class="col_2"/>
+<col class="col_3"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" valign="top">Field</th>
+<th align="left" valign="top">Old Type</th>
+<th align="left" valign="top">New Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p><code class="literal">error.code</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>long</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">final</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>boolean</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">http.request.body</code></p></td>
+<td align="left" valign="top"><p>text</p></td>
+<td align="left" valign="top"><p>object</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">http.response.body</code></p></td>
+<td align="left" valign="top"><p>text</p></td>
+<td align="left" valign="top"><p>object</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">http.response.code</code> (renamed <code class="literal">http.response.status_code</code>)</p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>long</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">real_ip</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>ip</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">server</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>object</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">service</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>object</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">source.ip</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>ip</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">source.port</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>long</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p><code class="literal">vlan</code></p></td>
+<td align="left" valign="top"><p>keyword</p></td>
+<td align="left" valign="top"><p>long</p></td>
 </tr>
 </tbody>
 </table>
