@@ -3068,7 +3068,7 @@ kibana:
   Installation and Upgrade Guide/docs/7.7: 7df868b3004af68ddb4e6fe38440c329d526e9e4
   Installation and Upgrade Guide/docs/7.8: f0765f3426b3e776580c35a1c8170c2ee06a8a26
   Installation and Upgrade Guide/docs/7.x: ce0e4f6ded785c99a2310b01352d44ceb2f376ec
-  Installation and Upgrade Guide/docs/master: 85bdd940c8ddb08a599c932358c414f650a63d8d
+  Installation and Upgrade Guide/docs/master: local
   Kibana Guide/docs/3.0: ab14a2f8f5646e647d1f4c5cad4f8a799dd8a2af
   Kibana Guide/docs/4.0: baa2073caf869772e5ee3fd1092afd64f523554d
   Kibana Guide/docs/4.1: fb7323096a6bc4fa7e80ff8e03c27a720080637c
@@ -3103,7 +3103,7 @@ kibana:
   Kibana Guide/docs/7.7: f02ea8b648ceab0f09a120313db7acfa047f13a9
   Kibana Guide/docs/7.8: f0765f3426b3e776580c35a1c8170c2ee06a8a26
   Kibana Guide/docs/7.x: 95e02f9ff9799c72fc212f8b4858dd8e23593840
-  Kibana Guide/docs/master: 54e79cb4b44fd5945638e2f251a295c718325abb
+  Kibana Guide/docs/master: local
   Kibana 사용자 가이드/docs/kr/5.3: 0d2c9728cdd64e619503715b890c1950db3b9470
   Kibana 사용자 가이드/docs/kr/5.4: 73d3e96e2b29b571e3c62801bfda04b3474c282c
   Kibanaユーザーガイド/docs/jp/5.3: 0d2c9728cdd64e619503715b890c1950db3b9470
@@ -3116,7 +3116,7 @@ kibana:
   Uptime Monitoring Guide/docs/7.7: f02ea8b648ceab0f09a120313db7acfa047f13a9
   Uptime Monitoring Guide/docs/7.8: f0765f3426b3e776580c35a1c8170c2ee06a8a26
   Uptime Monitoring Guide/docs/7.x: 95e02f9ff9799c72fc212f8b4858dd8e23593840
-  Uptime Monitoring Guide/docs/master: 54e79cb4b44fd5945638e2f251a295c718325abb
+  Uptime Monitoring Guide/docs/master: local
   link-check-kibana/src/legacy/ui/public/documentation_links/documentation_links.ts/7.0: 131368a621e3f1636c44bb822abf002fd6f3f22f
   link-check-kibana/src/legacy/ui/public/documentation_links/documentation_links.ts/7.1: 5b94b17872e3d74c913e3f36d970999bfa1dec37
   link-check-kibana/src/legacy/ui/public/documentation_links/documentation_links.ts/7.2: 865d11cac23063a2cb7b232c274a2d273148b537
@@ -3127,7 +3127,7 @@ kibana:
   link-check-kibana/src/legacy/ui/public/documentation_links/documentation_links.ts/7.7: 7df868b3004af68ddb4e6fe38440c329d526e9e4
   link-check-kibana/src/legacy/ui/public/documentation_links/documentation_links.ts/7.8: f0765f3426b3e776580c35a1c8170c2ee06a8a26
   link-check-kibana/src/legacy/ui/public/documentation_links/documentation_links.ts/7.x: ce0e4f6ded785c99a2310b01352d44ceb2f376ec
-  link-check-kibana/src/legacy/ui/public/documentation_links/documentation_links.ts/master: c8b1fc585b980a31f45800abcdd56d6fa7ce02d5
+  link-check-kibana/src/legacy/ui/public/documentation_links/documentation_links.ts/master: local
   link-check-kibana/src/ui/public/documentation_links/documentation_links.js/5.0: 8c65f069c2afa5a1dab31202ff2a8f8f48236a54
   link-check-kibana/src/ui/public/documentation_links/documentation_links.js/5.1: be53f82a4294d50266d2d81eadc1dae64f84a5fb
   link-check-kibana/src/ui/public/documentation_links/documentation_links.js/5.2: 21bb22a7ed2145e5bf63848815cc44ee92c077ee
