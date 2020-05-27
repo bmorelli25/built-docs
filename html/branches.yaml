@@ -2393,7 +2393,7 @@ ecs:
 eland-docs:
   eland Client/docs/en/7.x: 3b2b4ced3bc2f1af6edd0c1d449c48f4417bdb83
 elasticsearch:
-  Community Contributed Clients/docs/community-clients/master: cf40c964772bf089bf1cec9630750d35f1077c42
+  Community Contributed Clients/docs/community-clients/master: local
   Elasticsearch Reference/docs/Versions.asciidoc/5.0: 7844a2629bcbab5c81f9c810fb2509a38642a0e4
   Elasticsearch Reference/docs/Versions.asciidoc/5.1: 0c64083e1e00e8d36dda2c9a76ad4f42ae589e40
   Elasticsearch Reference/docs/Versions.asciidoc/5.2: a0ba2a655e5c10c740eda4fb62dc58e5fdcbeef5
@@ -2420,7 +2420,7 @@ elasticsearch:
   Elasticsearch Reference/docs/Versions.asciidoc/7.7: f65c9fe64d29d9e1c6ee5b26c51ef820e481bc43
   Elasticsearch Reference/docs/Versions.asciidoc/7.8: d16cd68e3d94d2ae7d1096efc92d9f1b3feffd7b
   Elasticsearch Reference/docs/Versions.asciidoc/7.x: 74b2c8a770a3c762405ad18dc913f65ba8bcf3ec
-  Elasticsearch Reference/docs/Versions.asciidoc/master: 7fca5e12bb6b31e732f8cc6265f7ca018a53e3fc
+  Elasticsearch Reference/docs/Versions.asciidoc/master: local
   Elasticsearch Reference/docs/painless/5.5: 5fbb5f3bc6b2d97922b58235af04b444c50ec84e
   Elasticsearch Reference/docs/painless/5.6: 7d49713f7b57af8c6a8b663dc7120d02585250bd
   Elasticsearch Reference/docs/painless/6.0: 977230a0ce89a55515dc6ef6452e9f059d9356a2
@@ -2442,7 +2442,7 @@ elasticsearch:
   Elasticsearch Reference/docs/painless/7.7: f65c9fe64d29d9e1c6ee5b26c51ef820e481bc43
   Elasticsearch Reference/docs/painless/7.8: d16cd68e3d94d2ae7d1096efc92d9f1b3feffd7b
   Elasticsearch Reference/docs/painless/7.x: 74b2c8a770a3c762405ad18dc913f65ba8bcf3ec
-  Elasticsearch Reference/docs/painless/master: 7fca5e12bb6b31e732f8cc6265f7ca018a53e3fc
+  Elasticsearch Reference/docs/painless/master: local
   Elasticsearch Reference/docs/reference/0.90: d9a89ea210cd3344c7365a08a1224287829bbe11
   Elasticsearch Reference/docs/reference/1.3: b1c8862209b77c86f1450ecbf8e15b9b8b12fb78
   Elasticsearch Reference/docs/reference/1.4: f5cc496da9d55a0daf5694e45b93412abcf10180
@@ -2480,7 +2480,7 @@ elasticsearch:
   Elasticsearch Reference/docs/reference/7.7: f65c9fe64d29d9e1c6ee5b26c51ef820e481bc43
   Elasticsearch Reference/docs/reference/7.8: d16cd68e3d94d2ae7d1096efc92d9f1b3feffd7b
   Elasticsearch Reference/docs/reference/7.x: 74b2c8a770a3c762405ad18dc913f65ba8bcf3ec
-  Elasticsearch Reference/docs/reference/master: 7fca5e12bb6b31e732f8cc6265f7ca018a53e3fc
+  Elasticsearch Reference/docs/reference/master: local
   Elasticsearch Reference/docs/src/test/cluster/config/5.3: 4b74b82af49069dca9d690bef5db2be4042d5e50
   Elasticsearch Reference/docs/src/test/cluster/config/5.4: 66edcd99c815636f9aab05de8ab5c89c69c1b131
   Elasticsearch Reference/docs/src/test/cluster/config/5.5: 5fbb5f3bc6b2d97922b58235af04b444c50ec84e
@@ -2504,7 +2504,7 @@ elasticsearch:
   Elasticsearch Reference/docs/src/test/cluster/config/7.7: f65c9fe64d29d9e1c6ee5b26c51ef820e481bc43
   Elasticsearch Reference/docs/src/test/cluster/config/7.8: d16cd68e3d94d2ae7d1096efc92d9f1b3feffd7b
   Elasticsearch Reference/docs/src/test/cluster/config/7.x: 74b2c8a770a3c762405ad18dc913f65ba8bcf3ec
-  Elasticsearch Reference/docs/src/test/cluster/config/master: 7fca5e12bb6b31e732f8cc6265f7ca018a53e3fc
+  Elasticsearch Reference/docs/src/test/cluster/config/master: local
   Elasticsearch Reference/plugins/examples/5.5: 5fbb5f3bc6b2d97922b58235af04b444c50ec84e
   Elasticsearch Reference/plugins/examples/5.6: 7d49713f7b57af8c6a8b663dc7120d02585250bd
   Elasticsearch Reference/plugins/examples/6.0: 977230a0ce89a55515dc6ef6452e9f059d9356a2
@@ -2526,7 +2526,7 @@ elasticsearch:
   Elasticsearch Reference/plugins/examples/7.7: f65c9fe64d29d9e1c6ee5b26c51ef820e481bc43
   Elasticsearch Reference/plugins/examples/7.8: d16cd68e3d94d2ae7d1096efc92d9f1b3feffd7b
   Elasticsearch Reference/plugins/examples/7.x: 74b2c8a770a3c762405ad18dc913f65ba8bcf3ec
-  Elasticsearch Reference/plugins/examples/master: 7fca5e12bb6b31e732f8cc6265f7ca018a53e3fc
+  Elasticsearch Reference/plugins/examples/master: local
   Elasticsearch Reference/x-pack/docs/6.3: ee4f83068316f5053dd1dbcececf5941f82b9956
   Elasticsearch Reference/x-pack/docs/6.4: b34f7e461c7838ed98f82c042daa2b71cea80003
   Elasticsearch Reference/x-pack/docs/6.5: 4f15bb641592dce051c1b76b22e7c32a2e295aae
@@ -2543,7 +2543,7 @@ elasticsearch:
   Elasticsearch Reference/x-pack/docs/7.7: f65c9fe64d29d9e1c6ee5b26c51ef820e481bc43
   Elasticsearch Reference/x-pack/docs/7.8: d16cd68e3d94d2ae7d1096efc92d9f1b3feffd7b
   Elasticsearch Reference/x-pack/docs/7.x: 74b2c8a770a3c762405ad18dc913f65ba8bcf3ec
-  Elasticsearch Reference/x-pack/docs/master: 7fca5e12bb6b31e732f8cc6265f7ca018a53e3fc
+  Elasticsearch Reference/x-pack/docs/master: local
   Elasticsearch Reference/x-pack/plugin/sql/qa/6.6: a7a8f85101e94f81f5668cc7ffd081958031d01b
   Elasticsearch Reference/x-pack/plugin/sql/qa/6.7: a95a67df26f68632d5e7a8c549402615881e64b2
   Elasticsearch Reference/x-pack/plugin/sql/qa/6.8: 80b6b2774fdb0f711024e695ce154951087d11a7
@@ -2557,12 +2557,12 @@ elasticsearch:
   Elasticsearch Reference/x-pack/plugin/sql/qa/7.7: f65c9fe64d29d9e1c6ee5b26c51ef820e481bc43
   Elasticsearch Reference/x-pack/plugin/sql/qa/7.8: d16cd68e3d94d2ae7d1096efc92d9f1b3feffd7b
   Elasticsearch Reference/x-pack/plugin/sql/qa/7.x: 74b2c8a770a3c762405ad18dc913f65ba8bcf3ec
-  Elasticsearch Reference/x-pack/plugin/sql/qa/master: 7fca5e12bb6b31e732f8cc6265f7ca018a53e3fc
+  Elasticsearch Reference/x-pack/plugin/sql/qa/master: local
   Elasticsearch Reference/x-pack/qa/sql/6.3: ee4f83068316f5053dd1dbcececf5941f82b9956
   Elasticsearch Reference/x-pack/qa/sql/6.4: b34f7e461c7838ed98f82c042daa2b71cea80003
   Elasticsearch Reference/x-pack/qa/sql/6.5: 4f15bb641592dce051c1b76b22e7c32a2e295aae
-  Elasticsearch Resiliency Status/docs/Versions.asciidoc/master: 79367e43da8eb875cb464403c4b31db80ce5c5d5
-  Elasticsearch Resiliency Status/docs/resiliency/master: 79367e43da8eb875cb464403c4b31db80ce5c5d5
+  Elasticsearch Resiliency Status/docs/Versions.asciidoc/master: local
+  Elasticsearch Resiliency Status/docs/resiliency/master: local
   Elasticsearch 참조/docs/5.3: 4b74b82af49069dca9d690bef5db2be4042d5e50
   Elasticsearch 참조/docs/5.4: 66edcd99c815636f9aab05de8ab5c89c69c1b131
   Elasticsearch 참조/docs/kr/reference/5.3: 4b74b82af49069dca9d690bef5db2be4042d5e50
@@ -2571,8 +2571,8 @@ elasticsearch:
   Elasticsearchリファレンス/docs/5.4: 66edcd99c815636f9aab05de8ab5c89c69c1b131
   Elasticsearchリファレンス/docs/jp/reference/5.3: 4b74b82af49069dca9d690bef5db2be4042d5e50
   Elasticsearchリファレンス/docs/jp/reference/5.4: 66edcd99c815636f9aab05de8ab5c89c69c1b131
-  Glossary/docs/reference/master: 38a17f299f79aa7bbe2c9d9c19d901255dbe9207
-  Go API/docs/go/master: cf40c964772bf089bf1cec9630750d35f1077c42
+  Glossary/docs/reference/master: local
+  Go API/docs/go/master: local
   Groovy API/docs/groovy-api/0.90: d9a89ea210cd3344c7365a08a1224287829bbe11
   Groovy API/docs/groovy-api/1.3: b1c8862209b77c86f1450ecbf8e15b9b8b12fb78
   Groovy API/docs/groovy-api/1.4: f5cc496da9d55a0daf5694e45b93412abcf10180
@@ -2610,7 +2610,7 @@ elasticsearch:
   Installation and Upgrade Guide/docs/7.7: f65c9fe64d29d9e1c6ee5b26c51ef820e481bc43
   Installation and Upgrade Guide/docs/7.8: b9e24764323e41b0d557951a6d33003574ddd000
   Installation and Upgrade Guide/docs/7.x: 343fb699a4c0ec840c8f467402201e939f856c1a
-  Installation and Upgrade Guide/docs/master: 38a17f299f79aa7bbe2c9d9c19d901255dbe9207
+  Installation and Upgrade Guide/docs/master: local
   Java API/client/rest-high-level/src/test/java/org/elasticsearch/client/6.0: 977230a0ce89a55515dc6ef6452e9f059d9356a2
   Java API/client/rest-high-level/src/test/java/org/elasticsearch/client/6.1: ffa259108204d410c1e3e50b805ee5d1740f48f6
   Java API/client/rest-high-level/src/test/java/org/elasticsearch/client/6.2: 8fa17672189cf15b4d4617dc3e7970d6c12e0ea4
@@ -2755,7 +2755,7 @@ elasticsearch:
   Java REST Client/client/7.7: 819fb0e3e49ffa71cfda9593a0ac72abcd38cd97
   Java REST Client/client/7.8: b10febb8e480fb23b3fbeb1426ecdcbc8bdc6078
   Java REST Client/client/7.x: 277c5eaf56c67f0c3cd58c9ecb338da4dc5c5972
-  Java REST Client/client/master: 25a19b80785b6b9fa94a3a0a649dc2974511537b
+  Java REST Client/client/master: local
   Java REST Client/docs/Versions.asciidoc/5.0: 7844a2629bcbab5c81f9c810fb2509a38642a0e4
   Java REST Client/docs/Versions.asciidoc/5.1: 0c64083e1e00e8d36dda2c9a76ad4f42ae589e40
   Java REST Client/docs/Versions.asciidoc/5.2: a0ba2a655e5c10c740eda4fb62dc58e5fdcbeef5
@@ -2782,7 +2782,7 @@ elasticsearch:
   Java REST Client/docs/Versions.asciidoc/7.7: 819fb0e3e49ffa71cfda9593a0ac72abcd38cd97
   Java REST Client/docs/Versions.asciidoc/7.8: b10febb8e480fb23b3fbeb1426ecdcbc8bdc6078
   Java REST Client/docs/Versions.asciidoc/7.x: 277c5eaf56c67f0c3cd58c9ecb338da4dc5c5972
-  Java REST Client/docs/Versions.asciidoc/master: 25a19b80785b6b9fa94a3a0a649dc2974511537b
+  Java REST Client/docs/Versions.asciidoc/master: local
   Java REST Client/docs/java-rest/5.0: 7844a2629bcbab5c81f9c810fb2509a38642a0e4
   Java REST Client/docs/java-rest/5.1: 0c64083e1e00e8d36dda2c9a76ad4f42ae589e40
   Java REST Client/docs/java-rest/5.2: a0ba2a655e5c10c740eda4fb62dc58e5fdcbeef5
@@ -2809,7 +2809,7 @@ elasticsearch:
   Java REST Client/docs/java-rest/7.7: 819fb0e3e49ffa71cfda9593a0ac72abcd38cd97
   Java REST Client/docs/java-rest/7.8: b10febb8e480fb23b3fbeb1426ecdcbc8bdc6078
   Java REST Client/docs/java-rest/7.x: 277c5eaf56c67f0c3cd58c9ecb338da4dc5c5972
-  Java REST Client/docs/java-rest/master: 25a19b80785b6b9fa94a3a0a649dc2974511537b
+  Java REST Client/docs/java-rest/master: local
   Machine Learning/docs/6.3: ee4f83068316f5053dd1dbcececf5941f82b9956
   Machine Learning/docs/6.4: b34f7e461c7838ed98f82c042daa2b71cea80003
   Machine Learning/docs/6.5: 4f15bb641592dce051c1b76b22e7c32a2e295aae
@@ -2826,7 +2826,7 @@ elasticsearch:
   Machine Learning/docs/7.7: f65c9fe64d29d9e1c6ee5b26c51ef820e481bc43
   Machine Learning/docs/7.8: b9e24764323e41b0d557951a6d33003574ddd000
   Machine Learning/docs/7.x: 343fb699a4c0ec840c8f467402201e939f856c1a
-  Machine Learning/docs/master: 38a17f299f79aa7bbe2c9d9c19d901255dbe9207
+  Machine Learning/docs/master: local
   Painless Scripting Language/docs/Versions.asciidoc/5.5: 5fbb5f3bc6b2d97922b58235af04b444c50ec84e
   Painless Scripting Language/docs/Versions.asciidoc/5.6: 7d49713f7b57af8c6a8b663dc7120d02585250bd
   Painless Scripting Language/docs/Versions.asciidoc/6.0: 977230a0ce89a55515dc6ef6452e9f059d9356a2
@@ -2848,7 +2848,7 @@ elasticsearch:
   Painless Scripting Language/docs/Versions.asciidoc/7.7: 742e68308db87adfb6ed70d0dde078a5814dadcd
   Painless Scripting Language/docs/Versions.asciidoc/7.8: 1382a9a0ab54e12b4cbfff8c620274191bb06901
   Painless Scripting Language/docs/Versions.asciidoc/7.x: 2a943a58a4c5bfdf4dbd272d6c81d6a98e8a7f9a
-  Painless Scripting Language/docs/Versions.asciidoc/master: 79367e43da8eb875cb464403c4b31db80ce5c5d5
+  Painless Scripting Language/docs/Versions.asciidoc/master: local
   Painless Scripting Language/docs/painless/5.5: 5fbb5f3bc6b2d97922b58235af04b444c50ec84e
   Painless Scripting Language/docs/painless/5.6: 7d49713f7b57af8c6a8b663dc7120d02585250bd
   Painless Scripting Language/docs/painless/6.0: 977230a0ce89a55515dc6ef6452e9f059d9356a2
@@ -2870,7 +2870,7 @@ elasticsearch:
   Painless Scripting Language/docs/painless/7.7: 742e68308db87adfb6ed70d0dde078a5814dadcd
   Painless Scripting Language/docs/painless/7.8: 1382a9a0ab54e12b4cbfff8c620274191bb06901
   Painless Scripting Language/docs/painless/7.x: 2a943a58a4c5bfdf4dbd272d6c81d6a98e8a7f9a
-  Painless Scripting Language/docs/painless/master: 79367e43da8eb875cb464403c4b31db80ce5c5d5
+  Painless Scripting Language/docs/painless/master: local
   Plugins and Integrations/buildSrc/src/main/resources/6.2: 8fa17672189cf15b4d4617dc3e7970d6c12e0ea4
   Plugins and Integrations/buildSrc/src/main/resources/6.3: ee4f83068316f5053dd1dbcececf5941f82b9956
   Plugins and Integrations/buildSrc/src/main/resources/6.4: b34f7e461c7838ed98f82c042daa2b71cea80003
@@ -2888,7 +2888,7 @@ elasticsearch:
   Plugins and Integrations/buildSrc/src/main/resources/7.7: d406a536d7d06b4b870a16cee9720cf34e9be2a2
   Plugins and Integrations/buildSrc/src/main/resources/7.8: 6f92d216de1586becb99108cb01ec1f774b45306
   Plugins and Integrations/buildSrc/src/main/resources/7.x: 46e5c37267c142743e3bc457d4a9491c7411a255
-  Plugins and Integrations/buildSrc/src/main/resources/master: f0c475bda0fb69a98b6f0d1ba29acff5b024c885
+  Plugins and Integrations/buildSrc/src/main/resources/master: local
   Plugins and Integrations/docs/Versions.asciidoc/5.0: 7844a2629bcbab5c81f9c810fb2509a38642a0e4
   Plugins and Integrations/docs/Versions.asciidoc/5.1: 0c64083e1e00e8d36dda2c9a76ad4f42ae589e40
   Plugins and Integrations/docs/Versions.asciidoc/5.2: a0ba2a655e5c10c740eda4fb62dc58e5fdcbeef5
@@ -2915,7 +2915,7 @@ elasticsearch:
   Plugins and Integrations/docs/Versions.asciidoc/7.7: d406a536d7d06b4b870a16cee9720cf34e9be2a2
   Plugins and Integrations/docs/Versions.asciidoc/7.8: 6f92d216de1586becb99108cb01ec1f774b45306
   Plugins and Integrations/docs/Versions.asciidoc/7.x: 46e5c37267c142743e3bc457d4a9491c7411a255
-  Plugins and Integrations/docs/Versions.asciidoc/master: f0c475bda0fb69a98b6f0d1ba29acff5b024c885
+  Plugins and Integrations/docs/Versions.asciidoc/master: local
   Plugins and Integrations/docs/plugins/1.7: 5aaec421ea1a6177cb1a6e409d017edcb119ed50
   Plugins and Integrations/docs/plugins/2.0: 7f2c8fe784ddfbf831bc62659fc932490bae17f1
   Plugins and Integrations/docs/plugins/2.1: d38fca779d8f15e7011ce6864642a16c1963d96d
@@ -2948,8 +2948,8 @@ elasticsearch:
   Plugins and Integrations/docs/plugins/7.7: d406a536d7d06b4b870a16cee9720cf34e9be2a2
   Plugins and Integrations/docs/plugins/7.8: 6f92d216de1586becb99108cb01ec1f774b45306
   Plugins and Integrations/docs/plugins/7.x: 46e5c37267c142743e3bc457d4a9491c7411a255
-  Plugins and Integrations/docs/plugins/master: f0c475bda0fb69a98b6f0d1ba29acff5b024c885
-  Python API/docs/python/master: cf40c964772bf089bf1cec9630750d35f1077c42
+  Plugins and Integrations/docs/plugins/master: local
+  Python API/docs/python/master: local
 elasticsearch-hadoop:
   Elasticsearch for Apache Hadoop and Spark/docs/src/reference/asciidoc/2.0: 422a85e3e856e75a5b3d92c832695976c3987552
   Elasticsearch for Apache Hadoop and Spark/docs/src/reference/asciidoc/2.1: 8f93dee8e3c154d0d2b80865c886a4864f9385c2
