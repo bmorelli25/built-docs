@@ -6,7 +6,7 @@
 <title>APM app settings | Kibana Guide [master] | Elastic</title>
 <link rel="home" href="index.html" title="Kibana Guide [master]"/>
 <link rel="up" href="xpack-apm.html" title="APM"/>
-<link rel="prev" href="apm-app-api-user.html" title="APM app API user"/>
+<link rel="prev" href="transactions-annotations.html" title="Track deployments with annotations"/>
 <link rel="next" href="apm-api.html" title="APM app API"/>
 <meta name="DC.type" content="Learn/Docs/Kibana/Reference/master"/>
 <meta name="DC.subject" content="Kibana"/>
@@ -119,7 +119,7 @@ Not what you want? See the
 </div>
 <div class="navheader">
 <span class="prev">
-<a href="apm-app-api-user.html">« APM app API user</a>
+<a href="transactions-annotations.html">« Track deployments with annotations</a>
 </span>
 <span class="next">
 <a href="apm-api.html">APM app API »</a>
@@ -155,7 +155,7 @@ Changing these settings may disable features of the APM App.</p>
 <td align="left" valign="top"><p>Set to <code class="literal">false</code> to disable the APM app. Defaults to <code class="literal">true</code>.</p></td>
 </tr>
 <tr>
-<td align="left" valign="top"><p><code class="literal">xpack.apm.ui.enabled</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span></p></td>
+<td align="left" valign="top"><p><code class="literal">xpack.apm.ui.enabled</code></p></td>
 <td align="left" valign="top"><p>Set to <code class="literal">false</code> to hide the APM app from the menu. Defaults to <code class="literal">true</code>.</p></td>
 </tr>
 <tr>
@@ -163,20 +163,16 @@ Changing these settings may disable features of the APM App.</p>
 <td align="left" valign="top"><p>Number of top transaction groups displayed in the APM app. Defaults to <code class="literal">100</code>.</p></td>
 </tr>
 <tr>
-<td align="left" valign="top"><p><code class="literal">xpack.apm.ui.maxTraceItems</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span></p></td>
+<td align="left" valign="top"><p><code class="literal">xpack.apm.ui.maxTraceItems</code></p></td>
 <td align="left" valign="top"><p>Maximum number of child items displayed when viewing trace details. Defaults to <code class="literal">1000</code>.</p></td>
 </tr>
 <tr>
-<td align="left" valign="top"><p><code class="literal">xpack.observability.annotations.index</code></p></td>
-<td align="left" valign="top"><p>Index name where Observability annotations are stored. Defaults to <code class="literal">observability-annotations</code>.</p></td>
-</tr>
-<tr>
-<td align="left" valign="top"><p><code class="literal">apm_oss.indexPattern</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span></p></td>
+<td align="left" valign="top"><p><code class="literal">apm_oss.indexPattern</code></p></td>
 <td align="left" valign="top"><p>The index pattern used for integrations with Machine Learning and Query Bar.
   It must match all apm indices. Defaults to <code class="literal">apm-*</code>.</p></td>
 </tr>
 <tr>
-<td align="left" valign="top"><p><code class="literal">apm_oss.errorIndices</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span></p></td>
+<td align="left" valign="top"><p><code class="literal">apm_oss.errorIndices</code></p></td>
 <td align="left" valign="top"><p>Matcher for all <a href="/guide/en/apm/server/master/error-indices.html" class="ulink" target="_top">error indices</a>. Defaults to <code class="literal">apm-*</code>.</p></td>
 </tr>
 <tr>
@@ -184,11 +180,11 @@ Changing these settings may disable features of the APM App.</p>
 <td align="left" valign="top"><p>Matcher for all onboarding indices. Defaults to <code class="literal">apm-*</code>.</p></td>
 </tr>
 <tr>
-<td align="left" valign="top"><p><code class="literal">apm_oss.spanIndices</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span></p></td>
+<td align="left" valign="top"><p><code class="literal">apm_oss.spanIndices</code></p></td>
 <td align="left" valign="top"><p>Matcher for all <a href="/guide/en/apm/server/master/span-indices.html" class="ulink" target="_top">span indices</a>. Defaults to <code class="literal">apm-*</code>.</p></td>
 </tr>
 <tr>
-<td align="left" valign="top"><p><code class="literal">apm_oss.transactionIndices</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span></p></td>
+<td align="left" valign="top"><p><code class="literal">apm_oss.transactionIndices</code></p></td>
 <td align="left" valign="top"><p>Matcher for all <a href="/guide/en/apm/server/master/transaction-indices.html" class="ulink" target="_top">transaction indices</a>. Defaults to <code class="literal">apm-*</code>.</p></td>
 </tr>
 <tr>
@@ -205,7 +201,7 @@ Changing these settings may disable features of the APM App.</p>
 </div>
 <div class="navfooter">
 <span class="prev">
-<a href="apm-app-api-user.html">« APM app API user</a>
+<a href="transactions-annotations.html">« Track deployments with annotations</a>
 </span>
 <span class="next">
 <a href="apm-api.html">APM app API »</a>
