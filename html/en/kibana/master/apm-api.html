@@ -136,35 +136,15 @@ Not what you want? See the
 <li class="listitem">
 <a class="xref" href="agent-config-api.html" title="Agent Configuration API">Agent Configuration API</a>
 </li>
-<li class="listitem">
-<a class="xref" href="apm-annotation-api.html" title="Annotation API">Annotation API</a>
-</li>
 </ul>
 </div>
-<h3><a id="apm-api-example"></a>Using the APIs<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/kibana/edit/master/docs/apm/api.asciidoc">edit</a></h3>
-<p>Users interacting with APM APIs must have <a class="xref" href="apm-app-api-user.html" title="APM app API user">sufficient privileges</a>.
-In addition, there are request headers to be aware of, like <code class="literal">kbn-xsrf: true</code>, and <code class="literal">Content-Type: applicaton/json</code>.
-Here&#8217;s an example CURL request that adds an annotation to the APM app:</p>
-<div class="pre_wrapper lang-curl">
-<pre class="programlisting prettyprint lang-curl">curl -X POST \
-  http://localhost:5601/api/apm/services/opbeans-java/annotation \
--H 'Content-Type: application/json' \
--H 'kbn-xsrf: true' \
--H 'Authorization: Basic YhUlubWZhM0FDbnlQeE6WRtaW49FQmSGZ4RUWXdX' \
--d '{
-      "@timestamp": "2020-05-11T10:31:30.452Z",
-      "service": {
-        "version": "1.2"
-      },
-      "message": "Revert upgrade",
-      "tags": [
-        "elastic.co", "customer"
-      ]
-    }'</pre>
+<div class="tip admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>Kibana provides additional <a class="xref" href="api.html" title="REST API">REST APIs</a>,
+and general information on <a class="xref" href="using-api.html" title="Using the APIs">how to use APIs</a>.</p>
 </div>
-<p>The Kibana <a class="xref" href="api.html" title="REST API">REST API reference</a> provides additional information on how to use Kibana APIs,
-required request headers, and token-based authentication options.</p>
-
+</div>
 
 </div>
 <div class="navfooter">
