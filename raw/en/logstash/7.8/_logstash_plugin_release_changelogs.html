@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Logstash Plugin Release Changelogs | Logstash Reference [7.8] | Elastic</title>
+<link rel="home" href="index.html" title="Logstash Reference [7.8]"/>
+<link rel="up" href="releasenotes.html" title="Release Notes"/>
+<link rel="prev" href="_logstash_commits_between_7_8_and_7_7_0.html" title="Logstash Commits between 7.8 and 7.7.0"/>
+<link rel="next" href="logstash-7-7-0.html" title="Logstash 7.7.0 Release Notes"/>
+<meta name="DC.type" content="Learn/Docs/Logstash/Reference/7.8"/>
+<meta name="DC.subject" content="Logstash"/>
+<meta name="DC.identifier" content="7.8"/>
+</head>
+<body><div class="page_header">
+You are looking at preliminary documentation for a future release.
+Not what you want? See the
+<a href="../current/index.html">current release documentation</a>.
+</div>
+<div id="content">
+<div class="breadcrumbs">
+<span class="breadcrumb-link"><a href="index.html">Logstash Reference [7.8]</a></span>
+»
+<span class="breadcrumb-link"><a href="releasenotes.html">Release Notes</a></span>
+»
+<span class="breadcrumb-node">Logstash Plugin Release Changelogs</span>
+</div>
+<div class="navheader">
+<span class="prev">
+<a href="_logstash_commits_between_7_8_and_7_7_0.html">« Logstash Commits between 7.8 and 7.7.0</a>
+</span>
+<span class="next">
+<a href="logstash-7-7-0.html">Logstash 7.7.0 Release Notes »</a>
+</span>
+</div>
+<div class="section">
+<div class="titlepage"><div><div>
+<h2 class="title"><a id="_logstash_plugin_release_changelogs"></a>Logstash Plugin Release Changelogs<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/logstash/edit/7.8/docs/static/releasenotes.asciidoc">edit</a></h2>
+</div></div></div>
+<p>Computed from "git diff v7.7.0..7.8 *.release"
+Changed plugin versions:
+logstash-codec-cef: 6.1.0 &#8594; 6.1.1
+logstash-filter-elasticsearch: 3.7.0 &#8594; 3.7.1
+logstash-input-file: 4.1.16 &#8594; 4.1.18
+logstash-input-syslog: 3.4.1 &#8594; 3.4.2
+logstash-input-tcp: 6.0.4 &#8594; 6.0.5
+logstash-integration-kafka: 10.0.1 &#8594; 10.2.0
+logstash-output-elasticsearch: 10.3.3 &#8594; 10.5.1
+logstash-output-file: 4.2.6 &#8594; 4.3.0
+---------- DELETE UP TO HERE ------------</p>
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="_plugins"></a>Plugins<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/logstash/edit/7.8/docs/static/releasenotes.asciidoc">edit</a></h3>
+</div></div></div>
+<p><span class="strong strong"><strong>Cef Codec - 6.1.1</strong></span></p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+Improved encoding performance, especially when encoding many extension fields [#81](<a href="https://github.com/logstash-plugins/logstash-codec-cef/pull/81" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-codec-cef/pull/81</a>)
+</li>
+<li class="listitem">
+Fixed CEF short to long name translation for ahost/agentHostName field, according to documentation [#75](<a href="https://github.com/logstash-plugins/logstash-codec-cef/pull/75" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-codec-cef/pull/75</a>)
+</li>
+<li class="listitem">
+Fixed support for deep dot notation [#73](<a href="https://github.com/logstash-plugins/logstash-codec-cef/pull/73" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-codec-cef/pull/73</a>)
+</li>
+<li class="listitem">
+Removed obsolete <code class="literal">sev</code> and <code class="literal">deprecated_v1_fields</code> fields
+</li>
+<li class="listitem">
+Fixed minor doc inconsistencies (added reverse_mapping to options table, moved it to alpha order in option descriptions, fixed typo)
+[#60](<a href="https://github.com/logstash-plugins/logstash-codec-cef/pull/60" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-codec-cef/pull/60</a>)
+</li>
+<li class="listitem">
+Added reverse_mapping option, which can be used to make encoder compliant to spec [#51](<a href="https://github.com/logstash-plugins/logstash-codec-cef/pull/51" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-codec-cef/pull/51</a>)
+</li>
+<li class="listitem">
+Fix handling of malformed inputs that have illegal unescaped-equals characters in extension field values (restores behaviour from &#8656; v5.0.3 in some edge-cases) ([#56](<a href="https://github.com/logstash-plugins/logstash-codec-cef/issues/56)" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-codec-cef/issues/56)</a>)
+</li>
+<li class="listitem">
+Fix bug in parsing headers where certain legal escape sequences could cause non-escaped pipe characters to be ignored.
+</li>
+<li class="listitem">
+Fix bug in parsing extension values where a legal unescaped space in a field&#8217;s value could be interpreted as a field separator (#54)
+</li>
+<li class="listitem">
+Add explicit handling for extension key names that use array-like syntax that isn&#8217;t legal with the strict-mode field-reference parser (e.g., <code class="literal">fieldname[0]</code> becomes <code class="literal">[fieldname][0]</code>).
+</li>
+<li class="listitem">
+Fix handling of higher-plane UTF-8 characters in message body
+</li>
+<li class="listitem">
+Update gemspec summary
+</li>
+<li class="listitem">
+Fix some documentation issues
+</li>
+<li class="listitem">
+move <code class="literal">sev</code> and <code class="literal">deprecated_v1_fields</code> fields from deprecated to obsolete
+</li>
+<li class="listitem">
+added mapping for outcome = eventOutcome from CEF whitepaper (ref:p26/39)
+</li>
+<li class="listitem">
+changed rt from receiptTime to deviceReceiptTime (ref:p27/39)
+</li>
+<li class="listitem">
+changed tokenizer to include additional fields (ad.fieldname)
+</li>
+<li class="listitem">
+Add <code class="literal">delimiter</code> setting. This allows the decoder to be used with inputs like the TCP input where event delimiters are used.
+</li>
+<li class="listitem">
+Implements the dictionary translation for abbreviated CEF field names from chapter Chapter 2: ArcSight Extension Dictionary page 3 of 39 [CEF specification](<a href="https://protect724.hp.com/docs/DOC-1072" class="ulink" target="_top">https://protect724.hp.com/docs/DOC-1072</a>).
+</li>
+<li class="listitem">
+add <code class="literal">_cefparsefailure</code> tag on failed decode
+</li>
+<li class="listitem">
+breaking: Updated plugin to use new Java Event APIs
+</li>
+<li class="listitem">
+Switch in-place sub! to sub when extracting <code class="literal">cef_version</code>. new Logstash Java Event does not support in-place String changes.
+</li>
+<li class="listitem">
+Depend on logstash-core-plugin-api instead of logstash-core, removing the need to mass update plugins on major releases of logstash
+</li>
+<li class="listitem">
+New dependency requirements for logstash-core for the 5.0 release
+</li>
+<li class="listitem">
+Implements <code class="literal">encode</code> with escaping according to the [CEF specification](<a href="https://protect724.hp.com/docs/DOC-1072" class="ulink" target="_top">https://protect724.hp.com/docs/DOC-1072</a>).
+</li>
+<li class="listitem">
+Config option <code class="literal">sev</code> is deprecated, use <code class="literal">severity</code> instead.
+</li>
+<li class="listitem">
+Plugins were updated to follow the new shutdown semantic, this mainly allows Logstash to instruct input plugins to terminate gracefully,
+instead of using Thread.raise on the plugins' threads. Ref: <a href="https://github.com/elastic/logstash/pull/3895" class="ulink" target="_top">https://github.com/elastic/logstash/pull/3895</a>
+</li>
+<li class="listitem">
+Dependency on logstash-core update to 2.0
+</li>
+</ul>
+</div>
+<p><span class="strong strong"><strong>Elasticsearch Filter - 3.7.1</strong></span></p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+Fix: solves an issue where non-ascii unicode values in a template were not handled correctly [#128](<a href="https://github.com/logstash-plugins/logstash-filter-elasticsearch/pull/128" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-filter-elasticsearch/pull/128</a>)
+</li>
+</ul>
+</div>
+<p><span class="strong strong"><strong>File Input - 4.1.18</strong></span></p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+Fix: release watched files on completion (in read-mode) [#271](<a href="https://github.com/logstash-plugins/logstash-input-file/pull/271" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-input-file/pull/271</a>)
+</li>
+<li class="listitem">
+Added configuration setting <code class="literal">check_archive_validity</code> settings to enable
+gzipped files verification, issue
+[#261](<a href="https://github.com/logstash-plugins/logstash-input-file/issues/261" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-input-file/issues/261</a>)
+</li>
+<li class="listitem">
+[DOC] Added clarification for settings available with <code class="literal">read</code> mode [#235](<a href="https://github.com/logstash-plugins/logstash-input-file/pull/235" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-input-file/pull/235</a>)
+</li>
+<li class="listitem">
+[DOC] Rearranged text and fixed formatting for <code class="literal">mode</code> setting [266](<a href="https://github.com/logstash-plugins/logstash-input-file/pull/266" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-input-file/pull/266</a>)
+</li>
+</ul>
+</div>
+<p><span class="strong strong"><strong>Syslog Input - 3.4.2</strong></span></p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+Remove (deprecated) dependency on thread_safe gem.
+</li>
+<li class="listitem">
+CI: upgrade testing [#58](<a href="https://github.com/logstash-plugins/logstash-input-syslog/pull/58" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-input-syslog/pull/58</a>)
+</li>
+<li class="listitem">
+[DOC] Correct example for <code class="literal">timezone</code> option [#53](<a href="https://github.com/logstash-plugins/logstash-input-syslog/pull/53" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-input-syslog/pull/53</a>)
+</li>
+</ul>
+</div>
+<p><span class="strong strong"><strong>Tcp Input - 6.0.5</strong></span></p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+Fix potential startup crash that could occur when multiple instances of this plugin were started simultaneously [#155](<a href="https://github.com/logstash-plugins/logstash-input-tcp/pull/155" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-input-tcp/pull/155</a>)
+</li>
+</ul>
+</div>
+<p><span class="strong strong"><strong>Kafka Integration - 10.2.0</strong></span></p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+Changed: config defaults to be aligned with Kafka client defaults [#30](<a href="https://github.com/logstash-plugins/logstash-integration-kafka/pull/30" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-integration-kafka/pull/30</a>)
+</li>
+<li class="listitem">
+updated kafka client (and its dependencies) to version 2.4.1 ([#16](<a href="https://github.com/logstash-plugins/logstash-integration-kafka/pull/16)" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-integration-kafka/pull/16)</a>)
+</li>
+<li class="listitem">
+added the input <code class="literal">client_rack</code> parameter to enable support for follower fetching
+</li>
+<li class="listitem">
+added the output <code class="literal">partitioner</code> parameter for tuning partitioning strategy
+</li>
+<li class="listitem">
+Refactor: normalized error logging a bit - make sure exception type is logged
+</li>
+<li class="listitem">
+Fix: properly handle empty ssl_endpoint_identification_algorithm [#8](<a href="https://github.com/logstash-plugins/logstash-integration-kafka/pull/8" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-integration-kafka/pull/8</a>)
+</li>
+<li class="listitem">
+Refactor : made <code class="literal">partition_assignment_strategy</code> option easier to configure by accepting simple values from an enumerated set instead of requiring lengthy class paths ([#25](<a href="https://github.com/logstash-plugins/logstash-integration-kafka/pull/25)" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-integration-kafka/pull/25)</a>)
+</li>
+</ul>
+</div>
+<p><span class="strong strong"><strong>Elasticsearch Output - 10.5.1</strong></span></p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+[DOC] Removed outdated compatibility notices, reworked cloud notice, and fixed formatting for <code class="literal">hosts</code> examples [#938](<a href="https://github.com/logstash-plugins/logstash-output-elasticsearch/pull/938" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-output-elasticsearch/pull/938</a>)
+</li>
+<li class="listitem">
+Added api_key support [#934](<a href="https://github.com/logstash-plugins/logstash-output-elasticsearch/pull/934" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-output-elasticsearch/pull/934</a>)
+</li>
+<li class="listitem">
+[DOC] Added note about <code class="literal">_type</code> setting change from <code class="literal">doc</code> to <code class="literal">_doc</code> [#884](<a href="https://github.com/logstash-plugins/logstash-output-elasticsearch/pull/884" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-output-elasticsearch/pull/884</a>)
+</li>
+<li class="listitem">
+Fixed default index value [#927](<a href="https://github.com/logstash-plugins/logstash-output-elasticsearch/pull/927" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-output-elasticsearch/pull/927</a>)
+</li>
+</ul>
+</div>
+<p><span class="strong strong"><strong>File Output - 4.3.0</strong></span></p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+Made <code class="literal">stale_cleanup_interval</code> configurable [#84](<a href="https://github.com/logstash-plugins/logstash-output-file/pull/84" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-output-file/pull/84</a>)
+</li>
+<li class="listitem">
+CI: upgrade testing [#83](<a href="https://github.com/logstash-plugins/logstash-output-file/pull/83" class="ulink" target="_top">https://github.com/logstash-plugins/logstash-output-file/pull/83</a>)
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+<div class="navfooter">
+<span class="prev">
+<a href="_logstash_commits_between_7_8_and_7_7_0.html">« Logstash Commits between 7.8 and 7.7.0</a>
+</span>
+<span class="next">
+<a href="logstash-7-7-0.html">Logstash 7.7.0 Release Notes »</a>
+</span>
+</div>
+</div>
+</body>
+</html>

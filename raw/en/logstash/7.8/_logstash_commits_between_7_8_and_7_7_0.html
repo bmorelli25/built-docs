@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Logstash Commits between 7.8 and 7.7.0 | Logstash Reference [7.8] | Elastic</title>
+<link rel="home" href="index.html" title="Logstash Reference [7.8]"/>
+<link rel="up" href="releasenotes.html" title="Release Notes"/>
+<link rel="prev" href="logstash-7-8-0.html" title="Logstash 7.8.0 Release Notes"/>
+<link rel="next" href="_logstash_plugin_release_changelogs.html" title="Logstash Plugin Release Changelogs"/>
+<meta name="DC.type" content="Learn/Docs/Logstash/Reference/7.8"/>
+<meta name="DC.subject" content="Logstash"/>
+<meta name="DC.identifier" content="7.8"/>
+</head>
+<body><div class="page_header">
+You are looking at preliminary documentation for a future release.
+Not what you want? See the
+<a href="../current/index.html">current release documentation</a>.
+</div>
+<div id="content">
+<div class="breadcrumbs">
+<span class="breadcrumb-link"><a href="index.html">Logstash Reference [7.8]</a></span>
+»
+<span class="breadcrumb-link"><a href="releasenotes.html">Release Notes</a></span>
+»
+<span class="breadcrumb-node">Logstash Commits between 7.8 and 7.7.0</span>
+</div>
+<div class="navheader">
+<span class="prev">
+<a href="logstash-7-8-0.html">« Logstash 7.8.0 Release Notes</a>
+</span>
+<span class="next">
+<a href="_logstash_plugin_release_changelogs.html">Logstash Plugin Release Changelogs »</a>
+</span>
+</div>
+<div class="section">
+<div class="titlepage"><div><div>
+<h2 class="title"><a id="_logstash_commits_between_7_8_and_7_7_0"></a>Logstash Commits between 7.8 and 7.7.0<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/logstash/edit/7.8/docs/static/releasenotes.asciidoc">edit</a></h2>
+</div></div></div>
+<p>Computed with "git log --pretty=format:'%h -%d %s (%cr) &lt;%an&gt;' --abbrev-commit --date=relative v7.7.0..7.8"</p>
+<p>804982e5f - (HEAD &#8594; 7.8, origin/7.8) emit deprecation entry for netflow and azure modules (64 minutes ago) &lt;Joao Duarte&gt;
+950329e67 - Introduced JDK environment variable to explicitly pass the JAVA_HOME to use and defined .ci/ with OS and JDK preferences (#11935) (2 days ago) &lt;Andrea Selva&gt;
+05b097fc7 - Quieten down kafka teardown script (10 days ago) &lt;Rob Bavey&gt;
+fc5d51225 - Doc:Replace cloud trial notice with attribute (11 days ago) &lt;Karen Metts&gt;
+fa75aadcf - Doc:Add deprecation notice for azure module (11 days ago) &lt;Karen Metts&gt;
+30b7d6fcd - download kafka from another mirror (3 weeks ago) &lt;Joao Duarte&gt;
+968a2a2cc - Fix: avoid gsub (frame dependent) usage from Java (3 weeks ago) &lt;Karol Bucek&gt;
+0dc71a720 - Performance: improve event.clone memory usage (3 weeks ago) &lt;Karol Bucek&gt;
+6378b4949 - Doc:Expand and clarify guidance for jvm settings (3 weeks ago) &lt;Karen Metts&gt;
+7319a5dc9 - Update minor plugin versions in gemfile lock for 7.8.0 (#11870) (3 weeks ago) &lt;João Duarte&gt;
+8c7fdd8bf - create 7.8 branch from 7.x and add lockfile (3 weeks ago) &lt;Joao Duarte&gt;
+2217e3478 - Doc:Rename internal collection to legacy collection (3 weeks ago) &lt;Karen Metts&gt;
+18f144431 - RUNNER: print RUBY_DESCRIPTION at startup to facilitate debugging (3 weeks ago) &lt;Joao Duarte&gt;
+4b8797bd9 - [doc] missing role for config management integration (#10341) (#11856) (4 weeks ago) &lt;Karen Metts&gt;
+8f142fc8b - Update JrJackson and Jackson Databind versions (4 weeks ago) &lt;Rob Bavey&gt;
+ba78c05e0 - [7.x] Backport JDK Unit Testing Matrices (#11839) (4 weeks ago) &lt;Rob Bavey&gt;
+51431af40 - Added warning message if OperatingSystemMXBean not available (5 weeks ago) &lt;Rob Bavey&gt;
+caa40036b - Avoid using deprecated <code class="literal">getSystemCpuLoad</code> method with JDK14 (5 weeks ago) &lt;Rob Bavey&gt;
+62154e0ad - depend on the elasticsearch output plugin &gt;= 10.4.2 (5 weeks ago) &lt;Colin Surprenant&gt;
+770d9b271 - remove plugin internal validation call (5 weeks ago) &lt;Colin Surprenant&gt;
+c73544f1e - reinstate x-pack.monitoring settings in logstash.yml (5 weeks ago) &lt;Joao Duarte&gt;
+65bca0ca6 - Review comments (5 weeks ago) &lt;Karen Metts&gt;
+cbc6209b7 - Remove new internal collection (5 weeks ago) &lt;Karen Metts&gt;
+5dbe95bfa - Incorporate review comments (5 weeks ago) &lt;Karen Metts&gt;
+cf890d0df - Add experimental tags for internal collection (5 weeks ago) &lt;Karen Metts&gt;
+beec172e2 - Remove known issue (5 weeks ago) &lt;Karen Metts&gt;
+252b71118 - API: avoid starting webserver when <code class="literal">http.enabled=false</code> (5 weeks ago) &lt;Ry Biesemeyer&gt;
+3fbe846b8 - [Doc]Release notes: Add known issue for monitoring settings (#11816) (#11821) (5 weeks ago) &lt;Karen Metts&gt;
+c0db7f435 - dont use qualifier or snapshot in logstash core version (5 weeks ago) &lt;Joao Duarte&gt;
+3962b05ac - Update benchmark.bat (5 weeks ago) &lt;André Letterer&gt;
+5a0e10b2a - Update pqrepair.bat (5 weeks ago) &lt;André Letterer&gt;
+9198afd36 - Update pqcheck.bat (5 weeks ago) &lt;André Letterer&gt;
+6bbf54ab4 - Update benchmark.bat (5 weeks ago) &lt;André Letterer&gt;
+ba89b217e - tools convert to batch files (#11753) (5 weeks ago) &lt;André Letterer&gt;
+e06d2195d - settings: deprecate unit-less TimeValue values (6 weeks ago) &lt;Ry Biesemeyer&gt;
+59e4ac8b8 - add proxy support (central management &amp; monitoring) (6 weeks ago) &lt;Laurent Huet&gt;
+33efbf387 - Update kafka version for integration tests. (6 weeks ago) &lt;Rob Bavey&gt;
+8b223093c - Release Notes for 7.7 (continued) (#11762) (#11805) (6 weeks ago) &lt;Karen Metts&gt;
+da7de67ed - More review comments (6 weeks ago) &lt;Karen Metts&gt;
+7b68aee7f - Incorporate review comments (6 weeks ago) &lt;Karen Metts&gt;
+b67ffceb5 - Doc updates for internal collectors (6 weeks ago) &lt;Karen Metts&gt;
+ee2d819d4 - Fix: cloud_id not propagating from monitoring config (6 weeks ago) &lt;Karol Bucek&gt;
+21b1ef531 - add rootProject.name (6 weeks ago) &lt;Joao Duarte&gt;
+54f5ac14f - update guava and httpclient dependencies (6 weeks ago) &lt;Joao Duarte&gt;
+28ae8fa21 - Add redirects page (6 weeks ago) &lt;Karen Metts&gt;
+6eebf24d5 - Fix typo in pipeline ordered description (6 weeks ago) &lt;Karen Metts&gt;
+dfe5cc5ee - Restructure monitoring docs to support new and legacy internal collectors (#11714) (6 weeks ago) &lt;Karen Metts&gt;
+ba7fd0ced - Handle Boolean Edges (7 weeks ago) &lt;Rob Bavey&gt;
+2e545c75e - Remove separator vertices and associated edges from serialized output (7 weeks ago) &lt;Rob Bavey&gt;
+a8fca3c07 - Change plugin name from java_sink to sink (7 weeks ago) &lt;Andres Rodriguez&gt;
+73a8808b1 - Update description in logstash.yml (7 weeks ago) &lt;Karen Metts&gt;
+3b4dd6c5a - Note that unit qualifier is required for config.reload.interval (7 weeks ago) &lt;Karen Metts&gt;
+c00c3da95 - Incorporate review comments (7 weeks ago) &lt;Rob Bavey&gt;
+d33195750 - Fix hard coded constraint on pipeline name for metrics (7 weeks ago) &lt;Rob Bavey&gt;
+a6c92efef - remove :cluster_uuids gauge (7 weeks ago) &lt;Joao Duarte&gt;
+f2701dc70 - performance: share a single secret store (7 weeks ago) &lt;Ry Biesemeyer&gt;
+085868595 - release notes script add version in plugin entries (7 weeks ago) &lt;Joao Duarte&gt;
+deeede982 - update benchmark cli dependencies (#11766) (7 weeks ago) &lt;João Duarte&gt;
+0eb2f54de - Update gradle version to 6.3 (#11742) (#11761) (7 weeks ago) &lt;Rob Bavey&gt;
+9b732a2cb - Incorporate review comments (8 weeks ago) &lt;Karen Metts&gt;
+0a4aa8b49 - Add guidelines for setting jvm heap size (8 weeks ago) &lt;Karen Metts&gt;
+f4b934914 - simplify batch classes, do not compute JE empty batches, refactor RE worker loop (#11746) (8 weeks ago) &lt;Colin Surprenant&gt;
+bd7d5b9b0 - Better wording thanks to Andrea Selva (8 weeks ago) &lt;Luca Belluccini&gt;
+9d789292f - Clarify behavior in case of PQ full &amp; isolator pattern (8 weeks ago) &lt;Luca Belluccini&gt;
+d56a0739d - Refactor: avoid array in case of single event (8 weeks ago) &lt;Karol Bucek&gt;
+85f0f87a3 - Update to release notes based on review (9 weeks ago) &lt;Rob Bavey&gt;
+448c9c653 - 7.6.2 Release notes (9 weeks ago) &lt;Rob Bavey&gt;
+0aae62ace - separate filter &amp; output execution, rebatch after filter when ordered (#11726) (9 weeks ago) &lt;Colin Surprenant&gt;
+baf60a984 - Updated: JRuby to 9.2.11.1 (9 weeks ago) &lt;Karol Bucek&gt;
+e77a2985c - Start dev cycle for 7.8.0 (9 weeks ago) &lt;andsel&gt;</p>
+</div>
+<div class="navfooter">
+<span class="prev">
+<a href="logstash-7-8-0.html">« Logstash 7.8.0 Release Notes</a>
+</span>
+<span class="next">
+<a href="_logstash_plugin_release_changelogs.html">Logstash Plugin Release Changelogs »</a>
+</span>
+</div>
+</div>
+</body>
+</html>
