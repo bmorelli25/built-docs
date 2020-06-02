@@ -1,5 +1,29 @@
-POST /multiplexer_example/_analyze
+PUT /my_index
 {
-  "analyzer" : "my_analyzer",
-  "text" : "Going HOME"
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer": {
+          "tokenizer": "standard",
+          "filter": [
+            "my_multiplexer_filter"
+          ]
+        }
+      },
+      "filter": {
+        "my_multiplexer_filter": {
+          "type": "multiplexer",
+          "filters": [
+            "uppercase",
+            "lowercase",
+            "lowercase, truncate_5_char"
+          ]
+        },
+        "truncate_5_char": {
+          "type": "multiplexer",
+          "length": 5
+        }
+      }
+    }
+  }
 }

@@ -132,165 +132,273 @@ Not what you want? See the
 <h2 class="title"><a id="analysis-multiplexer-tokenfilter"></a>Multiplexer token filter<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/analysis/tokenfilters/multiplexer-tokenfilter.asciidoc">edit</a></h2>
 </div></div></div>
 
-<p>A token filter of type <code class="literal">multiplexer</code> will emit multiple tokens at the same position,
-each version of the token having been run through a different filter.  Identical
-output tokens at the same position will be removed.</p>
+<p>Applies multiple sets of token filters to each token in a stream. The filter
+outputs a different version of the token for each set. By default, the filter
+also outputs the original version of the token.</p>
+<p>The <code class="literal">multiplexer</code> filter outputs each version of a token in the same position.
+The filter then removes any duplicate tokens in the same position.</p>
 <div class="warning admon">
 <div class="icon"></div>
 <div class="admon_content">
-<p>If the incoming token stream has duplicate tokens, then these will also be
-removed by the multiplexer</p>
+<p>This also removes duplicate tokens from the incoming token stream.</p>
 </div>
 </div>
-<h3><a id="_options_5"></a>Options<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/analysis/tokenfilters/multiplexer-tokenfilter.asciidoc">edit</a></h3>
-<div class="informaltable">
-<table border="0" cellpadding="4px">
-<colgroup>
-<col/>
-<col/>
-</colgroup>
-<tbody valign="top">
-<tr>
-<td valign="top">
-<p>
-filters
-</p>
-</td>
-<td valign="top">
-<p>
-a list of token filters to apply to incoming tokens.  These can be any
-token filters defined elsewhere in the index mappings.  Filters can be chained
-using a comma-delimited string, so for example <code class="literal">"lowercase, porter_stem"</code> would
-apply the <code class="literal">lowercase</code> filter and then the <code class="literal">porter_stem</code> filter to a single token.
-</p>
-</td>
-</tr>
-</tbody>
-</table>
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="analysis-multiplexer-tokenfilter-analyze-ex"></a>Example<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/analysis/tokenfilters/multiplexer-tokenfilter.asciidoc">edit</a></h3>
+</div></div></div>
+<p>The following <a class="xref" href="indices-analyze.html" title="Analyze API">analyze API</a> request uses the <code class="literal">multiplexer</code>
+filter to output stemmed and unstemmed tokens for <code class="literal">few foxes jumping quickly</code>.</p>
+<p>The <code class="literal">multiplexer</code> filter applies the following token filter sets to each
+token, outputting a different token version for each set:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+<a class="xref" href="analysis-lowercase-tokenfilter.html" title="Lowercase token filter"><code class="literal">lowercase</code></a>
+</li>
+<li class="listitem">
+<code class="literal">lowercase</code> followed by <a class="xref" href="analysis-porterstem-tokenfilter.html" title="Porter stem token filter"><code class="literal">porter_stem</code></a>
+</li>
+</ul>
 </div>
-<div class="warning admon">
-<div class="icon"></div>
-<div class="admon_content">
-<p>Shingle or multi-word synonym token filters will not function normally
-  when they are declared in the filters array because they read ahead internally
-  which is unsupported by the multiplexer</p>
-</div>
-</div>
-<div class="variablelist">
-<dl class="variablelist">
-<dt>
-<span class="term">
-preserve_original
-</span>
-</dt>
-<dd>
-if <code class="literal">true</code> (the default) then emit the original token in
-addition to the filtered tokens
-</dd>
-</dl>
-</div>
-<h3><a id="_settings_example"></a>Settings example<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/analysis/tokenfilters/multiplexer-tokenfilter.asciidoc">edit</a></h3>
-<p>You can set it up like:</p>
-<a id="c306212babadc14fa124b88fd8c43a6b"></a>
+<a id="a38d0e9c140d33526a6fcf897ed2d7a6"></a>
 <div class="pre_wrapper lang-console">
-<pre class="programlisting prettyprint lang-console">PUT /multiplexer_example
+<pre class="programlisting prettyprint lang-console">GET /_analyze
 {
-    "settings" : {
-        "analysis" : {
-            "analyzer" : {
-                "my_analyzer" : {
-                    "tokenizer" : "standard",
-                    "filter" : [ "my_multiplexer" ]
-                }
-            },
-            "filter" : {
-                "my_multiplexer" : {
-                    "type" : "multiplexer",
-                    "filters" : [ "lowercase", "lowercase, porter_stem" ]
-                }
-            }
-        }
+  "tokenizer": "whitespace",
+  "filter": [
+    {
+      "type": "multiplexer",
+      "filters" : [ "lowercase", "lowercase, porter_stem" ]
     }
+  ],
+  "text": "few foxes jumping Quickly"
 }</pre>
 </div>
 <div class="console_widget" data-snippet="snippets/932.console"></div>
-<p>And test it like:</p>
-<a id="fa9a3ef94470f3d9bd6500b65bf993d1"></a>
-<div class="pre_wrapper lang-console">
-<pre class="programlisting prettyprint lang-console">POST /multiplexer_example/_analyze
-{
-  "analyzer" : "my_analyzer",
-  "text" : "Going HOME"
-}</pre>
+<p>The filter produces the following tokens. Note:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+The output includes a single <code class="literal">few</code> token. None of the specified token filter
+sets changed the original <code class="literal">few</code> token, producing duplicate <code class="literal">few</code> tokens with a
+position of <code class="literal">0</code>. Because these duplicates were in the same position, the
+<code class="literal">multiplexer</code> filter removed them, leaving one in the output.
+</li>
+<li class="listitem">
+<p>The output includes three versions of the <code class="literal">Quickly</code> token:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+<code class="literal">Quickly</code>, the original version of the token
+</li>
+<li class="listitem">
+<code class="literal">quickly</code>, the lowercase, unstemmed version of the token
+</li>
+<li class="listitem">
+<code class="literal">quickli</code>, the lowercase, stemmed version of the token
+</li>
+</ul>
 </div>
-<div class="console_widget" data-snippet="snippets/933.console"></div>
-<p>And it&#8217;d respond:</p>
-<a id="3b7cbf575fe4305af42563b9046ca3be"></a>
+</li>
+</ul>
+</div>
+<div class="pre_wrapper lang-text">
+<pre class="programlisting prettyprint lang-text">[ few, foxes, fox, jumping, jump, Quickly, quickly, quickli ]</pre>
+</div>
+<p>The API response contains the position of each token. Note that stemmed and
+unstemmed versions of each token are in the same position. For example, <code class="literal">foxes</code>
+and <code class="literal">fox</code> both have a <code class="literal">position</code> of <code class="literal">1</code>.</p>
+<details>
+<summary class="title"><span class="strong strong"><strong>Response</strong></span></summary>
+<div class="content">
+<a id="a0fc493340bc5280b89fc6820e1e9645"></a>
 <div class="pre_wrapper lang-console-result">
 <pre class="programlisting prettyprint lang-console-result">{
-  "tokens": [
+  "tokens" : [
     {
-      "token": "Going",
-      "start_offset": 0,
-      "end_offset": 5,
-      "type": "&lt;ALPHANUM&gt;",
-      "position": 0
+      "token" : "few",
+      "start_offset" : 0,
+      "end_offset" : 3,
+      "type" : "word",
+      "position" : 0
     },
     {
-      "token": "going",
-      "start_offset": 0,
-      "end_offset": 5,
-      "type": "&lt;ALPHANUM&gt;",
-      "position": 0
+      "token" : "foxes",
+      "start_offset" : 4,
+      "end_offset" : 9,
+      "type" : "word",
+      "position" : 1
     },
     {
-      "token": "go",
-      "start_offset": 0,
-      "end_offset": 5,
-      "type": "&lt;ALPHANUM&gt;",
-      "position": 0
+      "token" : "fox",
+      "start_offset" : 4,
+      "end_offset" : 9,
+      "type" : "word",
+      "position" : 1
     },
     {
-      "token": "HOME",
-      "start_offset": 6,
-      "end_offset": 10,
-      "type": "&lt;ALPHANUM&gt;",
-      "position": 1
+      "token" : "jumping",
+      "start_offset" : 10,
+      "end_offset" : 17,
+      "type" : "word",
+      "position" : 2
     },
     {
-      "token": "home",          <a id="CO414-1"></a><i class="conum" data-value="1"></i>
-      "start_offset": 6,
-      "end_offset": 10,
-      "type": "&lt;ALPHANUM&gt;",
-      "position": 1
+      "token" : "jump",
+      "start_offset" : 10,
+      "end_offset" : 17,
+      "type" : "word",
+      "position" : 2
+    },
+    {
+      "token" : "Quickly",
+      "start_offset" : 18,
+      "end_offset" : 25,
+      "type" : "word",
+      "position" : 3
+    },
+    {
+      "token" : "quickly",
+      "start_offset" : 18,
+      "end_offset" : 25,
+      "type" : "word",
+      "position" : 3
+    },
+    {
+      "token" : "quickli",
+      "start_offset" : 18,
+      "end_offset" : 25,
+      "type" : "word",
+      "position" : 3
     }
   ]
 }</pre>
 </div>
-<div class="calloutlist">
-<table border="0" summary="Callout list">
-<tr>
-<td align="left" valign="top" width="5%">
-<p><a href="#CO414-1"><i class="conum" data-value="1"></i></a></p>
-</td>
-<td align="left" valign="top">
-<p>The stemmer has also emitted a token <code class="literal">home</code> at position 1, but because it is a
-duplicate of this token it has been removed from the token stream</p>
-</td>
-</tr>
-</table>
 </div>
+</details>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="analysis-multiplexer-tokenfilter-configure-parms"></a>Configurable parameters<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/analysis/tokenfilters/multiplexer-tokenfilter.asciidoc">edit</a></h3>
+</div></div></div>
+<div class="variablelist">
+<dl class="variablelist">
+<dt>
+<span class="term">
+<code class="literal">filters</code>
+</span>
+</dt>
+<dd>
+<p>
+(Required, array of strings)
+An array of token filter sets to apply. You can specify built-in token filters
+or custom filters defined in the analyzer configuration.
+</p>
+<p>Each string in the array represents a set of token filters. Within each string,
+you can specify multiple filters in order using a comma delimiter. For example,
+a string of <code class="literal">"trim, reverse"</code> applies the <a class="xref" href="analysis-trim-tokenfilter.html" title="Trim token filter"><code class="literal">trim</code></a>
+filter followed by the <a class="xref" href="analysis-reverse-tokenfilter.html" title="Reverse token filter"><code class="literal">reverse</code></a> filter.</p>
+<div class="warning admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>Shingle or multi-word synonym token filters specified in the <code class="literal">filters</code>
+parameter will not function normally. These filters read ahead internally, which
+is not supported by the <code class="literal">multiplexer</code> filter.</p>
+</div>
+</div>
+</dd>
+<dt>
+<span class="term">
+<code class="literal">preserve_original</code>
+</span>
+</dt>
+<dd>
+(Optional, boolean)
+If <code class="literal">true</code>, the filter includes the original input version of each token in the
+output. Defaults to <code class="literal">true</code>.
+</dd>
+</dl>
+</div>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="analysis-multiplexer-tokenfilter-customize"></a>Customize and add to an analyzer<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/analysis/tokenfilters/multiplexer-tokenfilter.asciidoc">edit</a></h3>
+</div></div></div>
+<p>To customize the <code class="literal">multiplexer</code> filter, duplicate it to create the basis
+for a new custom token filter. You can modify the filter using its configurable
+parameters.</p>
 <div class="note admon">
 <div class="icon"></div>
 <div class="admon_content">
-<p>The synonym and synonym_graph filters use their preceding analysis chain to
-parse and analyse their synonym lists, and will throw an exception if that chain
-contains token filters that produce multiple tokens at the same position.
-If you want to apply synonyms to a token stream containing a multiplexer, then you
-should append the synonym filter to each relevant multiplexer filter list, rather than
-placing it after the multiplexer in the main token chain definition.</p>
+<p>Avoid adding the <code class="literal">multiplexer</code> filter before
+<a class="xref" href="analysis-synonym-tokenfilter.html" title="Synonym token filter"><code class="literal">synonym</code></a> or
+<a class="xref" href="analysis-synonym-graph-tokenfilter.html" title="Synonym graph token filter"><code class="literal">synonym_graph</code></a> filters in an analyzer
+configuration. Instead, append the synonym filter to the relevant token filter
+sets using the <code class="literal">filters</code> parameter.</p>
+<p>Synonym filters use the preceding analysis chain to parse and analyze
+synonyms. If a previous token filter produces multiple tokens in the same
+position, these filters return an error.</p>
 </div>
 </div>
+<p>For example, the following <a class="xref" href="indices-create-index.html" title="Create index API">create index API</a> request
+configures a new <a class="xref" href="analysis-custom-analyzer.html" title="Create a custom analyzer">custom analyzer</a> using a custom
+<code class="literal">multiplexer</code> filter, <code class="literal">my_multiplexer_filter</code>.</p>
+<p>The <code class="literal">my_multiplexer_filter</code> filter applies the following token filter sets to
+each token, outputting a different version of the token for each set:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+<a class="xref" href="analysis-uppercase-tokenfilter.html" title="Uppercase token filter"><code class="literal">uppercase</code></a>
+</li>
+<li class="listitem">
+<a class="xref" href="analysis-lowercase-tokenfilter.html" title="Lowercase token filter"><code class="literal">lowercase</code></a>
+</li>
+<li class="listitem">
+<code class="literal">lowercase</code> followed by <code class="literal">truncate_5_char</code>, a custom
+<a class="xref" href="analysis-truncate-tokenfilter.html" title="Truncate token filter"><code class="literal">truncate</code></a> token filter that shortens tokens
+to five characters or fewer. <code class="literal">truncate_5_char</code> is defined in the analyzer
+configuration.
+</li>
+</ul>
+</div>
+<a id="427a5df93f53b20c4ec621744f67739b"></a>
+<div class="pre_wrapper lang-console">
+<pre class="programlisting prettyprint lang-console">PUT /my_index
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer": {
+          "tokenizer": "standard",
+          "filter": [
+            "my_multiplexer_filter"
+          ]
+        }
+      },
+      "filter": {
+        "my_multiplexer_filter": {
+          "type": "multiplexer",
+          "filters": [
+            "uppercase",
+            "lowercase",
+            "lowercase, truncate_5_char"
+          ]
+        },
+        "truncate_5_char": {
+          "type": "multiplexer",
+          "length": 5
+        }
+      }
+    }
+  }
+}</pre>
+</div>
+<div class="console_widget" data-snippet="snippets/933.console"></div>
+</div>
+
 </div>
 <div class="navfooter">
 <span class="prev">
