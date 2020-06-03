@@ -1,4 +1,4 @@
-POST /_scripts/convert_currency
+POST /_script/convert_currency
 {
   "script": {
     "lang": "painless",

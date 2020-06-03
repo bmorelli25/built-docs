@@ -269,14 +269,14 @@ by a string instead of an object. This string contains the source of the script.
 </div>
 <h3><a id="modules-scripting-stored-scripts"></a>Stored scripts<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/scripting/using.asciidoc">edit</a></h3>
 <p>Scripts may be stored in and retrieved from the cluster state using the
-<code class="literal">_scripts</code> end-point.</p>
+<code class="literal">_script</code> end-point.</p>
 <h4><a id="_request_examples"></a>Request examples<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/scripting/using.asciidoc">edit</a></h4>
 <p>The following are examples of using a stored script that lives at
-<code class="literal">/_scripts/{id}</code>.</p>
+<code class="literal">/_script/{id}</code>.</p>
 <p>First, create the script called <code class="literal">calculate-score</code> in the cluster state:</p>
-<a id="40a2bbc35a887d6c7dda3cca1fe7aa58"></a>
+<a id="9cc5680d1f1999bd4f64fc49a18e40cc"></a>
 <div class="pre_wrapper lang-console">
-<pre class="programlisting prettyprint lang-console">POST _scripts/calculate-score
+<pre class="programlisting prettyprint lang-console">POST _script/calculate-score
 {
   "script": {
     "lang": "painless",
@@ -287,10 +287,10 @@ by a string instead of an object. This string contains the source of the script.
 <div class="console_widget" data-snippet="snippets/578.console"></div>
 <p>You may also specify a context as part of the url path to compile a
 stored script against that specific context in the form of
-<code class="literal">/_scripts/{id}/{context}</code>:</p>
-<a id="548a09b4630ae38cf8af33581ae614e6"></a>
+<code class="literal">/_script/{id}/{context}</code>:</p>
+<a id="72ac2a55645f865a9a6ea158ca5dc734"></a>
 <div class="pre_wrapper lang-console">
-<pre class="programlisting prettyprint lang-console">POST _scripts/calculate-score/score
+<pre class="programlisting prettyprint lang-console">POST _script/calculate-score/score
 {
   "script": {
     "lang": "painless",
@@ -300,9 +300,9 @@ stored script against that specific context in the form of
 </div>
 <div class="console_widget" data-snippet="snippets/579.console"></div>
 <p>This same script can be retrieved with:</p>
-<a id="08e08feb514b24006e13f258d617d873"></a>
+<a id="e0db0b30ca32d70f949b31bccaf748ad"></a>
 <div class="pre_wrapper lang-console">
-<pre class="programlisting prettyprint lang-console">GET _scripts/calculate-score</pre>
+<pre class="programlisting prettyprint lang-console">GET _script/calculate-score</pre>
 </div>
 <div class="console_widget" data-snippet="snippets/580.console"></div>
 <p>Stored scripts can be used by specifying the <code class="literal">id</code> parameters as follows:</p>
@@ -329,13 +329,13 @@ stored script against that specific context in the form of
 </div>
 <div class="console_widget" data-snippet="snippets/581.console"></div>
 <p>And deleted with:</p>
-<a id="4061fd5ba7221ca85805ed14d59a6bc5"></a>
+<a id="371cd6863a225016d884a3b8eda3bc61"></a>
 <div class="pre_wrapper lang-console">
-<pre class="programlisting prettyprint lang-console">DELETE _scripts/calculate-score</pre>
+<pre class="programlisting prettyprint lang-console">DELETE _script/calculate-score</pre>
 </div>
 <div class="console_widget" data-snippet="snippets/582.console"></div>
 <h3><a id="modules-scripting-search-templates"></a>Search templates<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/scripting/using.asciidoc">edit</a></h3>
-<p>You can also use the <code class="literal">_scripts</code> API to store <span class="strong strong"><strong>search templates</strong></span>. Search
+<p>You can also use the <code class="literal">_script</code> API to store <span class="strong strong"><strong>search templates</strong></span>. Search
 templates save specific <a class="xref" href="search-search.html" title="Search API">search requests</a> with placeholder
 values, called template parameters.</p>
 <p>You can use stored search templates to run searches without writing out the

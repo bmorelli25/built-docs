@@ -13,7 +13,7 @@ PUT /my-index
 }
 
 
-POST /_scripts/painless/_execute
+POST /_script/painless/_execute
 {
   "script": {
     "source": "doc['rank'].value / params.max_rank",

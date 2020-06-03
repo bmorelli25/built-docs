@@ -1,4 +1,4 @@
-POST /_scripts/painless/_execute
+POST /_script/painless/_execute
 {
   "script": {
     "source": "params.count / params.total",

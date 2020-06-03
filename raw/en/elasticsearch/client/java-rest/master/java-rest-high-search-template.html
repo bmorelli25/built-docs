@@ -105,7 +105,7 @@ as a string because mustache templates are not always valid JSON.</p>
 the stored scripts API is not yet available in the high-level REST client, so in this
 example we use the low-level REST client.</p>
 <div class="pre_wrapper lang-java">
-<pre class="programlisting prettyprint lang-java">Request scriptRequest = new Request("POST", "_scripts/title_search");
+<pre class="programlisting prettyprint lang-java">Request scriptRequest = new Request("POST", "_script/title_search");
 scriptRequest.setJsonEntity(
     "{" +
     "  \"script\": {" +

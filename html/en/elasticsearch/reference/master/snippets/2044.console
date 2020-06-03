@@ -1,4 +1,4 @@
-POST /_scripts/my_template_1
+POST /_script/my_template_1
 {
     "script": {
         "lang": "mustache",

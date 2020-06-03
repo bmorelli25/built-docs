@@ -1,4 +1,4 @@
-POST _scripts/calculate-score
+POST _script/calculate-score
 {
   "script": {
     "lang": "painless",

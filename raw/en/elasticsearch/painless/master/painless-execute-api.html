@@ -101,7 +101,7 @@ If no context is specified then this context is used by default.</p>
 <p><span class="strong strong"><strong>Example</strong></span></p>
 <p>Request:</p>
 <div class="pre_wrapper lang-console">
-<pre class="programlisting prettyprint lang-console">POST /_scripts/painless/_execute
+<pre class="programlisting prettyprint lang-console">POST /_script/painless/_execute
 {
   "script": {
     "source": "params.count / params.total",
@@ -163,7 +163,7 @@ The name of an index containing a mapping that is compatible with the document b
   }
 }
 
-POST /_scripts/painless/_execute
+POST /_script/painless/_execute
 {
   "script": {
     "source": "doc['field'].value.length() &lt;= params.max_length",
@@ -241,7 +241,7 @@ If <code class="literal">_score</code> is used in the script then a query can sp
 }
 
 
-POST /_scripts/painless/_execute
+POST /_script/painless/_execute
 {
   "script": {
     "source": "doc['rank'].value / params.max_rank",

@@ -250,7 +250,7 @@ it failed.</p>
 <p>A typical listener for <code class="literal">DeleteStoredScriptResponse</code> looks like:</p>
 <div class="pre_wrapper lang-java">
 <pre class="programlisting prettyprint lang-java">ActionListener&lt;AcknowledgedResponse&gt; listener =
-    new ActionListener&lt;AcknowledgedResponse&gt;() {
+    new ActionListener&lt;&gt;() {
         @Override
         public void onResponse(AcknowledgedResponse response) {
             <a id="CO733-1"></a><i class="conum" data-value="1"></i>

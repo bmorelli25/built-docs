@@ -9,7 +9,7 @@ PUT /my-index
   }
 }
 
-POST /_scripts/painless/_execute
+POST /_script/painless/_execute
 {
   "script": {
     "source": "doc['field'].value.length() <= params.max_length",

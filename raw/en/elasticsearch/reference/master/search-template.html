@@ -308,9 +308,9 @@ prefixed by their respective types in the response. Defaults to <code class="lit
 <h4 class="title"><a id="pre-registered-templates"></a>Store a search template<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/search/search-template.asciidoc">edit</a></h4>
 </div></div></div>
 <p>You can store a search template using the stored scripts API.</p>
-<a id="b19dc078255bfa1237206913ae94012f"></a>
+<a id="8e890a9a3839cc8c721a2c90fa18baa7"></a>
 <div class="pre_wrapper lang-console">
-<pre class="programlisting prettyprint lang-console">POST _scripts/&lt;templateid&gt;
+<pre class="programlisting prettyprint lang-console">POST _script/&lt;templateid&gt;
 {
     "script": {
         "lang": "mustache",
@@ -326,30 +326,28 @@ prefixed by their respective types in the response. Defaults to <code class="lit
 </div>
 <div class="console_widget" data-snippet="snippets/1999.console"></div>
 <p>The template can be retrieved by calling</p>
-<a id="e51c88800679913981757542bc639816"></a>
+<a id="b6029358396f142b942fca686558bdbd"></a>
 <div class="pre_wrapper lang-console">
-<pre class="programlisting prettyprint lang-console">GET _scripts/&lt;templateid&gt;</pre>
+<pre class="programlisting prettyprint lang-console">GET _script/&lt;templateid&gt;?new_format=true</pre>
 </div>
 <div class="console_widget" data-snippet="snippets/2000.console"></div>
 <p>The API returns the following result:</p>
-<a id="f3f8f542b19e2e32b38274df21e74c43"></a>
+<a id="b34a9d3f4f7ba3e1ba43016dd9812ee0"></a>
 <div class="pre_wrapper lang-console-result">
 <pre class="programlisting prettyprint lang-console-result">{
-    "script" : {
+    "&lt;templateid&gt;" : {
         "lang" : "mustache",
         "source" : "{\"query\":{\"match\":{\"title\":\"{{query_string}}\"}}}",
         "options": {
           "content_type" : "application/json; charset=UTF-8"
         }
-    },
-    "_id": "&lt;templateid&gt;",
-    "found": true
+    }
 }</pre>
 </div>
 <p>This template can be deleted by calling</p>
-<a id="ed639528456671b302ecc887f5a60987"></a>
+<a id="c379eed9e16c54361060fab713f5b76a"></a>
 <div class="pre_wrapper lang-console">
-<pre class="programlisting prettyprint lang-console">DELETE _scripts/&lt;templateid&gt;</pre>
+<pre class="programlisting prettyprint lang-console">DELETE _script/&lt;templateid&gt;</pre>
 </div>
 <div class="console_widget" data-snippet="snippets/2001.console"></div>
 </div>
