@@ -3,22 +3,22 @@
     "total": 2693,
     "alternatives": {
       "php": {
-        "found": 174
+        "found": 172
       },
       "csharp": {
-        "found": 360
+        "found": 358
       },
       "python": {
-        "found": 289
+        "found": 287
       },
       "ruby": {
-        "found": 309
+        "found": 307
       },
       "go": {
-        "found": 295
+        "found": 293
       },
       "js": {
-        "found": 298
+        "found": 296
       }
     }
   }
