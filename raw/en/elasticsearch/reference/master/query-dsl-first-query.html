@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>First query | Elasticsearch Reference [master] | Elastic</title>
+<link rel="home" href="index.html" title="Elasticsearch Reference [master]"/>
+<link rel="up" href="compound-queries.html" title="Compound queries"/>
+<link rel="prev" href="query-dsl-dis-max-query.html" title="Disjunction max query"/>
+<link rel="next" href="query-dsl-function-score-query.html" title="Function score query"/>
+<meta name="DC.type" content="Learn/Docs/Elasticsearch/Reference/master"/>
+<meta name="DC.subject" content="Elasticsearch"/>
+<meta name="DC.identifier" content="master"/>
+</head>
+<body><div class="page_header">
+You are looking at preliminary documentation for a future release.
+Not what you want? See the
+<a href="../current/index.html">current release documentation</a>.
+</div>
+<div id="content">
+<div class="breadcrumbs">
+<span class="breadcrumb-link"><a href="index.html">Elasticsearch Reference [master]</a></span>
+»
+<span class="breadcrumb-link"><a href="query-dsl.html">Query DSL</a></span>
+»
+<span class="breadcrumb-link"><a href="compound-queries.html">Compound queries</a></span>
+»
+<span class="breadcrumb-node">First query</span>
+</div>
+<div class="navheader">
+<span class="prev">
+<a href="query-dsl-dis-max-query.html">« Disjunction max query</a>
+</span>
+<span class="next">
+<a href="query-dsl-function-score-query.html">Function score query »</a>
+</span>
+</div>
+<div class="section">
+<div class="titlepage"><div><div>
+<h2 class="title"><a id="query-dsl-first-query"></a>First query<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/query-dsl/first-query.asciidoc">edit</a></h2>
+</div></div></div>
+
+<p>Returns documents matching any of wrapped queries and computes
+the documents' scores by the first matching query.</p>
+<p>Similarly to <a class="xref" href="query-dsl-bool-query.html" title="Boolean query"><code class="literal">bool</code>
+query&#8217;s</a> <code class="literal">should</code> option, <code class="literal">first</code> query returns the union of all documents
+matching any of the provided queries. Unlike, <a class="xref" href="query-dsl-bool-query.html" title="Boolean query"><code class="literal">bool</code>
+query&#8217;s</a> <code class="literal">should</code> option that sums up the scores from the matching queries,
+<code class="literal">first</code> query applies only the score from the first matching query.</p>
+<p><code class="literal">first</code> query presents a custom scoring logic. It is useful in
+a situation when you have an ordered list of queries (serving as
+priorities in your domain), and you want documents that match the first
+query to be ranked higher than documents that match the second query, which
+in their turn should ranked higher than documents that match the third
+query etc. This could be addressed with <code class="literal">first</code> query containing
+a list of queries with appropriate boosts, as in an example below.</p>
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="query-dsl-first-request"></a>Example request<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/query-dsl/first-query.asciidoc">edit</a></h3>
+</div></div></div>
+<div class="section">
+<div class="titlepage"><div><div>
+<h4 class="title"><a id="first-index-setup"></a>Index setup<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/query-dsl/first-query.asciidoc">edit</a></h4>
+</div></div></div>
+<p>Create an <code class="literal">job_applicants</code> index and index several documents to this index.</p>
+<a id="ac08856b38338b99f982ba33a1138a3a"></a>
+<div class="pre_wrapper lang-console">
+<pre class="programlisting prettyprint lang-console">PUT /job_applicants
+{
+  "mappings": {
+    "properties": {
+      "skills": {
+        "type": "keyword"
+      }
+    }
+  }
+}
+PUT /job_applicants/_doc/1?refresh
+{
+  "skills" : "Java"
+}
+PUT /job_applicants/_doc/2?refresh
+{
+  "skills" : "Scala"
+}
+
+PUT /job_applicants/_doc/3?refresh
+{
+  "skills" : ["Java", "Scala"]
+}</pre>
+</div>
+<div class="console_widget" data-snippet="snippets/99.console"></div>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h4 class="title"><a id="first--query-ex-query"></a>Example query<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/query-dsl/first-query.asciidoc">edit</a></h4>
+</div></div></div>
+<p>The query below scores documents by the first matching query.
+The query assigns the same score of <code class="literal">10</code> to applicants with a Java skill,
+regardless of them having any additional skills (matching other queries).
+Applicants that are missing a Java skill, but possess a Scala skill are assigned
+a lesser score of <code class="literal">5</code>.</p>
+<a id="3c222cd5fd0a8307aee1c479fec10909"></a>
+<div class="pre_wrapper lang-console">
+<pre class="programlisting prettyprint lang-console">GET /job_applicants/_search
+{
+    "query": {
+      "first": {
+        "queries": [
+          {
+            "constant_score": {
+              "filter": {
+                "term": { "skills": "Java"}
+              },
+              "boost": "10.0"
+            }
+          },
+          {
+            "constant_score": {
+              "filter": {
+                "term": {"skills": "Scala" }
+              },
+              "boost":"5.0"
+            }
+          }
+        ]
+      }
+    }
+}</pre>
+</div>
+<div class="console_widget" data-snippet="snippets/100.console"></div>
+<p>This returns the following response:</p>
+<a id="8df840a03cfc185414abe7ff36fa5529"></a>
+<div class="pre_wrapper lang-console-result">
+<pre class="programlisting prettyprint lang-console-result">{
+    "took": 3,
+    "timed_out": false,
+    "_shards": ...,
+    "hits" : {
+        "total" : {
+            "value": 3,
+            "relation": "eq"
+        },
+        "max_score": 10.0,
+        "hits": [
+            {
+                "_index": "job_applicants",
+                "_id": "1",
+                "_score": 10.0,
+                "_source": {
+                    "skills": "Java"
+                }
+            },
+            {
+                "_index": "job_applicants",
+                "_id": "3",
+                "_score": 10.0,
+                "_source": {
+                    "skills": [
+                        "Java",
+                        "Scala"
+                    ]
+                }
+            },
+            {
+                "_index": "job_applicants",
+                "_id": "2",
+                "_score": 5.0,
+                "_source": {
+                    "skills": "Scala"
+                }
+            }
+        ]
+    }
+}</pre>
+</div>
+</div>
+
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="query-dsl-first-query-top-level-params"></a>Top-level parameters for <code class="literal">first</code><a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/query-dsl/first-query.asciidoc">edit</a></h3>
+</div></div></div>
+<div class="variablelist">
+<dl class="variablelist">
+<dt>
+<span class="term">
+<code class="literal">queries</code>
+</span>
+</dt>
+<dd>
+(Required, array of query objects) Contains one or more query clauses. Returned
+documents <span class="strong strong"><strong>must match one or more</strong></span> of these queries. If a document matches
+multiple queries, Elasticsearch applies the score from the first matching query.
+</dd>
+<dt>
+<span class="term">
+<code class="literal">boost</code>
+</span>
+</dt>
+<dd>
+(Optional, float) Floating point number by which the first matching query&#8217;s
+score is multiplied to produce a final document&#8217;s score. Defaults to <code class="literal">1.0</code>.
+</dd>
+</dl>
+</div>
+</div>
+
+</div>
+<div class="navfooter">
+<span class="prev">
+<a href="query-dsl-dis-max-query.html">« Disjunction max query</a>
+</span>
+<span class="next">
+<a href="query-dsl-function-score-query.html">Function score query »</a>
+</span>
+</div>
+</div>
+</body>
+</html>

@@ -1,11 +1,23 @@
-GET /_search
+PUT /job_applicants
 {
-    "query": {
-        "function_score": {
-            "query": { "match_all": {} },
-            "boost": "5",
-            "random_score": {},
-            "boost_mode":"multiply"
-        }
+  "mappings": {
+    "properties": {
+      "skills": {
+        "type": "keyword"
+      }
     }
+  }
+}
+PUT /job_applicants/_doc/1?refresh
+{
+  "skills" : "Java"
+}
+PUT /job_applicants/_doc/2?refresh
+{
+  "skills" : "Scala"
+}
+
+PUT /job_applicants/_doc/3?refresh
+{
+  "skills" : ["Java", "Scala"]
 }

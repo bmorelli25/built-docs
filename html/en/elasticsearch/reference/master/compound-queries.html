@@ -176,6 +176,17 @@ matching query clause.
 </dd>
 <dt>
 <span class="term">
+<a class="xref" href="query-dsl-first-query.html" title="First query"><code class="literal">first</code> query</a>
+</span>
+</dt>
+<dd>
+A query which accepts multiple queries, and returns any documents which match
+any of the query clauses.  While the <code class="literal">bool</code> query combines the scores from all
+matching queries, the <code class="literal">first</code> query uses the score of the first
+matching query clause.
+</dd>
+<dt>
+<span class="term">
 <a class="xref" href="query-dsl-function-score-query.html" title="Function score query"><code class="literal">function_score</code> query</a>
 </span>
 </dt>
@@ -186,6 +197,7 @@ implemented with scripting.
 </dd>
 </dl>
 </div>
+
 
 
 
