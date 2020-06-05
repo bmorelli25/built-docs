@@ -39,92 +39,290 @@ Not what you want? See the
 <h2 class="title"><a id="analysis-stemmer-override-tokenfilter"></a>Stemmer override token filter<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/analysis/tokenfilters/stemmer-override-tokenfilter.asciidoc">edit</a></h2>
 </div></div></div>
 
-<p>Overrides stemming algorithms, by applying a custom mapping, then
-protecting these terms from being modified by stemmers. Must be placed
-before any stemming filters.</p>
-<p>Rules are mappings in the form of <code class="literal">token1[, ..., tokenN] =&gt; override</code>.</p>
-<div class="informaltable">
-<table border="1" cellpadding="4px">
-<colgroup>
-<col class="col_1"/>
-<col class="col_2"/>
-</colgroup>
-<thead>
-<tr>
-<th align="left" valign="top">Setting</th>
-<th align="left" valign="top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left" valign="top"><p><code class="literal">rules</code></p></td>
-<td align="left" valign="top"><p>A list of mapping rules to use.</p></td>
-</tr>
-<tr>
-<td align="left" valign="top"><p><code class="literal">rules_path</code></p></td>
-<td align="left" valign="top"><p>A path (either relative to <code class="literal">config</code> location, or
-absolute) to a list of mappings.</p></td>
-</tr>
-</tbody>
-</table>
+<p>Stems tokens based on a list of custom mapping rules. Mapping rules are
+formatted as <code class="literal">&lt;token1&gt;[,..., &lt;tokenN&gt;] =&gt; &lt;override&gt;</code>.</p>
+<p>The <code class="literal">stemmer_override</code> filter then assigns these stemmed tokens a <code class="literal">keyword</code>
+attribute of <code class="literal">true</code>. These keyword tokens are not stemmed by later stemmer
+filters, such as <a class="xref" href="analysis-stemmer-tokenfilter.html" title="Stemmer token filter"><code class="literal">stemmer</code></a> or
+<a class="xref" href="analysis-porterstem-tokenfilter.html" title="Porter stem token filter"><code class="literal">porter_stem</code></a>.</p>
+<div class="important admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>The <code class="literal">stemmer_override</code> token filter is often used to override other stemmer
+filters. To do this properly, the <code class="literal">stemmer_override</code> filter must be listed
+before any stemmer token filters in the <a class="xref" href="analysis-custom-analyzer.html" title="Create a custom analyzer">analyzer
+configuration</a>.</p>
+<p>We also recommend you list the <a class="xref" href="analysis-lowercase-tokenfilter.html" title="Lowercase token filter"><code class="literal">lowercase</code></a>
+token filter before the <code class="literal">stemmer_override</code> filter in the analyzer configuration.
+Many stemmer filters require lowercase tokens.</p>
 </div>
-<p>Here is an example:</p>
-<a id="8995e7cf49c4d870aea334645b70ed13"></a>
+</div>
+<p>The <code class="literal">stemmer_override</code> filter uses Lucene&#8217;s
+<a href="https://lucene.apache.org/core/8_6_0/analyzers-common/org/apache/lucene/analysis/miscellaneous/StemmerOverrideFilter.html" class="ulink" target="_top">StemmerOverrideFilter</a>.</p>
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="analysis-stemmer-override-analyze-ex"></a>Example<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/analysis/tokenfilters/stemmer-override-tokenfilter.asciidoc">edit</a></h3>
+</div></div></div>
+<p>To see how the <code class="literal">stemmer_override</code> filter works, you first need to produce a
+token stream containing stemmed tokens from another stemmer filter.</p>
+<p>The following <a class="xref" href="indices-analyze.html" title="Analyze API">analyze API</a> request uses the <code class="literal">porter_stem</code>
+filter to create stemmed tokens for <code class="literal">the foxes jumping quickly</code>.</p>
+<a id="0d54ddad2bf6f76aa5c35f53ba77748a"></a>
 <div class="pre_wrapper lang-console">
-<pre class="programlisting prettyprint lang-console">PUT /my_index
+<pre class="programlisting prettyprint lang-console">GET /_analyze
 {
-    "settings": {
-        "analysis" : {
-            "analyzer" : {
-                "my_analyzer" : {
-                    "tokenizer" : "standard",
-                    "filter" : ["lowercase", "custom_stems", "porter_stem"]
-                }
-            },
-            "filter" : {
-                "custom_stems" : {
-                    "type" : "stemmer_override",
-                    "rules_path" : "analysis/stemmer_override.txt"
-                }
-            }
-        }
-    }
+  "tokenizer": "standard",
+  "filter": [ "porter_stem" ],
+  "text": "the foxes jumping quickly"
 }</pre>
 </div>
 <div class="console_widget" data-snippet="snippets/962.console"></div>
-<p>Where the file looks like:</p>
+<p>The filter produces the following tokens:</p>
+<div class="pre_wrapper lang-text">
+<pre class="programlisting prettyprint lang-text">[ the, fox, jump, quickli ]</pre>
+</div>
+<p>To stem <code class="literal">quickli</code> to <code class="literal">quick</code> instead of <code class="literal">quickli</code> , add the <code class="literal">stemmer_override</code>
+filter before the <code class="literal">porter_stem</code> filter in the previous analyze API request.
+Specify a custom mapping rule of <code class="literal">quickly =&gt; quick</code> in the <code class="literal">stemmer_override</code>
+filter&#8217;s <code class="literal">rules</code> parameter.</p>
+<a id="50d4305cd70b48355ab749d87ecaaaf6"></a>
+<div class="pre_wrapper lang-console">
+<pre class="programlisting prettyprint lang-console">GET /_analyze
+{
+  "tokenizer": "standard",
+  "filter": [
+    {
+      "type": "stemmer_override",
+      "rules": [
+        "quickly =&gt; quick"
+      ]
+    },
+    "porter_stem"
+  ],
+  "text": "the foxes jumping quickly"
+}</pre>
+</div>
+<div class="console_widget" data-snippet="snippets/963.console"></div>
+<p>The request produces the following tokens. <code class="literal">foxes</code> is still stemmed to <code class="literal">fox</code>,
+but <code class="literal">quickly</code> is now stemmed to <code class="literal">quick</code>.</p>
+<div class="pre_wrapper lang-text">
+<pre class="programlisting prettyprint lang-text">[ the, fox, jump, quick ]</pre>
+</div>
+<p>To see the <code class="literal">keyword</code> attribute for these tokens, add the following arguments to
+the analyze API request:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+<code class="literal">explain</code>: <code class="literal">true</code>
+</li>
+<li class="listitem">
+<code class="literal">attributes</code>: <code class="literal">keyword</code>
+</li>
+</ul>
+</div>
+<a id="ad7a6a6cc612cbe237befdad7191651f"></a>
+<div class="pre_wrapper lang-console">
+<pre class="programlisting prettyprint lang-console">GET /_analyze
+{
+  "tokenizer": "standard",
+  "filter": [
+    {
+      "type": "stemmer_override",
+      "rules": [
+        "quickly =&gt; quick"
+      ]
+    },
+    "porter_stem"
+  ],
+  "text": "the foxes jumping quickly",
+  "explain": true,
+  "attributes": "keyword"
+}</pre>
+</div>
+<div class="console_widget" data-snippet="snippets/964.console"></div>
+<p>The API returns the following response. Note the <code class="literal">quick</code> token has a
+<code class="literal">keyword</code> attribute of <code class="literal">true</code>.</p>
+<details>
+<summary class="title"><span class="strong strong"><strong>Response</strong></span></summary>
+<div class="content">
+<a id="afebc61fb95bad1137352c4169efd6c2"></a>
+<div class="pre_wrapper lang-console-result">
+<pre class="programlisting prettyprint lang-console-result">{
+  "detail": {
+    "custom_analyzer": true,
+    "charfilters": [],
+    "tokenizer": ...,
+    "tokenfilters": [
+      {
+        "name": "__anonymous__stemmer_override",
+        "tokens": [
+          {
+            "token": "the",
+            "start_offset": 0,
+            "end_offset": 3,
+            "type": "&lt;ALPHANUM&gt;",
+            "position": 0,
+            "keyword": false
+          },
+          {
+            "token": "foxes",
+            "start_offset": 4,
+            "end_offset": 9,
+            "type": "&lt;ALPHANUM&gt;",
+            "position": 1,
+            "keyword": false
+          },
+          {
+            "token": "jumping",
+            "start_offset": 10,
+            "end_offset": 17,
+            "type": "&lt;ALPHANUM&gt;",
+            "position": 2,
+            "keyword": false
+          },
+          {
+            "token": "quick",
+            "start_offset": 18,
+            "end_offset": 25,
+            "type": "&lt;ALPHANUM&gt;",
+            "position": 3,
+            "keyword": true
+          }
+        ]
+      },
+      {
+        "name": "porter_stem",
+        "tokens": [
+          {
+            "token": "the",
+            "start_offset": 0,
+            "end_offset": 3,
+            "type": "&lt;ALPHANUM&gt;",
+            "position": 0,
+            "keyword": false
+          },
+          {
+            "token": "fox",
+            "start_offset": 4,
+            "end_offset": 9,
+            "type": "&lt;ALPHANUM&gt;",
+            "position": 1,
+            "keyword": false
+          },
+          {
+            "token": "jump",
+            "start_offset": 10,
+            "end_offset": 17,
+            "type": "&lt;ALPHANUM&gt;",
+            "position": 2,
+            "keyword": false
+          },
+          {
+            "token": "quick",
+            "start_offset": 18,
+            "end_offset": 25,
+            "type": "&lt;ALPHANUM&gt;",
+            "position": 3,
+            "keyword": true
+          }
+        ]
+      }
+    ]
+  }
+}</pre>
+</div>
+</div>
+</details>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="analysis-stemmer-override-tokenfilter-configure-parms"></a>Configurable parameters<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/analysis/tokenfilters/stemmer-override-tokenfilter.asciidoc">edit</a></h3>
+</div></div></div>
+<div class="variablelist">
+<dl class="variablelist">
+<dt>
+<span class="term">
+<code class="literal">rules</code>
+</span>
+</dt>
+<dd>
+<p>
+(Required*, array of strings)
+Array of custom mapping rules. The input and output token must be separated by
+a <code class="literal">=&gt;</code> (e.g., <code class="literal">running =&gt; run</code>). Output tokens are assigned a <code class="literal">keyword</code>
+attribute of <code class="literal">true</code>. Stemmer token filters skip these keyword tokens.
+</p>
+<p>Either this or the <code class="literal">rules_path</code> parameter must be specified.</p>
+</dd>
+<dt>
+<span class="term">
+<code class="literal">rules_path</code>
+</span>
+</dt>
+<dd>
+<p>(Required*, string)
+Path to a file that contains a list of custom mapping rules. The input and
+output token must be separated by a <code class="literal">=&gt;</code> (e.g., <code class="literal">running =&gt; run</code>). Output tokens
+are assigned a <code class="literal">keyword</code> attribute of <code class="literal">true</code>. Stemmer token filters skip these
+keyword tokens.</p>
+<p>This path must be absolute or relative to the <code class="literal">config</code> location, and the file
+must be UTF-8 encoded. Each mapping rule in the file must be separated by a line
+break.</p>
+<p>Either this or the <code class="literal">rules</code> parameter must be specified.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="analysis-stemmer-override-tokenfilter-customize"></a>Customize and add to an analyzer<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/analysis/tokenfilters/stemmer-override-tokenfilter.asciidoc">edit</a></h3>
+</div></div></div>
+<p>To customize the <code class="literal">stemmer_override</code> filter, duplicate it to create the
+basis for a new custom token filter. You can modify the filter using its
+configurable parameters.</p>
+<p>For example, the following <a class="xref" href="indices-create-index.html" title="Create index API">create index API</a> request
+uses a custom <code class="literal">stemmer_override</code> filter, <code class="literal">my_custom_stemmer</code>, to configure a new
+<a class="xref" href="analysis-custom-analyzer.html" title="Create a custom analyzer">custom analyzer</a>.</p>
+<p>The <code class="literal">my_custom_stemmer</code> filter uses custom mapping rules specified in the
+<code class="literal">analysis/stemmer_override.txt</code> file, which looks like this:</p>
 <div class="pre_wrapper lang-stemmer_override">
 <pre class="programlisting prettyprint lang-stemmer_override">running, runs =&gt; run
 
 stemmer =&gt; stemmer</pre>
 </div>
-<p>You can also define the overrides rules inline:</p>
-<a id="41a91d7f732c300c0e2f75c81ed0f4b5"></a>
+<p>These mapping rules override later stemming performed by the analyzer&#8217;s
+<code class="literal">stemmer</code> token filter.</p>
+<a id="42e6fcea8477b0da4bef63a3730c1131"></a>
 <div class="pre_wrapper lang-console">
 <pre class="programlisting prettyprint lang-console">PUT /my_index
 {
-    "settings": {
-        "analysis" : {
-            "analyzer" : {
-                "my_analyzer" : {
-                    "tokenizer" : "standard",
-                    "filter" : ["lowercase", "custom_stems", "porter_stem"]
-                }
-            },
-            "filter" : {
-                "custom_stems" : {
-                    "type" : "stemmer_override",
-                    "rules" : [
-                        "running, runs =&gt; run",
-                        "stemmer =&gt; stemmer"
-                    ]
-                }
-            }
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer": {
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "my_custom_stemmer",
+            "stemmer"
+          ]
         }
+      },
+      "filter": {
+        "my_custom_stemmer": {
+          "type": "stemmer_override",
+          "rules_path": "analysis/stemmer_override.txt"
+        }
+      }
     }
+  }
 }</pre>
 </div>
-<div class="console_widget" data-snippet="snippets/963.console"></div>
+<div class="console_widget" data-snippet="snippets/965.console"></div>
+</div>
+
 </div>
 <div class="navfooter">
 <span class="prev">

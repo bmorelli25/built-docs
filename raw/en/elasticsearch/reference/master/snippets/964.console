@@ -1,6 +1,16 @@
 GET /_analyze
 {
   "tokenizer": "standard",
-  "filter": [ "stop" ],
-  "text": "a quick fox jumps over the lazy dog"
+  "filter": [
+    {
+      "type": "stemmer_override",
+      "rules": [
+        "quickly => quick"
+      ]
+    },
+    "porter_stem"
+  ],
+  "text": "the foxes jumping quickly",
+  "explain": true,
+  "attributes": "keyword"
 }
