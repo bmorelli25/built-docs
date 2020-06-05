@@ -1,25 +1,24 @@
-PUT test
+PUT /my_camel_case_index
 {
-   "settings" : {
-      "analysis" : {
-         "filter" : {
-            "email" : {
-               "type" : "pattern_capture",
-               "preserve_original" : true,
-               "patterns" : [
-                  "([^@]+)",
-                  "(\\p{L}+)",
-                  "(\\d+)",
-                  "@(.+)"
-               ]
-            }
-         },
-         "analyzer" : {
-            "email" : {
-               "tokenizer" : "uax_url_email",
-               "filter" : [ "email", "lowercase",  "unique" ]
-            }
-         }
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer": {
+          "tokenizer": "pattern",
+          "filter": [
+            "my_camel_case_pattern_capture_filter"
+          ]
+        }
+      },
+      "filter": {
+        "my_camel_case_pattern_capture_filter": {
+          "type": "pattern_capture",
+          "patterns": [
+            "(\\p{Ll}+|\\p{Lu}\\p{Ll}+|\\p{Lu}+)",
+            "(\\d+)"
+          ]
+        }
       }
-   }
+    }
+  }
 }

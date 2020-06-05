@@ -1,1 +1,1 @@
-PUT /_data_stream/logs-barbaz
+GET /_slm/stats

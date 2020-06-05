@@ -1,6 +1,6 @@
-GET /_analyze
+GET /my_camel_case_index/_analyze
 {
-  "tokenizer": "standard",
-  "filter": [ "porter_stem" ],
-  "text": "the foxes jumping quickly"
+  "tokenizer": "pattern",
+  "filter": [ "my_camel_case_pattern_capture_filter" ],
+  "text": "import static org.apache.commons.lang.StringEscapeUtils.escapeHtml"
 }

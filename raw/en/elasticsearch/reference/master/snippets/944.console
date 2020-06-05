@@ -1,13 +1,25 @@
-PUT /my_index
+PUT /my_email_index
 {
   "settings": {
     "analysis": {
       "analyzer": {
         "my_analyzer": {
-          "tokenizer": "whitespace",
+          "tokenizer": "keyword",
           "filter": [
+            "my_email_pattern_capture_filter",
             "lowercase",
-            "porter_stem"
+            "unique"
+          ]
+        }
+      },
+      "filter": {
+        "my_email_pattern_capture_filter": {
+          "type": "pattern_capture",
+          "patterns": [
+            "([^@]+)",
+            "(\\p{L}+)",
+            "(\\d+)",
+            "@(.+)"
           ]
         }
       }
