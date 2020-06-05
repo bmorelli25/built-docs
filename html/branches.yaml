@@ -1445,13 +1445,13 @@ clients-team:
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/php/master': 05998af628f31012f0884a2fe2b3a3df98cdec6c
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/python/master': 05998af628f31012f0884a2fe2b3a3df98cdec6c
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/examples/elastic-cloud/ruby/master': 05998af628f31012f0884a2fe2b3a3df98cdec6c
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/csharp/master': 05998af628f31012f0884a2fe2b3a3df98cdec6c
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/go/master': 05998af628f31012f0884a2fe2b3a3df98cdec6c
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/java/master': 05998af628f31012f0884a2fe2b3a3df98cdec6c
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/javascript/master': 05998af628f31012f0884a2fe2b3a3df98cdec6c
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/php/master': 05998af628f31012f0884a2fe2b3a3df98cdec6c
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/python/master': 05998af628f31012f0884a2fe2b3a3df98cdec6c
-  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/ruby/master': 05998af628f31012f0884a2fe2b3a3df98cdec6c
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/csharp/master': 12aab1c756c14a54b24d3e35104114bd5b263fae
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/go/master': 12aab1c756c14a54b24d3e35104114bd5b263fae
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/java/master': 12aab1c756c14a54b24d3e35104114bd5b263fae
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/javascript/master': 12aab1c756c14a54b24d3e35104114bd5b263fae
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/php/master': 12aab1c756c14a54b24d3e35104114bd5b263fae
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/python/master': 12aab1c756c14a54b24d3e35104114bd5b263fae
+  'Elasticsearch Service - Hosted Elastic Stack/docs/examples/elastic-cloud/ruby/master': 12aab1c756c14a54b24d3e35104114bd5b263fae
 cloud:
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/cloud-enterprise/1.0': b4cdeadfc88bbf40073d51a4a34b505923142926
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/cloud-enterprise/1.1': fc5f9901851d85b1562172c4048212b82e1a8215
@@ -1471,7 +1471,9 @@ cloud:
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/heroku/release-ms-36': 16f24926618cc5ff1f37b702deaaf60c8af82224
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/saas/release-ms-36': 16f24926618cc5ff1f37b702deaaf60c8af82224
   'Elasticsearch Add-On for Heroku - Hosted Elasticsearch and Kibana for Heroku Users/docs/shared/release-ms-36': 16f24926618cc5ff1f37b702deaaf60c8af82224
+  'Elasticsearch Service - Hosted Elastic Stack/docs/saas/master': local
   'Elasticsearch Service - Hosted Elastic Stack/docs/saas/release-ms-36': 16f24926618cc5ff1f37b702deaaf60c8af82224
+  'Elasticsearch Service - Hosted Elastic Stack/docs/shared/master': local
   'Elasticsearch Service - Hosted Elastic Stack/docs/shared/release-ms-36': 16f24926618cc5ff1f37b702deaaf60c8af82224
 cloud-assets:
   'Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure/docs/master': 5388666c3d02a7434f0bbaa8970e76da60f7837f
@@ -2988,7 +2990,7 @@ elasticsearch-hadoop:
   Installation and Upgrade Guide/docs/src/reference/asciidoc/master: 4210d64a5019d9995fe02c6525bd13a8e933f57c
 elasticsearch-js:
   Elasticsearch Reference/docs/doc_examples/master: 3efb63b34e23a11c4a93943266410defcb090616
-  JavaScript API/docs/16.x: 388c5e8e7ec1c0a097ee4960b2297073a484a33e
+  JavaScript API/docs/16.x: 8c359aeb7e90fbc8c4ef4de08ea14d3b02942269
   JavaScript API/docs/5.x: 37042aea33099b356692236e2d701971df8b4020
   JavaScript API/docs/6.x: 5d9bfd649229dbf06f5fbdad3103b43519a86cd1
   JavaScript API/docs/7.x: a84c42c54d0368009a8bd8e9c56903a24f0cf825
