@@ -3,11 +3,11 @@
   <head>
     
 <meta charset="UTF-8">
-<title>Role-based access control | Kibana Guide [master] | Elastic</title>
+<title>Running elasticsearch during development | Kibana Guide [master] | Elastic</title>
 <link rel="home" href="index.html" title="Kibana Guide [master]"/>
-<link rel="up" href="development-security.html" title="Security"/>
-<link rel="prev" href="development-security.html" title="Security"/>
-<link rel="next" href="pr-review.html" title="Pull request review guidelines"/>
+<link rel="up" href="advanced.html" title="Advanced concepts and configurations"/>
+<link rel="prev" href="development-es-snapshots.html" title="Daily Elasticsearch Snapshots"/>
+<link rel="next" href="development-basepath.html" title="Considerations for basepath"/>
 <meta name="DC.type" content="Learn/Docs/Kibana/Reference/master"/>
 <meta name="DC.subject" content="Kibana"/>
 <meta name="DC.identifier" content="master"/>
@@ -115,131 +115,120 @@ Not what you want? See the
 »
 <span class="breadcrumb-link"><a href="development.html">Developer guide</a></span>
 »
-<span class="breadcrumb-link"><a href="development-security.html">Security</a></span>
+<span class="breadcrumb-link"><a href="advanced.html">Advanced concepts and configurations</a></span>
 »
-<span class="breadcrumb-node">Role-based access control</span>
+<span class="breadcrumb-node">Running elasticsearch during development</span>
 </div>
 <div class="navheader">
 <span class="prev">
-<a href="development-security.html">« Security</a>
+<a href="development-es-snapshots.html">« Daily Elasticsearch Snapshots</a>
 </span>
 <span class="next">
-<a href="pr-review.html">Pull request review guidelines »</a>
+<a href="development-basepath.html">Considerations for basepath »</a>
 </span>
 </div>
 <div class="section">
 <div class="titlepage"><div><div>
-<h2 class="title"><a id="development-security-rbac"></a>Role-based access control<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/kibana/edit/master/docs/developer/security/rbac.asciidoc">edit</a></h2>
+<h2 class="title"><a id="running-elasticsearch"></a>Running elasticsearch during development<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/kibana/edit/master/docs/developer/advanced/running-elasticsearch.asciidoc">edit</a></h2>
 </div></div></div>
-<p>Role-based access control (RBAC) in Kibana relies upon the
-<a href="/guide/en/elasticsearch/reference/master/security-privileges.html#application-privileges" class="ulink" target="_top">application privileges</a>
-that Elasticsearch exposes. This allows Kibana to define the privileges that
-Kibana wishes to grant to users, assign them to the relevant users using roles,
-and then authorize the user to perform a specific action. This is handled within
-a secured instance of the <code class="literal">SavedObjectsClient</code> and available transparently to
-consumers when using <code class="literal">request.getSavedObjectsClient()</code> or
-<code class="literal">savedObjects.getScopedSavedObjectsClient()</code>.</p>
+<p>There are many ways to run Elasticsearch while you are developing.</p>
+<h4><a id="_by_snapshot"></a>By snapshot<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/kibana/edit/master/docs/developer/advanced/running-elasticsearch.asciidoc">edit</a></h4>
+<p>This will run a snapshot of elasticsearch that is usually built nightly. Read more about <a class="xref" href="development-es-snapshots.html" title="Daily Elasticsearch Snapshots">Daily Elasticsearch Snapshots</a>.</p>
+<div class="pre_wrapper lang-bash">
+<pre class="programlisting prettyprint lang-bash">yarn es snapshot</pre>
+</div>
+<p>See all available options, like how to specify a specific license, with the <code class="literal">--help</code> flag.</p>
+<div class="pre_wrapper lang-bash">
+<pre class="programlisting prettyprint lang-bash">yarn es snapshot --help</pre>
+</div>
+<p><code class="literal">trial</code> will give you access to all capabilities.</p>
+<p><span class="strong strong"><strong>Keeping data between snapshots</strong></span></p>
+<p>If you want to keep the data inside your Elasticsearch between usages of this command, you should use the following command, to keep your data folder outside the downloaded snapshot folder:</p>
+<div class="pre_wrapper lang-bash">
+<pre class="programlisting prettyprint lang-bash">yarn es snapshot -E path.data=../data</pre>
+</div>
 <div class="section">
 <div class="titlepage"><div><div>
-<h3 class="title"><a id="development-rbac-privileges"></a>Kibana Privileges<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/kibana/edit/master/docs/developer/security/rbac.asciidoc">edit</a></h3>
+<h3 class="title"><a id="_by_source"></a>By source<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/kibana/edit/master/docs/developer/advanced/running-elasticsearch.asciidoc">edit</a></h3>
 </div></div></div>
-<p>When Kibana first starts up, it executes the following <code class="literal">POST</code> request against Elasticsearch. This synchronizes the definition of the privileges with various <code class="literal">actions</code> which are later used to authorize a user:</p>
-<div class="pre_wrapper lang-js">
-<pre class="programlisting prettyprint lang-js">POST /_security/privilege
-Content-Type: application/json
-Authorization: Basic kibana changeme
+<p>If you have the Elasticsearch repo checked out locally and wish to run against that, use <code class="literal">source</code>. By default, it will reference an elasticsearch checkout which is a sibling to the Kibana directory named elasticsearch. If you wish to use a checkout in another location you can provide that by supplying --source-path</p>
+<div class="pre_wrapper lang-bash">
+<pre class="programlisting prettyprint lang-bash">yarn es source</pre>
+</div>
+</div>
 
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="_from_an_archive"></a>From an archive<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/kibana/edit/master/docs/developer/advanced/running-elasticsearch.asciidoc">edit</a></h3>
+</div></div></div>
+<p>Use this if you already have a distributable. For released versions, one can be obtained on the Elasticsearch downloads page.</p>
+<div class="pre_wrapper lang-bash">
+<pre class="programlisting prettyprint lang-bash">yarn es archive &lt;full_path_to_archive&gt;</pre>
+</div>
+<p>Each of these will run Elasticsearch with a basic license. Additional options are available, pass --help for more information.</p>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="_from_a_remote_host"></a>From a remote host<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/kibana/edit/master/docs/developer/advanced/running-elasticsearch.asciidoc">edit</a></h3>
+</div></div></div>
+<p>You can save some system resources, and the effort of generating sample data, if you have a remote Elasticsearch cluster to connect to. (Elasticians: you do! Check with your team about where to find credentials)</p>
+<p>You&#8217;ll need to create a kibana.dev.yml and add the following to it:</p>
+<div class="pre_wrapper lang-bash">
+<pre class="programlisting prettyprint lang-bash">elasticsearch.hosts:
+  - {{ url }}
+elasticsearch.username: {{ username }}
+elasticsearch.password: {{ password }}
+elasticsearch.ssl.verificationMode: none</pre>
+</div>
+<p>If many other users will be interacting with your remote cluster, you&#8217;ll want to add the following to avoid causing conflicts:</p>
+<div class="pre_wrapper lang-bash">
+<pre class="programlisting prettyprint lang-bash">kibana.index: '.{YourGitHubHandle}-kibana'
+xpack.task_manager.index: '.{YourGitHubHandle}-task-manager-kibana'</pre>
+</div>
+<div class="section">
+<div class="titlepage"><div><div>
+<h4 class="title"><a id="_running_remote_clusters"></a>Running remote clusters<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/kibana/edit/master/docs/developer/advanced/running-elasticsearch.asciidoc">edit</a></h4>
+</div></div></div>
+<p>Setup remote clusters for cross cluster search (CCS) and cross cluster replication (CCR).</p>
+<p>Start your primary cluster by running:</p>
+<div class="pre_wrapper lang-bash">
+<pre class="programlisting prettyprint lang-bash">yarn es snapshot -E path.data=../data_prod1</pre>
+</div>
+<p>Start your remote cluster by running:</p>
+<div class="pre_wrapper lang-bash">
+<pre class="programlisting prettyprint lang-bash">yarn es snapshot -E transport.port=9500 -E http.port=9201 -E path.data=../data_prod2</pre>
+</div>
+<p>Once both clusters are running, start Kibana. Kibana will connect to the primary cluster.</p>
+<p>Setup the remote cluster in Kibana from either Management &#8594; Elasticsearch &#8594; Remote Clusters UI or by running the following script in Console.</p>
+<div class="pre_wrapper lang-bash">
+<pre class="programlisting prettyprint lang-bash">PUT _cluster/settings
 {
-   "kibana-.kibana":{
-       "all":{
-           "application":"kibana-.kibana",
-           "name":"all",
-           "actions":[
-               "version:7.0.0-alpha1-SNAPSHOT",
-               "action:login",
-               "action:*"
-           ],
-           "metadata":{}
-       },
-       "read":{
-           "application":"kibana-.kibana",
-           "name":"read",
-           "actions":[
-               "version:7.0.0-alpha1-SNAPSHOT",
-               "action:login",
-               "saved_object:dashboard/get",
-               "saved_object:dashboard/bulk_get",
-               "saved_object:dashboard/find",
-               ...
-           ],"metadata":{}}
-   }
+  "persistent": {
+    "cluster": {
+      "remote": {
+        "cluster_one": {
+          "seeds": [
+            "localhost:9500"
+          ]
+        }
+      }
+    }
+  }
 }</pre>
 </div>
-<div class="note admon">
-<div class="icon"></div>
-<div class="admon_content">
-<p>The application is created by concatenating the prefix of <code class="literal">kibana-</code> with the value of <code class="literal">kibana.index</code> from the <code class="literal">kibana.yml</code>, so different Kibana tenants are isolated from one another.</p>
-</div>
-</div>
+<p>Follow the cross-cluster search instructions for setting up index patterns to search across clusters.</p>
 </div>
 
-<div class="section">
-<div class="titlepage"><div><div>
-<h3 class="title"><a id="development-rbac-assigning-privileges"></a>Assigning Kibana Privileges<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/kibana/edit/master/docs/developer/security/rbac.asciidoc">edit</a></h3>
-</div></div></div>
-<p>Kibana privileges are assigned to specific roles using the <code class="literal">applications</code> element. For example, the following role assigns the <a class="xref" href="kibana-privileges.html#kibana-privileges-all">all</a> privilege at <code class="literal">*</code> <code class="literal">resources</code> (which will in the future be used to secure spaces) to the default Kibana <code class="literal">application</code>:</p>
-<div class="pre_wrapper lang-js">
-<pre class="programlisting prettyprint lang-js">"new_kibana_user": {
-   "applications": [
-     {
-       "application": "kibana-.kibana",
-       "privileges": [
-         "all"
-       ],
-       "resources": [
-         "*"
-       ]
-     }
-   ]
- }</pre>
-</div>
-<p>Roles that grant <a class="xref" href="kibana-privileges.html" title="Kibana privileges">Kibana privileges</a> should be managed using the <a class="xref" href="role-management-api.html" title="Kibana role management APIs"><em>Kibana role management APIs</em></a> or the <span class="strong strong"><strong>Management &#8594; Security &#8594; Roles</strong></span> page, not directly using the Elasticsearch <a href="/guide/en/elasticsearch/reference/master/security-api.html#security-role-apis" class="ulink" target="_top">role management API</a>. This role can then be assigned to users using the Elasticsearch
-<a href="/guide/en/elasticsearch/reference/master/security-api.html#security-user-apis" class="ulink" target="_top">user management APIs</a>.</p>
-</div>
-
-<div class="section">
-<div class="titlepage"><div><div>
-<h3 class="title"><a id="development-rbac-authorization"></a>Authorization<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/kibana/edit/master/docs/developer/security/rbac.asciidoc">edit</a></h3>
-</div></div></div>
-<p>The Elasticsearch <a href="/guide/en/elasticsearch/reference/master/security-api-has-privileges.html" class="ulink" target="_top">has privileges API</a> determines whether the user is authorized to perform a specific action:</p>
-<div class="pre_wrapper lang-js">
-<pre class="programlisting prettyprint lang-js">POST /_security/user/_has_privileges
-Content-Type: application/json
-Authorization: Basic foo_read_only_user password
-
-{
-   "applications":[
-       {
-           "application":"kibana-.kibana",
-           "resources":["*"],
-           "privileges":[
-             "saved_object:dashboard/save",
-           ]
-       }
-   ]
-}</pre>
-</div>
-<p>Elasticsearch checks if the user is granted a specific action. If the user is assigned a role that grants a privilege, Elasticsearch uses the <a class="xref" href="development-security-rbac.html#development-rbac-privileges" title="Kibana Privileges">Kibana privileges</a> definition to associate this with the actions, which makes authorizing users more intuitive and flexible programatically.</p>
-<p>Once we have authorized the user to perform a specific action, we can execute the request using <code class="literal">callWithInternalUser</code>.</p>
 </div>
 
 </div>
 <div class="navfooter">
 <span class="prev">
-<a href="development-security.html">« Security</a>
+<a href="development-es-snapshots.html">« Daily Elasticsearch Snapshots</a>
 </span>
 <span class="next">
-<a href="pr-review.html">Pull request review guidelines »</a>
+<a href="development-basepath.html">Considerations for basepath »</a>
 </span>
 </div>
 </div>

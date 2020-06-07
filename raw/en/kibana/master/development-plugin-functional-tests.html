@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <title>Functional Tests for Plugins | Kibana Guide [master] | Elastic</title>
 <link rel="home" href="index.html" title="Kibana Guide [master]"/>
-<link rel="up" href="plugin-development.html" title="Plugin Development"/>
-<link rel="prev" href="development-plugin-feature-registration.html" title="Plugin feature registration"/>
+<link rel="up" href="plugin-development.html" title="Developing plugins outside of the Kibana repo"/>
+<link rel="prev" href="development-plugin-resources.html" title="Plugin Resources"/>
 <link rel="next" href="development-plugin-localization.html" title="Localization for plugins"/>
 <meta name="DC.type" content="Learn/Docs/Kibana/Reference/master"/>
 <meta name="DC.subject" content="Kibana"/>
@@ -22,13 +22,13 @@ Not what you want? See the
 »
 <span class="breadcrumb-link"><a href="development.html">Developer guide</a></span>
 »
-<span class="breadcrumb-link"><a href="plugin-development.html">Plugin Development</a></span>
+<span class="breadcrumb-link"><a href="plugin-development.html">Developing plugins outside of the Kibana repo</a></span>
 »
 <span class="breadcrumb-node">Functional Tests for Plugins</span>
 </div>
 <div class="navheader">
 <span class="prev">
-<a href="development-plugin-feature-registration.html">« Plugin feature registration</a>
+<a href="development-plugin-resources.html">« Plugin Resources</a>
 </span>
 <span class="next">
 <a href="development-plugin-localization.html">Localization for plugins »</a>
@@ -53,7 +53,7 @@ import { MyAppPageProvider } from './services/my_app_page';
 // that returns an object with the projects config values
 export default async function ({ readConfigFile }) {
 
-  // read the Kibana config file so that we can utilize some of
+  // read the {kib} config file so that we can utilize some of
   // its services and PageObjects
   const kibanaConfig = await readConfigFile(resolveKibanaPath('test/functional/config.js'));
 
@@ -72,7 +72,7 @@ export default async function ({ readConfigFile }) {
     },
 
     // just like services, PageObjects are defined as a map of
-    // names to Providers. Merge in Kibana's or pick specific ones
+    // names to Providers. Merge in {kib}'s or pick specific ones
     pageObjects: {
       management: kibanaConfig.get('pageObjects.management'),
       myApp: MyAppPageProvider,
@@ -81,7 +81,7 @@ export default async function ({ readConfigFile }) {
     // the apps section defines the urls that
     // `PageObjects.common.navigateTo(appKey)` will use.
     // Merge urls for your plugin with the urls defined in
-    // Kibana's config in order to use this helper
+    // {kib}'s config in order to use this helper
     apps: {
       ...kibanaConfig.get('apps'),
       myApp: {
@@ -113,7 +113,7 @@ export default async function ({ readConfigFile }) {
 </div>
 <div class="navfooter">
 <span class="prev">
-<a href="development-plugin-feature-registration.html">« Plugin feature registration</a>
+<a href="development-plugin-resources.html">« Plugin Resources</a>
 </span>
 <span class="next">
 <a href="development-plugin-localization.html">Localization for plugins »</a>
