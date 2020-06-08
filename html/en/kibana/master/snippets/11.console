@@ -1,8 +1,11 @@
-POST /api/apm/settings/agent-configuration/search
+POST /api/apm/services/opbeans-java/annotation
 {
-    "etag": "1e58c178efeebae15c25c539da740d21dee422fc",
-    "service" : {
-        "name": "frontend",
-        "environment": "production"
-    }
+	"@timestamp": "2020-05-08T10:31:30.452Z",
+	"service": {
+		"version": "1.2"
+	},
+	"message": "Deployment 1.2",
+	"tags": [
+		"elastic.co", "customer"
+	]
 }

@@ -3,10 +3,10 @@
   <head>
     
 <meta charset="UTF-8">
-<title>Configure Kibana | Kibana Guide [master] | Elastic</title>
+<title>Configuring Kibana | Kibana Guide [master] | Elastic</title>
 <link rel="home" href="index.html" title="Kibana Guide [master]"/>
-<link rel="up" href="setup.html" title="Set up Kibana"/>
-<link rel="prev" href="brew.html" title="Install Kibana on macOS with Homebrew"/>
+<link rel="up" href="setup.html" title="Set Up Kibana"/>
+<link rel="prev" href="start-stop.html" title="Starting and stopping Kibana"/>
 <link rel="next" href="alert-action-settings-kb.html" title="Alerting and action settings in Kibana"/>
 <meta name="DC.type" content="Learn/Docs/Kibana/Reference/master"/>
 <meta name="DC.subject" content="Kibana"/>
@@ -113,13 +113,13 @@ Not what you want? See the
 <div class="breadcrumbs">
 <span class="breadcrumb-link"><a href="index.html">Kibana Guide [master]</a></span>
 »
-<span class="breadcrumb-link"><a href="setup.html">Set up Kibana</a></span>
+<span class="breadcrumb-link"><a href="setup.html">Set Up Kibana</a></span>
 »
-<span class="breadcrumb-node">Configure Kibana</span>
+<span class="breadcrumb-node">Configuring Kibana</span>
 </div>
 <div class="navheader">
 <span class="prev">
-<a href="brew.html">« Install Kibana on macOS with Homebrew</a>
+<a href="start-stop.html">« Starting and stopping Kibana</a>
 </span>
 <span class="next">
 <a href="alert-action-settings-kb.html">Alerting and action settings in Kibana »</a>
@@ -127,7 +127,7 @@ Not what you want? See the
 </div>
 <div class="chapter">
 <div class="titlepage"><div><div>
-<h2 class="title"><a id="settings"></a>Configure Kibana<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/kibana/edit/master/docs/setup/settings.asciidoc">edit</a></h2>
+<h2 class="title"><a id="settings"></a>Configuring Kibana<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/kibana/edit/master/docs/setup/settings.asciidoc">edit</a></h2>
 </div></div></div>
 <p>The Kibana server reads properties from the <code class="literal">kibana.yml</code> file on startup. The
 location of this file differs depending on how you installed Kibana. For example,
@@ -394,9 +394,7 @@ Elasticsearch, which is proxied through the Kibana server.</p></td>
 </tr>
 <tr>
 <td align="left" valign="top"><p><code class="literal">kibana.defaultAppId:</code></p></td>
-<td align="left" valign="top"><p><span class="strong strong"><strong>deprecated</strong></span> This setting is deprecated and will get removed in Kibana 8.0.
-Please use the <code class="literal">defaultRoute</code> advanced setting instead.
-The default application to load. <span class="strong strong"><strong>Default: <code class="literal">"home"</code></strong></span></p></td>
+<td align="left" valign="top"><p>The default application to load. <span class="strong strong"><strong>Default: <code class="literal">"home"</code></strong></span></p></td>
 </tr>
 <tr>
 <td align="left" valign="top"><p><code class="literal">kibana.index:</code></p></td>
@@ -945,7 +943,7 @@ Valid locales are: <code class="literal">en</code>, <code class="literal">zh-CN<
 </div>
 <div class="navfooter">
 <span class="prev">
-<a href="brew.html">« Install Kibana on macOS with Homebrew</a>
+<a href="start-stop.html">« Starting and stopping Kibana</a>
 </span>
 <span class="next">
 <a href="alert-action-settings-kb.html">Alerting and action settings in Kibana »</a>
