@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Install ECE offline | Elastic Cloud Enterprise Reference (install reorg draft 2020-06-08) [master] | Elastic</title>
+<link rel="home" href="index.html" title="Elastic Cloud Enterprise Reference (install reorg draft 2020-06-08) [master]"/>
+<link rel="up" href="ece-install-your-infra.html" title="Install on your own premises"/>
+<link rel="prev" href="ece-install-large-onprem.html" title="Deploy a large installation"/>
+<link rel="next" href="ece-install-offline-with-registry.html" title="With your private Docker registry"/>
+<meta name="DC.type" content="Learn/Docs/CloudEnterprise/Reference/master"/>
+<meta name="DC.subject" content="ECE"/>
+<meta name="DC.identifier" content="master"/>
+</head>
+<body><div class="page_header">
+You are looking at preliminary documentation for a future release.
+Not what you want? See the
+<a href="../current/index.html">current release documentation</a>.
+</div>
+<div id="content">
+<div class="breadcrumbs">
+<span class="breadcrumb-link"><a href="index.html">Elastic Cloud Enterprise Reference (install reorg draft 2020-06-08) [master]</a></span>
+»
+<span class="breadcrumb-link"><a href="ece-install-ece.html">Installing Elastic Cloud Enterprise</a></span>
+»
+<span class="breadcrumb-link"><a href="ece-install-your-infra.html">Install on your own premises</a></span>
+»
+<span class="breadcrumb-node">Install ECE offline</span>
+</div>
+<div class="navheader">
+<span class="prev">
+<a href="ece-install-large-onprem.html">« Deploy a large installation</a>
+</span>
+<span class="next">
+<a href="ece-install-offline-with-registry.html">With your private Docker registry »</a>
+</span>
+</div>
+<div class="section">
+<div class="titlepage"><div><div>
+<h2 class="title"><a id="ece-install-offline"></a>Install ECE offline</h2>
+</div></div></div>
+<p>Installing ECE on hosts without internet access is commonly referred to as an <em>offline</em> or <em>air-gapped installation</em>.</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+<a class="xref" href="ece-install-offline.html#ece-before-you-begin" title="Before you begin">Before you begin</a>
+</li>
+<li class="listitem">
+<a class="xref" href="ece-install-offline-with-registry.html" title="With your private Docker registry">With your private Docker registry</a>
+</li>
+<li class="listitem">
+<a class="xref" href="ece-install-offline-no-registry.html" title="Without your private Docker registry">Without your private Docker registry</a>
+</li>
+</ul>
+</div>
+<h4><a id="ece-before-you-begin"></a>Before you begin</h4>
+<p>To install ECE offline, you must:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+<p>Download the Elasticsearch and Kibana images and installation script from Elastic and load them on your hosts. You need to download both the Elastic Stack pack and the Docker images for the same version.</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+For versions before 5.0, refer to the <a href="/support/matrix#show_compatibility" class="ulink" target="_top">Support Matrix</a> to see which versions can be used together.
+</li>
+<li class="listitem">
+For version 5.0 and later, the versioning of Elasticsearch and Kibana is synchronized and versions where the major, minor, and patch levels match can be used together. Differences in build versions indicated by a dash do not affect compatibility. For example, Elasticsearch 5.1.2-2 can be used with Kibana 5.1.2.
+</li>
+</ul>
+</div>
+</li>
+<li class="listitem">
+Be part of the <code class="literal">docker</code> group to run the installation script. You should not install Elastic Cloud Enterprise as the <code class="literal">root</code> user.
+</li>
+<li class="listitem">
+Set up your <a class="xref" href="ece-dns.html" title="Wildcard DNS record">wildcard DNS record</a>.
+</li>
+</ul>
+</div>
+
+
+
+</div>
+<div class="navfooter">
+<span class="prev">
+<a href="ece-install-large-onprem.html">« Deploy a large installation</a>
+</span>
+<span class="next">
+<a href="ece-install-offline-with-registry.html">With your private Docker registry »</a>
+</span>
+</div>
+</div>
+</body>
+</html>

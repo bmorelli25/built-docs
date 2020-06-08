@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Amazon Machine Images (AMIs) | Elastic Cloud Enterprise Reference (install reorg draft 2020-06-08) [master] | Elastic</title>
+<link rel="home" href="index.html" title="Elastic Cloud Enterprise Reference (install reorg draft 2020-06-08) [master]"/>
+<link rel="up" href="ece-install-public-cloud.html" title="Install on a public cloud"/>
+<link rel="prev" href="ece-install-public-cloud.html" title="Install on a public cloud"/>
+<link rel="next" href="ece-gcp.html" title="Google Cloud Platform (GCP)"/>
+<meta name="DC.type" content="Learn/Docs/CloudEnterprise/Reference/master"/>
+<meta name="DC.subject" content="ECE"/>
+<meta name="DC.identifier" content="master"/>
+</head>
+<body><div class="page_header">
+You are looking at preliminary documentation for a future release.
+Not what you want? See the
+<a href="../current/index.html">current release documentation</a>.
+</div>
+<div id="content">
+<div class="breadcrumbs">
+<span class="breadcrumb-link"><a href="index.html">Elastic Cloud Enterprise Reference (install reorg draft 2020-06-08) [master]</a></span>
+»
+<span class="breadcrumb-link"><a href="ece-install-ece.html">Installing Elastic Cloud Enterprise</a></span>
+»
+<span class="breadcrumb-link"><a href="ece-install-public-cloud.html">Install on a public cloud</a></span>
+»
+<span class="breadcrumb-node">Amazon Machine Images (AMIs)</span>
+</div>
+<div class="navheader">
+<span class="prev">
+<a href="ece-install-public-cloud.html">« Install on a public cloud</a>
+</span>
+<span class="next">
+<a href="ece-gcp.html">Google Cloud Platform (GCP) »</a>
+</span>
+</div>
+<div class="section">
+<div class="titlepage"><div><div>
+<h2 class="title"><a id="ece-aws"></a>Amazon Machine Images (AMIs)</h2>
+</div></div></div>
+<p>If you use Amazon Web Services (AWS) and Amazon Elastic Compute Cloud (EC2), you can use the Elastic AMIs preconfigured for the following Linux distributions:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+<code class="literal">elastic-cloud-enterprise-xenial-*</code>: Ubuntu 16.04 (Xenial Xerus)
+</li>
+<li class="listitem">
+<code class="literal">elastic-cloud-enterprise-centos-*</code>: CentOS 7
+</li>
+</ul>
+</div>
+<p>To learn more about AMIs, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html" class="ulink" target="_top">Amazon Machine Images (AMI)</a>.</p>
+<p>To find and deploy the Elastic AMIs on EC2, follow the steps below. Alternatively, you can get the list <a href="https://download.elasticsearch.org/cloud/current-amis.json" class="ulink" target="_top">in JSON format</a>.</p>
+<p>To deploy AMIs:</p>
+<div class="olist orderedlist">
+<ol class="orderedlist">
+<li class="listitem">
+Log into the AWS Management Console.
+</li>
+<li class="listitem">
+Click the <span class="strong strong"><strong>Services</strong></span> menu and select <span class="strong strong"><strong>EC2</strong></span> to access the EC2 dashboard.
+</li>
+<li class="listitem">
+Under <span class="strong strong"><strong>Images</strong></span>, click <span class="strong strong"><strong>AMIs</strong></span> and search for <code class="literal">AMI Name : elastic-cloud-enterprise</code> or <code class="literal">Owner: 086951212264</code> to find the Elastic AMIs that will work with Elastic Cloud Enterprise.
+</li>
+<li class="listitem">
+Select one of the AMIs and click <span class="strong strong"><strong>Launch</strong></span>.
+</li>
+<li class="listitem">
+Choose an instance type for the AMI that meets the <a class="xref" href="ece-software.html" title="Software">software</a> and <a class="xref" href="ece-hardware.html" title="Hardware">hardware</a> requirements for Elastic Cloud Enterprise. The instance type should not be too small, as it needs to have at least 8 GB of RAM. If you opt for EBS rather than locally attached storage, we recommend you use provisioned IOPS. To learn more about the available instance types, see <a href="https://aws.amazon.com/ec2/instance-types/" class="ulink" target="_top">Amazon EC2 Instance Types</a> in the AWS documentation.
+</li>
+<li class="listitem">
+<p>Configure the instance details, add storage, add tags, and configure a security group for your new instance. See the <a class="xref" href="ece-networking.html" title="Networking">prerequisites for the ports that must permit outbound or inbound traffic</a>.</p>
+<div class="tip admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>You can launch more than one instance to save yourself some time. For example, to deploy our <a class="xref" href="ece-install-large-cloud.html" title="Deploy a large installation">large playbook example</a>, you could launch six smaller instances (three for your directors and coordinators, and three for your proxies), and then a group of three more heavily provisioned allocators to host Elasticsearch clusters and Kibana.</p>
+</div>
+</div>
+</li>
+<li class="listitem">
+Click <span class="strong strong"><strong>Launch</strong></span> and select a key pair to be able to connect to your instances securely.
+</li>
+<li class="listitem">
+Click <span class="strong strong"><strong>Launch Instances</strong></span>.
+</li>
+</ol>
+</div>
+<p>After the AMI is launched, you can connect to it through SSH with the <code class="literal">elastic</code> user and <a class="xref" href="ece-install-cloud.html" title="Install ECE">install Elastic Cloud Enterprise</a>.</p>
+</div>
+<div class="navfooter">
+<span class="prev">
+<a href="ece-install-public-cloud.html">« Install on a public cloud</a>
+</span>
+<span class="next">
+<a href="ece-gcp.html">Google Cloud Platform (GCP) »</a>
+</span>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Elastic Cloud Enterprise Reference (install reorg draft 2020-06-08) [master] | Elastic</title>
+<link rel="home" href="index.html" title="Elastic Cloud Enterprise Reference (install reorg draft 2020-06-08) [master]"/>
+<link rel="next" href="ece-what-is-ece.html" title="Introducing Elastic Cloud Enterprise?"/>
+<meta name="DC.type" content="Learn/Docs/CloudEnterprise/Reference/master"/>
+<meta name="DC.subject" content="ECE"/>
+<meta name="DC.identifier" content="master"/>
+</head>
+<body>
+<div class="page_header">
+You are looking at preliminary documentation for a future release.
+Not what you want? See the
+<a href="../current/index.html">current release documentation</a>.
+</div>
+<div class="navheader">
+<span class="prev">
+</span>
+<span class="next">
+<a href="ece-what-is-ece.html">Introducing Elastic Cloud Enterprise? »</a>
+</span>
+</div>
+<div class="book" lang="en">
+<div class="titlepage">
+<div>
+<div><h1 class="title"><a id="cloud-enterprise"></a>Elastic Cloud Enterprise Reference (install reorg draft 2020-06-08)</h1></div>
+</div>
+<hr>
+</div>
+<div id="content">
+<!--START_TOC-->
+<div class="toc">
+<ul class="toc"><li id="book_title"><span>Elastic Cloud Enterprise - Elastic Cloud on your Infrastructure: <select id="live_versions"><option value="master" selected>master</option><option value="2.5">2.5 (current)</option><option value="2.4">2.4</option><option value="2.3">2.3</option><option value="2.2">2.2</option><option value="2.1">2.1</option><option value="2.0">2.0</option><option value="1.1">1.1</option><option value="1.0">1.0</option></select></span></li><li><span class="part"><a href="ece-what-is-ece.html">Introducing Elastic Cloud Enterprise?</a></span>
+<ul>
+<li><span class="chapter"><a href="ece-architecture.html">Service-oriented architecture</a></span>
+</li>
+<li><span class="chapter"><a href="ece-containerization.html">Services as Docker containers</a></span>
+</li>
+</ul>
+</li>
+<li><span class="part"><a href="ece-install-ece.html">Installing Elastic Cloud Enterprise</a></span>
+<ul>
+<li><span class="chapter"><a href="ece-planning.html">Prepare your installation</a></span>
+<ul>
+<li><span class="section"><a href="ece-hardware.html">Hardware</a></span>
+</li>
+<li><span class="section"><a href="ece-software.html">Software</a></span>
+</li>
+<li><span class="section"><a href="ece-networking.html">Networking</a></span>
+</li>
+<li><span class="section"><a href="ece-high-availability.html">High availability</a></span>
+</li>
+<li><span class="section"><a href="ece-roles.html">Separation of roles</a></span>
+</li>
+<li><span class="section"><a href="ece-capacity.html">Capacity planning</a></span>
+</li>
+<li><span class="section"><a href="ece-load-balancer.html">Load balancers</a></span>
+</li>
+<li><span class="section"><a href="ece-users.html">Users</a></span>
+</li>
+<li><span class="section"><a href="ece-jvm.html">JVM heap size</a></span>
+</li>
+<li><span class="section"><a href="ece-dns.html">Wildcard DNS record</a></span>
+</li>
+</ul>
+</li>
+<li><span class="chapter"><a href="ece-install-ansible.html">Install with Ansible</a></span>
+</li>
+<li><span class="chapter"><a href="ece-install-public-cloud.html">Install on a public cloud</a></span>
+<ul>
+<li><span class="section"><a href="ece-aws.html">Amazon Machine Images (AMIs)</a></span>
+</li>
+<li><span class="section"><a href="ece-gcp.html">Google Cloud Platform (GCP)</a></span>
+</li>
+<li><span class="section"><a href="ece-azure.html">Microsoft Azure virtual machines</a></span>
+</li>
+<li><span class="section"><a href="ece-config-os-cloud.html">Configure your operating system</a></span>
+<ul>
+<li><span class="section"><a href="ece-config-xenial-cloud.html">Ubuntu 16.04 LTS (Xenial Xerus)</a></span>
+</li>
+<li><span class="section"><a href="ece-configure-rhel-centos-cloud.html">RHEL 7 and CentOS 7</a></span>
+</li>
+<li><span class="section"><a href="ece-configure-sles12-cloud.html">SLES 12</a></span>
+</li>
+</ul>
+</li>
+<li><span class="section"><a href="ece-install-cloud.html">Install ECE</a></span>
+<ul>
+<li><span class="section"><a href="ece-install-small-cloud.html">Deploy a small installation</a></span>
+</li>
+<li><span class="section"><a href="ece-install-medium-cloud.html">Deploy a medium installation</a></span>
+</li>
+<li><span class="section"><a href="ece-install-large-cloud.html">Deploy a large installation</a></span>
+</li>
+</ul>
+</li>
+<li><span class="section"><a href="ece-ui-cloud.html">Log into the Cloud UI</a></span>
+</li>
+</ul>
+</li>
+<li><span class="chapter"><a href="ece-install-your-infra.html">Install on your own premises</a></span>
+<ul>
+<li><span class="section"><a href="ece-private-env.html">Prepare you private environment</a></span>
+</li>
+<li><span class="section"><a href="ece-config-os-onprem.html">Configure your operating system</a></span>
+<ul>
+<li><span class="section"><a href="ece-config-xenial-onprem.html">Ubuntu 16.04 LTS (Xenial Xerus)</a></span>
+</li>
+<li><span class="section"><a href="ece-configure-rhel-centos-onprem.html">RHEL 7 and CentOS 7</a></span>
+</li>
+<li><span class="section"><a href="ece-configure-sles12-onprem.html">SLES 12</a></span>
+</li>
+</ul>
+</li>
+<li><span class="section"><a href="ece-install-onprem.html">Install ECE online</a></span>
+<ul>
+<li><span class="section"><a href="ece-install-small-onprem.html">Deploy a small installation</a></span>
+</li>
+<li><span class="section"><a href="ece-install-medium-onprem.html">Deploy a medium installation</a></span>
+</li>
+<li><span class="section"><a href="ece-install-large-onprem.html">Deploy a large installation</a></span>
+</li>
+</ul>
+</li>
+<li><span class="section"><a href="ece-install-offline.html">Install ECE offline</a></span>
+<ul>
+<li><span class="section"><a href="ece-install-offline-with-registry.html">With your private Docker registry</a></span>
+</li>
+<li><span class="section"><a href="ece-install-offline-no-registry.html">Without your private Docker registry</a></span>
+</li>
+<li><span class="section"><a href="ece-install-offline-images.html">Available Docker images</a></span>
+</li>
+</ul>
+</li>
+<li><span class="section"><a href="ece-ui-onprem.html">Log into the Cloud UI</a></span>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<!--END_TOC-->
+
+
+
+</div>
+</div><div class="navfooter">
+<span class="prev">
+</span>
+<span class="next">
+<a href="ece-what-is-ece.html">Introducing Elastic Cloud Enterprise? »</a>
+</span>
+</div>
+</body>
+</html>
