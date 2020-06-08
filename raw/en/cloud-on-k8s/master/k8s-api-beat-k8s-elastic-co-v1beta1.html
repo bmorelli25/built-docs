@@ -158,6 +158,14 @@ Not what you want? See the
 </tr>
 <tr>
 <td align="left" valign="top">
+<p><span class="strong strong"><strong><code class="literal">preset</code></strong></span> <em>PresetName</em></p>
+</td>
+<td align="left" valign="top">
+<p>Preset specifies which built-in configuration the operator should use. The configuration provided in a preset consists of: Beat config, roles with permissions required by that config and podTemplate for DaemonSet or Deployment. Preset must match the Beat <code class="literal">type</code>. If <code class="literal">config</code> is provided, it replaces the config from preset entirely. If <code class="literal">deployment</code> or <code class="literal">daemonSet</code> is provided it has to match Deployment or DaemonSet in the preset. The <code class="literal">podTemplate</code> is then merged with PodTemplate from the preset. If preset is not provided, both <code class="literal">config</code> and <code class="literal">daemonSet</code> or <code class="literal">deployment</code> must be specified.</p>
+</td>
+</tr>
+<tr>
+<td align="left" valign="top">
 <p><span class="strong strong"><strong><code class="literal">image</code></strong></span> <em>string</em></p>
 </td>
 <td align="left" valign="top">
@@ -290,6 +298,24 @@ Not what you want? See the
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="k8s-api-github-com-elastic-cloud-on-k8s-pkg-apis-beat-v1beta1-presetname"></a>PresetName (string)<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/cloud-on-k8s/edit/master/docs/reference/api-docs.asciidoc">edit</a></h3>
+</div></div></div>
+<div class="sidebar">
+<div class="titlepage"><div><div>
+<p class="title"><strong>Appears In:</strong></p>
+</div></div></div>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+<a class="xref" href="k8s-api-beat-k8s-elastic-co-v1beta1.html#k8s-api-github-com-elastic-cloud-on-k8s-pkg-apis-beat-v1beta1-beatspec" title="BeatSpec">BeatSpec</a>
+</li>
+</ul>
+</div>
 </div>
 </div>
 
