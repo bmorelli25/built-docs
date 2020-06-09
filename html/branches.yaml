@@ -12,11 +12,11 @@ apm-agent-go:
   APM Go Agent/docs/master: 10e69054fd2a85a84af85b3fb801477e4c595002
 apm-agent-java:
   APM Java Agent/CHANGELOG.asciidoc/1.x: 674753093f9116496c652f19e14dfd892484b450
-  APM Java Agent/CHANGELOG.asciidoc/master: b2b68ece03b8066c3ada12251d24147aef8650cc
+  APM Java Agent/CHANGELOG.asciidoc/master: local
   APM Java Agent/docs/0.6: 34da1ec2b6a9f7f4015ab20572ee881a57df11d7
   APM Java Agent/docs/0.7: c438868916ba242b40fcf4ec61d384f9d4055bf8
   APM Java Agent/docs/1.x: 674753093f9116496c652f19e14dfd892484b450
-  APM Java Agent/docs/master: b2b68ece03b8066c3ada12251d24147aef8650cc
+  APM Java Agent/docs/master: local
 apm-agent-nodejs:
   APM Node.js Agent/CHANGELOG.asciidoc/2.x: d38aa089aeb003f075105bdadfed7ca95d788e23
   APM Node.js Agent/CHANGELOG.asciidoc/3.x: 44e741258b5521ac4ba513691f85084f948261ed
