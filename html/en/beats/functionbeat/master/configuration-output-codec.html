@@ -3,11 +3,11 @@
   <head>
     
 <meta charset="UTF-8">
-<title>Configure Kerberos | Functionbeat Reference [master] | Elastic</title>
+<title>Change the output codec | Functionbeat Reference [master] | Elastic</title>
 <link rel="home" href="index.html" title="Functionbeat Reference [master]"/>
-<link rel="up" href="configuring-howto-functionbeat.html" title="Configure Functionbeat"/>
-<link rel="prev" href="configuration-output-codec.html" title="Change the output codec"/>
-<link rel="next" href="configuration-ssl.html" title="Configure SSL"/>
+<link rel="up" href="configuring-output.html" title="Configure the output"/>
+<link rel="prev" href="configure-cloud-id.html" title="Configure the output for the Elastic Cloud"/>
+<link rel="next" href="configuration-kerberos.html" title="Configure Kerberos"/>
 <meta name="DC.type" content="Learn/Docs/Functionbeat/Reference/master"/>
 <meta name="DC.subject" content="Functionbeat"/>
 <meta name="DC.identifier" content="master"/>
@@ -115,95 +115,48 @@ Not what you want? See the
 »
 <span class="breadcrumb-link"><a href="configuring-howto-functionbeat.html">Configure Functionbeat</a></span>
 »
-<span class="breadcrumb-node">Configure Kerberos</span>
+<span class="breadcrumb-link"><a href="configuring-output.html">Configure the output</a></span>
+»
+<span class="breadcrumb-node">Change the output codec</span>
 </div>
 <div class="navheader">
 <span class="prev">
-<a href="configuration-output-codec.html">« Change the output codec</a>
+<a href="configure-cloud-id.html">« Configure the output for the Elastic Cloud</a>
 </span>
 <span class="next">
-<a href="configuration-ssl.html">Configure SSL »</a>
+<a href="configuration-kerberos.html">Configure Kerberos »</a>
 </span>
 </div>
-<div class="chapter">
+<div class="section xpack">
 <div class="titlepage"><div><div>
-<h2 class="title"><a id="configuration-kerberos"></a>Configure Kerberos<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/beats/edit/master/libbeat/docs/shared-kerberos-config.asciidoc">edit</a></h2>
+<h2 class="title"><a id="configuration-output-codec"></a>Change the output codec<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/beats/edit/master/libbeat/outputs/codec/docs/codec.asciidoc">edit</a><a class="xpack_tag" href="/subscriptions"></a></h2>
 </div></div></div>
-
-<p>You can specify Kerberos options with any output or input that supports Kerberos, like Elasticsearch.</p>
-<p>The following encryption types are supported:</p>
-<div class="ulist itemizedlist">
-<ul class="itemizedlist">
-<li class="listitem">
-aes128-cts-hmac-sha1-96
-</li>
-<li class="listitem">
-aes128-cts-hmac-sha256-128
-</li>
-<li class="listitem">
-aes256-cts-hmac-sha1-96
-</li>
-<li class="listitem">
-aes256-cts-hmac-sha384-192
-</li>
-<li class="listitem">
-des3-cbc-sha1-kd
-</li>
-<li class="listitem">
-rc4-hmac
-</li>
-</ul>
-</div>
-<p>Example output config with Kerberos password based authentication:</p>
+<p>For outputs that do not require a specific encoding, you can change the encoding
+by using the codec configuration. You can specify either the <code class="literal">json</code> or <code class="literal">format</code>
+codec. By default the <code class="literal">json</code> codec is used.</p>
+<p><span class="strong strong"><strong><code class="literal">json.pretty</code></strong></span>: If <code class="literal">pretty</code> is set to true, events will be nicely formatted. The default is false.</p>
+<p><span class="strong strong"><strong><code class="literal">json.escape_html</code></strong></span>: If <code class="literal">escape_html</code> is set to true, html symbols will be escaped in strings. The default is false.</p>
+<p>Example configuration that uses the <code class="literal">json</code> codec with pretty printing enabled to write events to the console:</p>
 <div class="pre_wrapper lang-yaml">
-<pre class="programlisting prettyprint lang-yaml">output.elasticsearch.hosts: ["http://my-elasticsearch.elastic.co:9200"]
-output.elasticsearch.kerberos.auth_type: password
-output.elasticsearch.kerberos.username: "elastic"
-output.elasticsearch.kerberos.password: "changeme"
-output.elasticsearch.kerberos.config_path: "/etc/krb5.conf"
-output.elasticsearch.kerberos.realm: "ELASTIC.CO"</pre>
+<pre class="programlisting prettyprint lang-yaml">output.console:
+  codec.json:
+    pretty: true
+    escape_html: false</pre>
 </div>
-<p>The service principal name for the Elasticsearch instance is contructed from these options. Based on this configuration
-it is going to be <code class="literal">HTTP/my-elasticsearch.elastic.co@ELASTIC.CO</code>.</p>
-<h3><a id="_configuration_options_4"></a>Configuration options<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/beats/edit/master/libbeat/docs/shared-kerberos-config.asciidoc">edit</a></h3>
-<p>You can specify the following options in the <code class="literal">kerberos</code> section of the <code class="literal">functionbeat.yml</code> config file:</p>
-<h4><a id="_enabled_4"></a><code class="literal">enabled</code><a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/beats/edit/master/libbeat/docs/shared-kerberos-config.asciidoc">edit</a></h4>
-<p>The <code class="literal">enabled</code> setting can be used to enable the kerberos configuration by setting
-it to <code class="literal">false</code>. The default value is <code class="literal">true</code>.</p>
-<div class="note admon">
-<div class="icon"></div>
-<div class="admon_content">
-<p>Kerberos settings are disabled if either <code class="literal">enabled</code> is set to <code class="literal">false</code> or the
-<code class="literal">kerberos</code> section is missing.</p>
+<p><span class="strong strong"><strong><code class="literal">format.string</code></strong></span>: Configurable format string used to create a custom formatted message.</p>
+<p>Example configurable that uses the <code class="literal">format</code> codec to print the events timestamp and message field to console:</p>
+<div class="pre_wrapper lang-yaml">
+<pre class="programlisting prettyprint lang-yaml">output.console:
+  codec.format:
+    string: '%{[@timestamp]} %{[message]}'</pre>
 </div>
-</div>
-<h4><a id="_auth_type"></a><code class="literal">auth_type</code><a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/beats/edit/master/libbeat/docs/shared-kerberos-config.asciidoc">edit</a></h4>
-<p>There are two options to authenticate with Kerberos KDC: <code class="literal">password</code> and <code class="literal">keytab</code>.</p>
-<p><code class="literal">password</code> expects the principal name and its password. When choosing <code class="literal">keytab</code>, you
-have to specify a principal name and a path to a keytab. The keytab must contain
-the keys of the selected principal. Otherwise, authentication will fail.</p>
-<h4><a id="_config_path"></a><code class="literal">config_path</code><a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/beats/edit/master/libbeat/docs/shared-kerberos-config.asciidoc">edit</a></h4>
-<p>You need to set the path to the <code class="literal">krb5.conf</code>, so +functionbeat can find the Kerberos KDC to
-retrieve a ticket.</p>
-<h4><a id="_username_2"></a><code class="literal">username</code><a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/beats/edit/master/libbeat/docs/shared-kerberos-config.asciidoc">edit</a></h4>
-<p>Name of the principal used to connect to the output.</p>
-<h4><a id="_password_2"></a><code class="literal">password</code><a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/beats/edit/master/libbeat/docs/shared-kerberos-config.asciidoc">edit</a></h4>
-<p>If you configured <code class="literal">password</code> for <code class="literal">auth_type</code>, you have to provide a password
-for the selected principal.</p>
-<h4><a id="_keytab"></a><code class="literal">keytab</code><a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/beats/edit/master/libbeat/docs/shared-kerberos-config.asciidoc">edit</a></h4>
-<p>If you configured <code class="literal">keytab</code> for <code class="literal">auth_type</code>, you have to provide the path to the
-keytab of the selected principal.</p>
-<h4><a id="_service_name"></a><code class="literal">service_name</code><a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/beats/edit/master/libbeat/docs/shared-kerberos-config.asciidoc">edit</a></h4>
-<p>This option can only be configured for Kafka. It is the name of the Kafka service, usually <code class="literal">kafka</code>.</p>
-<h4><a id="_realm"></a><code class="literal">realm</code><a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/beats/edit/master/libbeat/docs/shared-kerberos-config.asciidoc">edit</a></h4>
-<p>Name of the realm where the output resides.</p>
 </div>
 <div class="navfooter">
 <span class="prev">
-<a href="configuration-output-codec.html">« Change the output codec</a>
+<a href="configure-cloud-id.html">« Configure the output for the Elastic Cloud</a>
 </span>
 <span class="next">
-<a href="configuration-ssl.html">Configure SSL »</a>
+<a href="configuration-kerberos.html">Configure Kerberos »</a>
 </span>
 </div>
 </div>
