@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cloud settings | Elasticsearch Reference [master] | Elastic</title>
+<link rel="home" href="index.html" title="Elasticsearch Reference [master]"/>
+<link rel="up" href="settings.html" title="Configuring Elasticsearch"/>
+<link rel="prev" href="settings.html" title="Configuring Elasticsearch"/>
+<link rel="next" href="jvm-options.html" title="Setting JVM options"/>
+<meta name="DC.type" content="Learn/Docs/Elasticsearch/Reference/master"/>
+<meta name="DC.subject" content="Elasticsearch"/>
+<meta name="DC.identifier" content="master"/>
+</head>
+<body><div class="page_header">
+You are looking at preliminary documentation for a future release.
+Not what you want? See the
+<a href="../current/index.html">current release documentation</a>.
+</div>
+<div id="content">
+<div class="breadcrumbs">
+<span class="breadcrumb-link"><a href="index.html">Elasticsearch Reference [master]</a></span>
+»
+<span class="breadcrumb-link"><a href="setup.html">Set up Elasticsearch</a></span>
+»
+<span class="breadcrumb-link"><a href="settings.html">Configuring Elasticsearch</a></span>
+»
+<span class="breadcrumb-node">Cloud settings</span>
+</div>
+<div class="navheader">
+<span class="prev">
+<a href="settings.html">« Configuring Elasticsearch</a>
+</span>
+<span class="next">
+<a href="jvm-options.html">Setting JVM options »</a>
+</span>
+</div>
+<div class="section">
+<div class="titlepage"><div><div>
+<h2 class="title"><a id="cloud-settings"></a>Cloud settings<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/modules/cloud-settings.asciidoc">edit</a></h2>
+</div></div></div>
+<p>The following Elasticsearch settings are supported on Elasticsearch Service:</p>
+<div class="ulist itemizedlist">
+<ul class="itemizedlist">
+<li class="listitem">
+<a class="xref" href="cloud-settings.html#cloud-circuit-breaker-settings" title="Circuit breaker settings">Circuit breaker settings</a>
+</li>
+<li class="listitem">
+<a class="xref" href="cloud-settings.html#cloud-disk-based-shard-allocation-settings" title="Disk-based shard allocation settings">Disk-based shard allocation settings</a>
+</li>
+<li class="listitem">
+<a class="xref" href="cloud-settings.html#cloud-http-settings" title="HTTP settings">HTTP settings</a>
+</li>
+<li class="listitem">
+<a class="xref" href="cloud-settings.html#cloud-machine-learning-settings" title="Machine learning settings">Machine learning settings</a>
+</li>
+<li class="listitem">
+<a class="xref" href="cloud-settings.html#cloud-monitoring-collection-settings" title="Monitoring collection settings">Monitoring collection settings</a>
+</li>
+<li class="listitem">
+<a class="xref" href="cloud-settings.html#cloud-watcher-settings" title="Watcher settings">Watcher settings</a>
+</li>
+</ul>
+</div>
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="cloud-circuit-breaker-settings"></a>Circuit breaker settings<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/modules/indices/circuit_breaker.asciidoc">edit</a></h3>
+</div></div></div>
+<p>Elasticsearch contains multiple circuit breakers used to prevent operations from causing an OutOfMemoryError. Each breaker specifies a limit for how much memory it can use. Additionally, there is a parent-level breaker that specifies the total amount of memory that can be used across all breakers.</p>
+<p>Except where noted otherwise, these settings can be dynamically updated on a
+live cluster with the <a class="xref" href="cluster-update-settings.html" title="Cluster update settings API">cluster-update-settings</a> API.</p>
+<div class="variablelist">
+<dl class="variablelist">
+<dt>
+<span class="term">
+<code class="literal">indices.breaker.total.limit</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+Starting limit for overall parent breaker. Defaults to 70% of JVM heap if
+<code class="literal">indices.breaker.total.use_real_memory</code> is <code class="literal">false</code>. If <code class="literal">indices.breaker.total.use_real_memory</code>
+is <code class="literal">true</code>, defaults to 95% of the JVM heap.
+</dd>
+<dt>
+<span class="term">
+<code class="literal">indices.breaker.fielddata.limit</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+Limit for fielddata breaker. Defaults to 40% of JVM heap.
+</dd>
+<dt>
+<span class="term">
+<code class="literal">indices.breaker.fielddata.overhead</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+A constant that all field data estimations are multiplied with to determine a
+final estimation. Defaults to <code class="literal">1.03</code>.
+</dd>
+<dt>
+<span class="term">
+<code class="literal">indices.breaker.request.limit</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+Limit for request breaker, defaults to 60% of JVM heap.
+</dd>
+<dt>
+<span class="term">
+<code class="literal">indices.breaker.request.overhead</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+A constant that all request estimations are multiplied with to determine a
+final estimation. Defaults to <code class="literal">1</code>.
+</dd>
+</dl>
+</div>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="cloud-disk-based-shard-allocation-settings"></a>Disk-based shard allocation settings<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/modules/cluster/disk_allocator.asciidoc">edit</a></h3>
+</div></div></div>
+<p>Elasticsearch considers the available disk space on a node before deciding
+whether to allocate new shards to that node or to actively relocate shards away
+from that node.</p>
+<p>You can configure the following settings in the <code class="literal">elasticsearch.yml</code> config
+file or dynamically update settings on a live cluster with the
+<a class="xref" href="cluster-update-settings.html" title="Cluster update settings API">cluster-update-settings</a> API.</p>
+<div class="variablelist">
+<dl class="variablelist">
+<dt>
+<span class="term">
+<code class="literal">cluster.routing.allocation.disk.threshold_enabled</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+<p>Defaults to <code class="literal">true</code>.  Set to <code class="literal">false</code> to disable the disk allocation decider.</p>
+</dd>
+<dt>
+<span class="term">
+<code class="literal">cluster.routing.allocation.disk.watermark.low</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+<p>Controls the low watermark for disk usage. It defaults to <code class="literal">85%</code>, meaning that Elasticsearch will not allocate shards to nodes that have more than 85% disk used. It can also be set to an absolute byte value (like <code class="literal">500mb</code>) to prevent Elasticsearch from allocating shards if less than the specified amount of space is available. This setting has no effect on the primary shards of newly-created indices but will prevent their replicas from being allocated.</p>
+</dd>
+<dt>
+<span class="term">
+<code class="literal">cluster.routing.allocation.disk.watermark.high</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+<p>Controls the high watermark. It defaults to <code class="literal">90%</code>, meaning that Elasticsearch will attempt to relocate shards away from a node whose disk usage is above 90%. It can also be set to an absolute byte value (similarly to the low watermark) to relocate shards away from a node if it has less than the specified amount of free space. This setting affects the allocation of all shards, whether previously allocated or not.</p>
+</dd>
+<dt>
+<span class="term">
+<code class="literal">cluster.routing.allocation.disk.watermark.flood_stage</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+<p>Controls the flood stage watermark, which defaults to 95%. Elasticsearch enforces a read-only index block (<code class="literal">index.blocks.read_only_allow_delete</code>) on every index that has one or more shards allocated on the node, and that has at least one disk exceeding the flood stage. This setting is a last resort to prevent nodes from running out of disk space. The index block is automatically released when the disk utilization falls below the high watermark.</p>
+<div class="note admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>You cannot mix the usage of percentage values and byte values within
+these settings. Either all values are set to percentage values, or all are set to byte values. This enforcement is so that Elasticsearch can validate that the settings are internally consistent, ensuring that the low disk threshold is less than the high disk threshold, and the high disk threshold is less than the flood stage threshold.</p>
+</div>
+</div>
+<p>An example of resetting the read-only index block on the <code class="literal">twitter</code> index:</p>
+<a id="aaaa9a186db96077879ddfcfbd625fdb"></a>
+<div class="pre_wrapper lang-console">
+<pre class="programlisting prettyprint lang-console">PUT /twitter/_settings
+{
+  "index.blocks.read_only_allow_delete": null
+}</pre>
+</div>
+<div class="console_widget" data-snippet="snippets/18.console"></div>
+</dd>
+</dl>
+</div>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="cloud-http-settings"></a>HTTP settings<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/modules/http.asciidoc">edit</a></h3>
+</div></div></div>
+<p>The HTTP layer exposes Elasticsearch&#8217;s REST APIs over HTTP.</p>
+<p>The HTTP mechanism is completely asynchronous in nature, meaning that
+there is no blocking thread waiting for a response. The benefit of using
+asynchronous communication for HTTP is solving the
+<a href="http://en.wikipedia.org/wiki/C10k_problem" class="ulink" target="_top">C10k problem</a>.</p>
+<p>When possible, consider using
+<a href="http://en.wikipedia.org/wiki/Keepalive#HTTP_Keepalive" class="ulink" target="_top">HTTP keep alive</a>
+when connecting for better performance and try to get your favorite
+client not to do
+<a href="http://en.wikipedia.org/wiki/Chunked_transfer_encoding" class="ulink" target="_top">HTTP chunking</a>.</p>
+<div class="variablelist">
+<dl class="variablelist">
+<dt>
+<span class="term">
+<code class="literal">http.compression</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+<p>
+Support for compression when possible (with Accept-Encoding). If HTTPS is enabled, defaults to <code class="literal">false</code>. Otherwise, defaults to <code class="literal">true</code>.
+</p>
+<p>Disabling compression for HTTPS mitigates potential security risks, such as a
+<a href="https://en.wikipedia.org/wiki/BREACH" class="ulink" target="_top">BREACH attack</a>. To compress HTTPS traffic,
+you must explicitly set <code class="literal">http.compression</code> to <code class="literal">true</code>.</p>
+</dd>
+<dt>
+<span class="term">
+<code class="literal">http.cors.enabled</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+<p>
+Enable or disable cross-origin resource sharing, which determines whether a browser on another origin can execute requests against Elasticsearch. Set to <code class="literal">true</code> to enable Elasticsearch to process pre-flight
+<a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing" class="ulink" target="_top">CORS</a> requests.
+Elasticsearch will respond to those requests with the <code class="literal">Access-Control-Allow-Origin</code> header if the <code class="literal">Origin</code> sent in the request is permitted by the <code class="literal">http.cors.allow-origin</code> list. Set to <code class="literal">false</code> (the default) to make Elasticsearch ignore the <code class="literal">Origin</code> request header, effectively disabling CORS requests because Elasticsearch will never respond with the <code class="literal">Access-Control-Allow-Origin</code> response header.
+</p>
+<div class="note admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>If the client does not send a pre-flight request with an <code class="literal">Origin</code> header or it does not check the response headers from the server to validate the
+<code class="literal">Access-Control-Allow-Origin</code> response header, then cross-origin security is
+compromised. If CORS is not enabled on Elasticsearch, the only way for the client to know is to send a pre-flight request and realize the required response headers are missing.</p>
+</div>
+</div>
+</dd>
+<dt>
+<span class="term">
+<code class="literal">http.cors.allow-origin</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+<p>
+Which origins to allow. If you prepend and append a forward slash (<code class="literal">/</code>) to the value, this will be treated as a regular expression, allowing you to support HTTP and HTTPs. For example, using <code class="literal">/https?:\/\/localhost(:[0-9]+)?/</code> would return the request header appropriately in both cases. Defaults to no origins allowed.
+</p>
+<div class="important admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>A wildcard (<code class="literal">*</code>) is a valid value but is considered a security risk, as your Elasticsearch instance is open to cross origin requests from <span class="strong strong"><strong>anywhere</strong></span>.</p>
+</div>
+</div>
+</dd>
+<dt>
+<span class="term">
+<code class="literal">http.cors.max-age</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+Browsers send a "preflight" OPTIONS-request to determine CORS settings. <code class="literal">max-age</code> defines how long the result should be cached for. Defaults to <code class="literal">1728000</code> (20 days).
+</dd>
+<dt>
+<span class="term">
+<code class="literal">http.cors.allow-methods</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+Which methods to allow. Defaults to <code class="literal">OPTIONS, HEAD, GET, POST, PUT, DELETE</code>.
+</dd>
+<dt>
+<span class="term">
+<code class="literal">http.cors.allow-headers</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+Which headers to allow. Defaults to <code class="literal">X-Requested-With, Content-Type, Content-Length</code>.
+</dd>
+<dt>
+<span class="term">
+<code class="literal">http.cors.allow-credentials</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+<p>
+Whether the <code class="literal">Access-Control-Allow-Credentials</code> header should be returned. Defaults to <code class="literal">false</code>.
+</p>
+<div class="note admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>This header is only returned when the setting is set to <code class="literal">true</code>.</p>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="cloud-machine-learning-settings"></a>Machine learning settings<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/settings/ml-settings.asciidoc">edit</a></h3>
+</div></div></div>
+<p>You do not need to configure any settings to use machine learning. It is enabled by default.</p>
+<div class="important admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>Machine learning uses SSE4.2 instructions, so will only work on machines whose
+CPUs <a href="https://en.wikipedia.org/wiki/SSE4#Supporting_CPUs" class="ulink" target="_top">support</a> SSE4.2. If you
+run Elasticsearch on older hardware you must disable machine learning (by setting <code class="literal">xpack.ml.enabled</code>
+to <code class="literal">false</code>).</p>
+</div>
+</div>
+<p>All of these settings can be added to the <code class="literal">elasticsearch.yml</code> configuration file.
+The dynamic settings can also be updated across a cluster with the
+<a class="xref" href="cluster-update-settings.html" title="Cluster update settings API">cluster update settings API</a>.</p>
+<div class="tip admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>Dynamic settings take precedence over settings in the <code class="literal">elasticsearch.yml</code>
+file.</p>
+</div>
+</div>
+<div class="variablelist">
+<dl class="variablelist">
+<dt>
+<span class="term">
+<code class="literal">xpack.ml.inference_model.time_to_live</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+The time to live (TTL) for models in the inference model cache. The TTL is
+calculated from last access. The <code class="literal">inference</code> processor attempts to load the
+model from cache. If the <code class="literal">inference</code> processor does not receive any documents
+for the duration of the TTL, the referenced model is flagged for eviction from
+the cache. If a document is processed later, the model is again loaded into the
+cache. Defaults to <code class="literal">5m</code>.
+</dd>
+</dl>
+</div>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="cloud-monitoring-collection-settings"></a>Monitoring collection settings<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/settings/monitoring-settings.asciidoc">edit</a></h3>
+</div></div></div>
+<p>The <code class="literal">xpack.monitoring.collection</code> settings control how data is collected from
+your Elasticsearch nodes. You can dynamically change all monitoring collection
+settings using the <a class="xref" href="cluster-update-settings.html" title="Cluster update settings API">cluster update settings API</a>.</p>
+<div class="variablelist">
+<dl class="variablelist">
+<dt>
+<span class="term">
+<code class="literal">xpack.monitoring.collection.interval</code> (<a class="xref" href="cluster-update-settings.html" title="Cluster update settings API">Dynamic</a>) <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+<p>
+Setting to <code class="literal">-1</code> to disable data collection is no longer supported beginning with
+7.0.0. <span class="Admonishment Admonishment--change">
+[<span class="Admonishment-version u-mono u-strikethrough">6.3.0</span>]
+<span class="Admonishment-detail">
+Deprecated in 6.3.0. Use <code class="literal">xpack.monitoring.collection.enabled</code> set to <code class="literal">false</code> instead.
+</span>
+</span>
+</p>
+<p>Controls how often data samples are collected. Defaults to <code class="literal">10s</code>. If you
+modify the collection interval, set the <code class="literal">xpack.monitoring.min_interval_seconds</code>
+option in <code class="literal">kibana.yml</code> to the same value.</p>
+</dd>
+<dt>
+<span class="term">
+<code class="literal">xpack.monitoring.history.duration</code> (<a class="xref" href="cluster-update-settings.html" title="Cluster update settings API">Dynamic</a>) <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+<p>
+(<a class="xref" href="common-options.html#time-units" title="Time units">time value</a>) Retention duration beyond which the indices created by a Monitoring
+exporter are automatically deleted. Defaults to <code class="literal">7d</code> (7 days).
+</p>
+<p>This setting has a minimum value of <code class="literal">1d</code> (1 day) to ensure that something is
+being monitored, and it cannot be disabled.</p>
+<div class="important admon">
+<div class="icon"></div>
+<div class="admon_content">
+<p>This setting currently only impacts <code class="literal">local</code>-type exporters. Indices created using
+the <code class="literal">http</code> exporter will not be deleted automatically.</p>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+
+<div class="section">
+<div class="titlepage"><div><div>
+<h3 class="title"><a id="cloud-watcher-settings"></a>Watcher settings<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/settings/notification-settings.asciidoc">edit</a></h3>
+</div></div></div>
+<p>You configure Watcher settings to set up Watcher and send notifications via
+<a class="xref" href="notification-settings.html#email-notification-settings" title="Email Notification Settings">email</a>,
+<a class="xref" href="notification-settings.html#slack-notification-settings" title="Slack Notification Settings">Slack</a>, and
+<a class="xref" href="notification-settings.html#pagerduty-notification-settings" title="PagerDuty Notification Settings">PagerDuty</a>.</p>
+<p>All of these settings can be added to the <code class="literal">elasticsearch.yml</code> configuration file,
+with the exception of the secure settings, which you add to the Elasticsearch keystore.
+For more information about creating and updating the Elasticsearch keystore, see
+<a class="xref" href="secure-settings.html" title="Secure settings">Secure settings</a>. Dynamic settings can also be updated across a cluster with the
+<a class="xref" href="cluster-update-settings.html" title="Cluster update settings API">cluster update settings API</a>.</p>
+<div class="variablelist">
+<dl class="variablelist">
+<dt>
+<span class="term">
+<code class="literal">xpack.watcher.history.cleaner_service.enabled</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+<p>
+<span class="Admonishment Admonishment--change">
+[<span class="Admonishment-version u-mono">6.3.0</span>]
+<span class="Admonishment-detail">
+Added in 6.3.0. Default changed to <code class="literal">true</code>.
+</span>
+</span>
+<span class="Admonishment Admonishment--change">
+[<span class="Admonishment-version u-mono u-strikethrough">7.0.0</span>]
+<span class="Admonishment-detail">
+Deprecated in 7.0.0. Watcher history indices are now managed by the <code class="literal">watch-history-ilm-policy</code> ILM policy
+</span>
+</span>
+</p>
+<p>Set to <code class="literal">true</code> (default) to enable the cleaner service. The cleaner service
+removes previous versions of Watcher indices (for example,
+<code class="literal">.watcher-history*</code>) when it determines that they are old. The duration of
+Watcher indices is determined by the <code class="literal">xpack.monitoring.history.duration</code>
+setting, which defaults to 7 days. For more information about that setting,
+see <a class="xref" href="monitoring-settings.html" title="Monitoring settings in Elasticsearch">Monitoring settings</a>.</p>
+</dd>
+<dt>
+<span class="term">
+<code class="literal">xpack.watcher.encrypt_sensitive_data</code> <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
+</span>
+</dt>
+<dd>
+Set to <code class="literal">true</code> to encrypt sensitive data. If this setting is enabled, you
+must also specify the <code class="literal">xpack.watcher.encryption_key</code> setting. For more
+information, see <a class="xref" href="encrypting-data.html" title="Encrypting sensitive data in Watcher"><em>Encrypting sensitive data in Watcher</em></a>.
+</dd>
+</dl>
+</div>
+</div>
+
+</div>
+<div class="navfooter">
+<span class="prev">
+<a href="settings.html">« Configuring Elasticsearch</a>
+</span>
+<span class="next">
+<a href="jvm-options.html">Setting JVM options »</a>
+</span>
+</div>
+</div>
+</body>
+</html>

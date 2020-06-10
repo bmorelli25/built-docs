@@ -76,7 +76,7 @@ This deprecated setting has no effect.
 </dl>
 </div>
 <h4><a id="monitoring-collection-settings"></a>Monitoring Collection Settings<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/elasticsearch/edit/master/docs/reference/settings/monitoring-settings.asciidoc">edit</a></h4>
-<p>The <code class="literal">xpack.monitoring.collection</code> settings control how data is collected from
+<p><a id="monitoring-settings-description"></a>The <code class="literal">xpack.monitoring.collection</code> settings control how data is collected from
 your Elasticsearch nodes. You can dynamically change all monitoring collection
 settings using the <a class="xref" href="cluster-update-settings.html" title="Cluster update settings API">cluster update settings API</a>.</p>
 <div class="variablelist">
@@ -97,9 +97,14 @@ this setting is <code class="literal">false</code> (default), Elasticsearch moni
 all monitoring data from other sources such as Kibana, Beats, and Logstash is
 ignored.
 </dd>
+</dl>
+</div>
+<div class="variablelist">
+<a id="xpack-monitoring-collection-interval"></a>
+<dl class="variablelist">
 <dt>
 <span class="term">
-<code class="literal">xpack.monitoring.collection.interval</code> (<a class="xref" href="cluster-update-settings.html" title="Cluster update settings API">Dynamic</a>)
+<code class="literal">xpack.monitoring.collection.interval</code> (<a class="xref" href="cluster-update-settings.html" title="Cluster update settings API">Dynamic</a>) <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
 </span>
 </dt>
 <dd>
@@ -182,9 +187,14 @@ collect only active recoveries. Defaults to <code class="literal">false</code>.
 <dd>
 (<a class="xref" href="common-options.html#time-units" title="Time units">time value</a>) Timeout for collecting the recovery information. Defaults to <code class="literal">10s</code>.
 </dd>
+</dl>
+</div>
+<div class="variablelist">
+<a id="xpack-monitoring-history-duration"></a>
+<dl class="variablelist">
 <dt>
 <span class="term">
-<code class="literal">xpack.monitoring.history.duration</code> (<a class="xref" href="cluster-update-settings.html" title="Cluster update settings API">Dynamic</a>)
+<code class="literal">xpack.monitoring.history.duration</code> (<a class="xref" href="cluster-update-settings.html" title="Cluster update settings API">Dynamic</a>) <span class="image"><a class="image" href="https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&amp;elektra=docs"><img src="https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg" alt="logo cloud" title="Supported on Elasticsearch Service"></a></span>
 </span>
 </dt>
 <dd>
@@ -202,6 +212,10 @@ the <code class="literal">http</code> exporter will not be deleted automatically
 </div>
 </div>
 </dd>
+</dl>
+</div>
+<div class="variablelist">
+<dl class="variablelist">
 <dt>
 <span class="term">
 <code class="literal">xpack.monitoring.exporters</code>

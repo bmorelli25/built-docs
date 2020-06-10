@@ -1,4 +1,4 @@
-POST _nodes/reload_secure_settings
+PUT /twitter/_settings
 {
-  "secure_settings_password": "s3cr3t"
+  "index.blocks.read_only_allow_delete": null
 }
