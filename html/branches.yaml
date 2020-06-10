@@ -1,9 +1,9 @@
 ---
 apm-agent-dotnet:
   APM .NET Agent/CHANGELOG.asciidoc/1.x: 2f3483626348fa62a6241c32a0d715b9a96727cb
-  APM .NET Agent/CHANGELOG.asciidoc/master: 374d799672115c2bd860b72af793ce38489ba4ac
+  APM .NET Agent/CHANGELOG.asciidoc/master: local
   APM .NET Agent/docs/1.x: 2f3483626348fa62a6241c32a0d715b9a96727cb
-  APM .NET Agent/docs/master: 374d799672115c2bd860b72af793ce38489ba4ac
+  APM .NET Agent/docs/master: local
 apm-agent-go:
   APM Go Agent/CHANGELOG.asciidoc/1.x: f07b51f3e6132a148b258a72781e6616409fd477
   APM Go Agent/CHANGELOG.asciidoc/master: 10e69054fd2a85a84af85b3fb801477e4c595002
