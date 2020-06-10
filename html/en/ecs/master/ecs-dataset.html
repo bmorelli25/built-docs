@@ -3,11 +3,11 @@
   <head>
     
 <meta charset="UTF-8">
-<title>Container Fields | Elastic Common Schema (ECS) Reference [master] | Elastic</title>
+<title>Dataset Fields | Elastic Common Schema (ECS) Reference [master] | Elastic</title>
 <link rel="home" href="index.html" title="Elastic Common Schema (ECS) Reference [master]"/>
 <link rel="up" href="ecs-field-reference.html" title="ECS Field Reference"/>
-<link rel="prev" href="ecs-code_signature.html" title="Code Signature Fields"/>
-<link rel="next" href="ecs-dataset.html" title="Dataset Fields"/>
+<link rel="prev" href="ecs-container.html" title="Container Fields"/>
+<link rel="next" href="ecs-destination.html" title="Destination Fields"/>
 <meta name="DC.type" content="Learn/Docs/Elastic Common Schema (ECS)/Reference/master"/>
 <meta name="DC.subject" content="Elastic Common Schema (ECS)"/>
 <meta name="DC.identifier" content="master"/>
@@ -115,25 +115,26 @@ Not what you want? See the
 »
 <span class="breadcrumb-link"><a href="ecs-field-reference.html">ECS Field Reference</a></span>
 »
-<span class="breadcrumb-node">Container Fields</span>
+<span class="breadcrumb-node">Dataset Fields</span>
 </div>
 <div class="navheader">
 <span class="prev">
-<a href="ecs-code_signature.html">« Code Signature Fields</a>
+<a href="ecs-container.html">« Container Fields</a>
 </span>
 <span class="next">
-<a href="ecs-dataset.html">Dataset Fields »</a>
+<a href="ecs-destination.html">Destination Fields »</a>
 </span>
 </div>
 <div class="section">
 <div class="titlepage"><div><div>
-<h2 class="title"><a id="ecs-container"></a>Container Fields<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/ecs/edit/master/docs/field-details.asciidoc">edit</a></h2>
+<h2 class="title"><a id="ecs-dataset"></a>Dataset Fields<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/ecs/edit/master/docs/field-details.asciidoc">edit</a></h2>
 </div></div></div>
-<p>Container fields are used for meta information about the specific container that is the source of information.</p>
-<p>These fields help correlate data based containers from any runtime.</p>
+<p>The dataset fields are part of the new [indexing strategy](<a href="https://github.com/elastic/kibana/blob/master/docs/ingest_manager/index.asciidoc#indexing-strategy-1" class="ulink" target="_top">https://github.com/elastic/kibana/blob/master/docs/ingest_manager/index.asciidoc#indexing-strategy-1</a>).</p>
+<p>These fields are used to determine into which index the data is shipped in Elasticsearch and allow efficient querying of data. Initially these fields are mainly used by data shipped by the Elastic Agent but any time series data shipper should switch to using data streams and the new indexing strategy with these fields.</p>
+<p>All three fields are <code class="literal">constant_keyword</code> fields.</p>
 <div class="section">
 <div class="titlepage"><div><div>
-<h3 class="title"><a id="_container_field_details"></a>Container Field Details<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/ecs/edit/master/docs/field-details.asciidoc">edit</a></h3>
+<h3 class="title"><a id="_dataset_field_details"></a>Dataset Field Details<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/ecs/edit/master/docs/field-details.asciidoc">edit</a></h3>
 </div></div></div>
 <div class="informaltable">
 <table border="1" cellpadding="4px">
@@ -151,41 +152,30 @@ Not what you want? See the
 </thead>
 <tbody>
 <tr>
-<td align="left" valign="top"><p>container.id</p></td>
-<td align="left" valign="top"><p>Unique container id.</p>
-<p>type: keyword</p></td>
-<td align="left" valign="top"><p>core</p></td>
-</tr>
-<tr>
-<td align="left" valign="top"><p>container.image.name</p></td>
-<td align="left" valign="top"><p>Name of the image the container was built on.</p>
-<p>type: keyword</p></td>
+<td align="left" valign="top"><p>dataset.name</p></td>
+<td align="left" valign="top"><p>Dataset name describes the structure of the data.</p>
+<p>The dataset name describes the structure of the data. All data shipped into a single dataset should have the same or very similar data structure. For example <code class="literal">system.cpu</code> and <code class="literal">system.disk</code> are two different datasets as they have very different fields.</p>
+<p>The name of the dataset should be descriptive of the data and it is encourage to use <code class="literal">.</code> to combine multiple words. All characters which are allowed in index names can be used for the dataset except <code class="literal">-</code>.</p>
+<p>The default for dataset is <code class="literal">generic</code>.</p>
+<p>type: constant_keyword</p>
+<p>example: <code class="literal">nginx.access</code></p></td>
 <td align="left" valign="top"><p>extended</p></td>
 </tr>
 <tr>
-<td align="left" valign="top"><p>container.image.tag</p></td>
-<td align="left" valign="top"><p>Container image tags.</p>
-<p>type: keyword</p>
-<p>Note: this field should contain an array of values.</p></td>
+<td align="left" valign="top"><p>dataset.namespace</p></td>
+<td align="left" valign="top"><p>Namespace of the dataset.</p>
+<p>This is the namespace used in your index. The namespace is used to separate the same structure into different Data Streams. For example if nginx logs are shipped for testing and production into the same cluster, two different namespaces can be used. This allows to assign different ILM policies as an example.</p>
+<p>The default value for a namespace is <code class="literal">default</code>.</p>
+<p>type: constant_keyword</p>
+<p>example: <code class="literal">production</code></p></td>
 <td align="left" valign="top"><p>extended</p></td>
 </tr>
 <tr>
-<td align="left" valign="top"><p>container.labels</p></td>
-<td align="left" valign="top"><p>Image labels.</p>
-<p>type: object</p></td>
-<td align="left" valign="top"><p>extended</p></td>
-</tr>
-<tr>
-<td align="left" valign="top"><p>container.name</p></td>
-<td align="left" valign="top"><p>Container name.</p>
-<p>type: keyword</p></td>
-<td align="left" valign="top"><p>extended</p></td>
-</tr>
-<tr>
-<td align="left" valign="top"><p>container.runtime</p></td>
-<td align="left" valign="top"><p>Runtime managing this container.</p>
-<p>type: keyword</p>
-<p>example: <code class="literal">docker</code></p></td>
+<td align="left" valign="top"><p>dataset.type</p></td>
+<td align="left" valign="top"><p>Type of the dataset.</p>
+<p>The type of the dataset can be <code class="literal">logs</code> or <code class="literal">metrics</code>. More types can be added in the future but no other types then the one describe here should be used.</p>
+<p>type: constant_keyword</p>
+<p>example: <code class="literal">logs</code></p></td>
 <td align="left" valign="top"><p>extended</p></td>
 </tr>
 </tbody>
@@ -196,10 +186,10 @@ Not what you want? See the
 </div>
 <div class="navfooter">
 <span class="prev">
-<a href="ecs-code_signature.html">« Code Signature Fields</a>
+<a href="ecs-container.html">« Container Fields</a>
 </span>
 <span class="next">
-<a href="ecs-dataset.html">Dataset Fields »</a>
+<a href="ecs-destination.html">Destination Fields »</a>
 </span>
 </div>
 </div>
