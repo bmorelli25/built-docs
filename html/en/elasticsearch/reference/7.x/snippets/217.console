@@ -1,15 +1,5 @@
-GET /my-index/_search
+PUT /my-index/_doc/1?refresh
 {
-    "query": {
-        "has_parent" : {
-            "parent_type" : "parent",
-            "query" : {
-                "term" : {
-                    "tag" : {
-                        "value" : "Elasticsearch"
-                    }
-                }
-            }
-        }
-    }
+  "text": "This is a parent document.",
+  "my-join-field": "my-parent"
 }

@@ -1,4 +1,4 @@
-PUT /my_index
+PUT /my-index
 {
     "mappings": {
         "properties" : {
@@ -7,6 +7,9 @@ PUT /my_index
                 "relations": {
                     "parent": "child"
                 }
+            },
+            "tag" : {
+                "type" : "keyword"
             }
         }
     }

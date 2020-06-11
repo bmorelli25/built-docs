@@ -1,26 +1,14 @@
-PUT /drivers
+PUT /my_index
 {
-    "mappings" : {
+    "mappings": {
         "properties" : {
-            "driver" : {
-                "type" : "nested",
-                "properties" : {
-                    "last_name" : {
-                        "type" : "text"
-                    },
-                    "vehicle" : {
-                        "type" : "nested",
-                        "properties" : {
-                            "make" : {
-                                "type" : "text"
-                            },
-                            "model" : {
-                                "type" : "text"
-                            }
-                        }
-                    }
+            "my-join-field" : {
+                "type" : "join",
+                "relations": {
+                    "parent": "child"
                 }
             }
         }
     }
 }
+

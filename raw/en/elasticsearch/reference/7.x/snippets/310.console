@@ -1,12 +1,8 @@
-GET /_search
+GET /sec_logs/_eql/search
 {
-    "query": {
-        "wildcard": {
-            "user": {
-                "value": "ki*y",
-                "boost": 1.0,
-                "rewrite": "constant_score"
-            }
-        }
-    }
+  "query": """
+    sequence
+      [ file where file.name == "cmd.exe" ]
+      [ process where stringContains(process.name, "regsvr32") ]
+  """
 }

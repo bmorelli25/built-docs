@@ -5,11 +5,8 @@ PUT /my-index
             "my-join-field" : {
                 "type" : "join",
                 "relations": {
-                    "parent": "child"
+                    "my-parent": "my-child"
                 }
-            },
-            "tag" : {
-                "type" : "keyword"
             }
         }
     }

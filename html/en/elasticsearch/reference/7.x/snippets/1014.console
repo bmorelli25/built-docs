@@ -1,22 +1,19 @@
 PUT /my_index
 {
-    "settings": {
-        "analysis" : {
-            "analyzer" : {
-                "my_analyzer" : {
-                    "tokenizer" : "standard",
-                    "filter" : ["lowercase", "custom_stems", "porter_stem"]
-                }
-            },
-            "filter" : {
-                "custom_stems" : {
-                    "type" : "stemmer_override",
-                    "rules" : [
-                        "running, runs => run",
-                        "stemmer => stemmer"
-                    ]
-                }
-            }
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "default": {
+          "tokenizer": "whitespace",
+          "filter": [ "my_custom_stop_words_filter" ]
         }
+      },
+      "filter": {
+        "my_custom_stop_words_filter": {
+          "type": "stop",
+          "ignore_case": true
+        }
+      }
     }
+  }
 }

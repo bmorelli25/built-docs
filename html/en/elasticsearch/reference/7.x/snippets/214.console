@@ -1,14 +1,15 @@
-GET /_search
+GET /my-index/_search
 {
     "query": {
-        "has_child" : {
-            "type" : "child",
+        "has_parent" : {
+            "parent_type" : "parent",
             "query" : {
-                "match_all" : {}
-            },
-            "max_children": 10,
-            "min_children": 2,
-            "score_mode" : "min"
+                "term" : {
+                    "tag" : {
+                        "value" : "Elasticsearch"
+                    }
+                }
+            }
         }
     }
 }

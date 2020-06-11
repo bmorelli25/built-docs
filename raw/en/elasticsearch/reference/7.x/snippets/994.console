@@ -1,6 +1,5 @@
-GET /_analyze
+POST /condition_example/_analyze
 {
-  "tokenizer": "standard",
-  "filter": [ "porter_stem" ],
-  "text": "the foxes jumping quickly"
+  "analyzer" : "my_analyzer",
+  "text" : "What Flapdoodle"
 }

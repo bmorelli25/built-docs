@@ -1,1 +1,1 @@
-DELETE _data_stream/my-data-stream
+DELETE _ilm/policy/my_policy

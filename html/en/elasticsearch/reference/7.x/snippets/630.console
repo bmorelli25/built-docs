@@ -1,9 +1,10 @@
-PUT /my-index/_mapping
+PUT index?include_type_name=false
 {
-  "properties": {
-    "employee-id": {
-      "type": "keyword",
-      "index": false
+  "mappings": {
+    "properties": {
+      "foo": {
+        "type": "keyword"
+      }
     }
   }
 }
