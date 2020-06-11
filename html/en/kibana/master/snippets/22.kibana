@@ -1,27 +1,8 @@
-$ curl -X PUT "localhost:5601/api/security/role/my_kibana_role"
+$ curl -X POST "localhost:5601/s/marketing/api/spaces/_copy_saved_objects"
 {
-  "metadata" : {
-    "version" : 1
-  },
-  "elasticsearch": {
-    "cluster" : [ "all" ],
-    "indices" : [ {
-      "names" : [ "index1", "index2" ],
-      "privileges" : [ "all" ],
-      "field_security" : {
-        "grant" : [ "title", "body" ]
-      },
-      "query" : "{\"match\": {\"title\": \"foo\"}}"
-    } ]
-  },
-  "kibana": [
-    {
-      "base": ["all"],
-      "feature": {
-      },
-      "spaces": [
-        "default"
-      ]
-    }
-  ]
+  "objects": [{
+    "type": "visualization",
+    "id": "my-viz"
+  }],
+  "spaces": ["default"]
 }
