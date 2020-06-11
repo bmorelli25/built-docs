@@ -3024,7 +3024,7 @@ elasticsearch-rs:
   Rust API/docs/master: 780f837927c251e3b6e910f3ab3e1091702286a2
 elasticsearch-ruby:
   Elasticsearch Reference/docs/examples/guide/master: a899365218f6122ca0bfb1832a9f1e0725c0f71f
-  Ruby API/docs/7.x: 57b0f88d06e5bd0e755eaa7fb7bd22a784b4eaf0
+  Ruby API/docs/7.x: local
   Ruby API/docs/master: a899365218f6122ca0bfb1832a9f1e0725c0f71f
 enterprise-search-pubs:
   App Search Guide/app-search-docs/7.7: bab93b379f003d7121b84b0ae0d93120985a8530
