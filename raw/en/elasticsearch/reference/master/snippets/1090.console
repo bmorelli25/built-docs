@@ -1,8 +1,4 @@
-PUT timeseries-000001
+PUT /myindex/_doc/1?pipeline=pipelineB
 {
-  "aliases": {
-    "timeseries": {
-      "is_write_index": true
-    }
-  }
+  "field": "value"
 }
