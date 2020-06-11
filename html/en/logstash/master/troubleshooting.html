@@ -169,8 +169,17 @@ Specify an alternate directory using the <code class="literal">-Djava.io.tmpdir<
 </ul>
 </div>
 <h2><a id="ts-startup"></a>Logstash start up<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/logstash/edit/master/docs/static/troubleshooting.asciidoc">edit</a></h2>
+<h3><a id="ts-java-home"></a>[add decription] errors<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/logstash/edit/master/docs/static/troubleshooting.asciidoc">edit</a></h3>
+<p>The <code class="literal">JAVA_HOME</code> version must be set before you start Logstash.
+If <code class="literal">JAVA_HOME</code> is not set, you may see errors similar to these:</p>
+<div class="pre_wrapper lang-sh">
+<pre class="programlisting prettyprint lang-sh">WARNING: ERRORS GO HERE</pre>
+</div>
+<p><span class="strong strong"><strong>Note to developers:</strong></span> <code class="literal">JAVA_HOME</code> is an environment variable. If you need to
+test with another Java version, you can use the <code class="literal">BUILD_JAVA_HOME</code> environment
+variable to specify a different version.</p>
 <h3><a id="ts-illegal-reflective-error"></a><em>Illegal reflective access</em> errors<a class="edit_me" rel="nofollow" title="Edit this page on GitHub" href="https://github.com/elastic/logstash/edit/master/docs/static/troubleshooting.asciidoc">edit</a></h3>
-<p>Running Logstash with Java 11 results in warnings similar to these:</p>
+<p>Running Logstash with Java 11 or Java 14 results in warnings similar to these:</p>
 <div class="pre_wrapper lang-sh">
 <pre class="programlisting prettyprint lang-sh">WARNING: An illegal reflective access operation has occurred
 WARNING: Illegal reflective access by org.jruby.util.SecurityHelper (file:/Users/chrisuser/logstash-6.7.0/logstash-core/lib/jars/jruby-complete-9.2.6.0.jar) to field java.lang.reflect.Field.modifiers
@@ -199,8 +208,8 @@ WARNING: All illegal access operations will be denied in a future release</pre>
 <div class="ulist itemizedlist">
 <ul class="itemizedlist">
 <li class="listitem">
-These settings allow Logstash to start without warnings in Java 11, but they
-prevent Logstash from starting on Java 8.
+These settings allow Logstash to start without warnings in Java 11 or Java 14, but they
+prevent Logstash from starting on Java 8 and earlier versions.
 </li>
 <li class="listitem">
 This workaround has been tested with simple pipelines. If you have experiences
