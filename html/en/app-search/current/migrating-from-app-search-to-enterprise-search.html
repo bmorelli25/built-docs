@@ -123,7 +123,7 @@
 </div>
 <div class="section">
 <div class="titlepage"><div><div>
-<h2 class="title"><a id="migrating-from-app-search-to-enterprise-search"></a>Migrating from App Search to Enterprise Search</h2>
+<h2 class="title"><a id="migrating-from-app-search-to-enterprise-search"></a>Migrating from App Search to Enterprise Search<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/migrating-from-app-search-to-enterprise-search.asciidoc">edit</a></h2>
 </div></div></div>
 <p>Since version 7.7.0, App Search is distributed as Elastic Enterprise Search, a solution which combines App Search and Workplace Search into a single executable.
 There is therefore no direct upgrade path from App Search 7.6 to App Search 7.7.
@@ -136,14 +136,14 @@ The following document outlines the migration process.</p>
 You will therefore benefit from first reviewing the general <a class="xref" href="migrating-and-upgrading.html" title="Migrating &amp; Upgrading">App Search upgrade documentation</a>.</p>
 </div>
 </div>
-<h3><a id="app-search-to-ent-search-migration-overview"></a>Migration process overview</h3>
+<h3><a id="app-search-to-ent-search-migration-overview"></a>Migration process overview<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/migrating-from-app-search-to-enterprise-search.asciidoc">edit</a></h3>
 <p>When an App Search deployment is migrated to the new Enterprise Search solution, the App Search data
 stored in Elasticsearch needs to be converted into a new set of indexes compatible with Enterprise
 Search. This process is non-destructive (meaning App Search data is never removed or modified during
 an upgrade), allowing operators a reliable way to roll back in case of a failed upgrade attempt.
 Combined with the usage of the <a class="xref" href="read-only-mode.html" title="Read-Only Mode">read-only mode</a> flag, this means that an upgrade
 can be performed in-place without downtime.</p>
-<h4><a id="app-search-to-ent-search-process-limitations"></a>Limitations of the migration process</h4>
+<h4><a id="app-search-to-ent-search-process-limitations"></a>Limitations of the migration process<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/migrating-from-app-search-to-enterprise-search.asciidoc">edit</a></h4>
 <p>While the migration process is designed to help you with your move to the Enterprise Search solution
 without any data loss, it has some limitations. Review these limitations before you proceed:</p>
 <div class="ulist itemizedlist">
@@ -175,7 +175,7 @@ cluster or, as a last resort, you can take an Elasticsearch snapshot and then de
 indexes (<code class="literal">.app-search*</code>) from the cluster before attempting an Enterprise Search deployment.</p>
 </div>
 </div>
-<h3><a id="app-search-to-ent-search-before-you-begin"></a>Before you begin</h3>
+<h3><a id="app-search-to-ent-search-before-you-begin"></a>Before you begin<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/migrating-from-app-search-to-enterprise-search.asciidoc">edit</a></h3>
 <p>Before attempting a migration of an App Search cluster to a new Enterprise Search solution, you need
 to take a few steps to guarantee your data safety and increase the probability of a successful upgrade:</p>
 <div class="ulist itemizedlist">
@@ -197,13 +197,13 @@ ability to safely roll back in case of a failed Enterprise Search upgrade.
 </li>
 </ul>
 </div>
-<h3><a id="migrating-self-managed-app-search"></a>Migrating from self-managed App Search deployments</h3>
+<h3><a id="migrating-self-managed-app-search"></a>Migrating from self-managed App Search deployments<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/migrating-from-app-search-to-enterprise-search.asciidoc">edit</a></h3>
 <p>The following sections describe different options for migrating on-prem/self-managed App Search deployments.</p>
 <p>When dealing with self-managed deployments, you have a lot of flexibility on how you want to approach
 the migration process. The options below are ordered by their complexity, which often is in reverse
 proportion to the option&#8217;s risk and associated downtime. Which option you choose will depend on your
 tolerance for downtime, the resources available to you and so on.</p>
-<h4><a id="migrating-self-managed-app-search-in-place-with-downtime"></a>In-Place migration to Enterprise Search</h4>
+<h4><a id="migrating-self-managed-app-search-in-place-with-downtime"></a>In-Place migration to Enterprise Search<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/migrating-from-app-search-to-enterprise-search.asciidoc">edit</a></h4>
 <p>For cases when you can tolerate some amount of downtime during the upgrade process, an in-place
 upgrade option may be the easiest one to attempt. Here are the steps you will need to take:</p>
 <div class="olist orderedlist">
@@ -232,7 +232,7 @@ Remove read-only mode from Enterprise Search
 </li>
 </ol>
 </div>
-<h5><a id="migrating-self-managed-app-search-in-place-no-downtime"></a>Live in-place migrations</h5>
+<h5><a id="migrating-self-managed-app-search-in-place-no-downtime"></a>Live in-place migrations<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/migrating-from-app-search-to-enterprise-search.asciidoc">edit</a></h5>
 <p>If you can only use one Elasticsearch cluster, but really need to keep your App Search downtime to a
 minimum, you can slightly change the migration process to perform an upgrade on a live App Search
 deployment:</p>
@@ -267,7 +267,7 @@ Remove read-only mode from Enterprise Search.
 </li>
 </ol>
 </div>
-<h4><a id="migrating-self-managed-app-search-to-new-infra"></a>Migrating to a new infrastructure</h4>
+<h4><a id="migrating-self-managed-app-search-to-new-infra"></a>Migrating to a new infrastructure<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/migrating-from-app-search-to-enterprise-search.asciidoc">edit</a></h4>
 <p>Finally, the safest way to migrate from App Search to Enterprise search is by migrating to a completely new infrastructure using the backups taken from the existing one:</p>
 <div class="olist orderedlist">
 <ol class="orderedlist">

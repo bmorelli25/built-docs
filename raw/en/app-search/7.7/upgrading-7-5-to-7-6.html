@@ -30,7 +30,7 @@
 </div>
 <div class="section">
 <div class="titlepage"><div><div>
-<h2 class="title"><a id="upgrading-7-5-to-7-6"></a>Upgrading 7.5 to 7.6</h2>
+<h2 class="title"><a id="upgrading-7-5-to-7-6"></a>Upgrading 7.5 to 7.6<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/upgrading-7-5-to-7-6.asciidoc">edit</a></h2>
 </div></div></div>
 <p><em>How do I upgrade App Search to 7.6 from 7.5 on Cloud or when Self-Managing?</em></p>
 <p>App Search releases new features and fixes at a regular cadence. That means you&#8217;ll want to upgrade!</p>
@@ -52,7 +52,7 @@
 </div>
 <div class="section">
 <div class="titlepage"><div><div>
-<h3 class="title"><a id="app-search-upgrade-7-5-to-7-6-upgrade-7-5-to-7-6"></a>Upgrading 7.5 to 7.6</h3>
+<h3 class="title"><a id="app-search-upgrade-7-5-to-7-6-upgrade-7-5-to-7-6"></a>Upgrading 7.5 to 7.6<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/upgrading-7-5-to-7-6.asciidoc">edit</a></h3>
 </div></div></div>
 <p>Before you begin it is helpful to do the following:</p>
 <div class="ulist itemizedlist">
@@ -83,12 +83,12 @@ Back-up your data with <a href="/guide/en/elasticsearch/reference/7.7/snapshot-r
 
 <div class="section">
 <div class="titlepage"><div><div>
-<h3 class="title"><a id="app-search-upgrade-7-5-to-7-6-in-place-upgrade"></a>In-place Upgrade</h3>
+<h3 class="title"><a id="app-search-upgrade-7-5-to-7-6-in-place-upgrade"></a>In-place Upgrade<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/upgrading-7-5-to-7-6.asciidoc">edit</a></h3>
 </div></div></div>
 <p>If you are able to handle a downtime of the App Search service, then this is the most straight-forward upgrade path. We recommend this method to all customers who are able to schedule a maintenance window for their service or for non-mission-critical applications based on App Search.</p>
 <div class="section">
 <div class="titlepage"><div><div>
-<h4 class="title"><a id="app-search-upgrade-7-5-to-7-6-advantages"></a>Advantages</h4>
+<h4 class="title"><a id="app-search-upgrade-7-5-to-7-6-advantages"></a>Advantages<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/upgrading-7-5-to-7-6.asciidoc">edit</a></h4>
 </div></div></div>
 <div class="olist orderedlist">
 <ol class="orderedlist">
@@ -104,7 +104,7 @@ Back-up your data with <a href="/guide/en/elasticsearch/reference/7.7/snapshot-r
 
 <div class="section">
 <div class="titlepage"><div><div>
-<h4 class="title"><a id="app-search-upgrade-7-5-to-7-6-disadvantages"></a>Disadvantages</h4>
+<h4 class="title"><a id="app-search-upgrade-7-5-to-7-6-disadvantages"></a>Disadvantages<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/upgrading-7-5-to-7-6.asciidoc">edit</a></h4>
 </div></div></div>
 <div class="olist orderedlist">
 <ol class="orderedlist">
@@ -118,7 +118,7 @@ Back-up your data with <a href="/guide/en/elasticsearch/reference/7.7/snapshot-r
 </div>
 <div class="section">
 <div class="titlepage"><div><div>
-<h5 class="title"><a id="app-search-upgrade-7-5-to-7-6-steps"></a>Steps</h5>
+<h5 class="title"><a id="app-search-upgrade-7-5-to-7-6-steps"></a>Steps<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/upgrading-7-5-to-7-6.asciidoc">edit</a></h5>
 </div></div></div>
 <div class="olist orderedlist">
 <ol class="orderedlist">
@@ -144,12 +144,12 @@ Start up the new version of App Search and new instances will take care of coord
 
 <div class="section">
 <div class="titlepage"><div><div>
-<h3 class="title"><a id="app-search-upgrade-7-5-to-7-6-snapshot-upgrades"></a>Snapshot-based Upgrade</h3>
+<h3 class="title"><a id="app-search-upgrade-7-5-to-7-6-snapshot-upgrades"></a>Snapshot-based Upgrade<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/upgrading-7-5-to-7-6.asciidoc">edit</a></h3>
 </div></div></div>
 <p>For situations where App Search downtime is not acceptable or in cases where you want to ensure a rollback is possible&#8201;&#8212;&#8201;no matter what happens during an upgrade&#8201;&#8212;&#8201;the safest way to perform the upgrade is through snapshot-based cloning of a deployment. The snapshot-based process is more involved, but it does guarantee data consistency and allows you to perform a migration without a downtime of the Search API</p>
 <div class="section">
 <div class="titlepage"><div><div>
-<h4 class="title"><a id="app-search-upgrade-7-5-to-7-6-app-search-upgrade-7-5-to-7-6-advantages-2"></a>Advantages</h4>
+<h4 class="title"><a id="app-search-upgrade-7-5-to-7-6-app-search-upgrade-7-5-to-7-6-advantages-2"></a>Advantages<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/upgrading-7-5-to-7-6.asciidoc">edit</a></h4>
 </div></div></div>
 <div class="ulist itemizedlist">
 <ul class="itemizedlist">
@@ -165,7 +165,7 @@ Start up the new version of App Search and new instances will take care of coord
 
 <div class="section">
 <div class="titlepage"><div><div>
-<h4 class="title"><a id="app-search-upgrade-7-5-to-7-6-app-search-upgrade-7-5-to-7-6-disadvantages-2"></a>Disadvantages</h4>
+<h4 class="title"><a id="app-search-upgrade-7-5-to-7-6-app-search-upgrade-7-5-to-7-6-disadvantages-2"></a>Disadvantages<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/upgrading-7-5-to-7-6.asciidoc">edit</a></h4>
 </div></div></div>
 <div class="ulist itemizedlist">
 <ul class="itemizedlist">
@@ -179,7 +179,7 @@ Start up the new version of App Search and new instances will take care of coord
 </div>
 <div class="section">
 <div class="titlepage"><div><div>
-<h5 class="title"><a id="app-search-upgrade-7-5-to-7-6-app-search-upgrade-7-5-to-7-6-steps-2"></a>Steps</h5>
+<h5 class="title"><a id="app-search-upgrade-7-5-to-7-6-app-search-upgrade-7-5-to-7-6-steps-2"></a>Steps<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/upgrading-7-5-to-7-6.asciidoc">edit</a></h5>
 </div></div></div>
 <div class="olist orderedlist">
 <ol class="orderedlist">
@@ -214,7 +214,7 @@ Shut down the old App Search and Elasticsearch clusters.
 
 <div class="section">
 <div class="titlepage"><div><div>
-<h3 class="title"><a id="app-search-upgrade-7-5-to-7-6-upgrade-cloud"></a>Upgrading on Elastic Cloud</h3>
+<h3 class="title"><a id="app-search-upgrade-7-5-to-7-6-upgrade-cloud"></a>Upgrading on Elastic Cloud<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/upgrading-7-5-to-7-6.asciidoc">edit</a></h3>
 </div></div></div>
 <p>When deploying App Search on Elastic Cloud, you have access to two separate upgrade paths depending on your tolerance for App Search downtime:</p>
 <div class="olist orderedlist">
@@ -237,7 +237,7 @@ If downtime is unacceptable for your use case, we recommend the <span class="str
 
 <div class="section">
 <div class="titlepage"><div><div>
-<h3 class="title"><a id="app-search-upgrade-7-5-to-7-6-troubleshooting"></a>Troubleshooting</h3>
+<h3 class="title"><a id="app-search-upgrade-7-5-to-7-6-troubleshooting"></a>Troubleshooting<a class="edit_me edit_me_private" rel="nofollow" title="Editing on GitHub is available to Elastic" href="https://github.com/elastic/enterprise-search-pubs/edit/7.7/app-search-docs/migrating-and-upgrading/upgrading-7-5-to-7-6.asciidoc">edit</a></h3>
 </div></div></div>
 <p>As with any software upgrades, there is always a chance that things will not go according to plan. This means you need to plan and prepare for the possibility of your App Search upgrade failing. You can review the comparison of different upgrade methods above and ensure you are comfortable with the risks associated with your preferred upgrade method before starting the upgrade process.</p>
 <p>If you experience an upgrade failure, the information below should help you identify the causes of the issue and allow you to retry the upgrade if needed. App Search should be able to recover from many potential failures, meaning you should be able to retry an upgrade if it fails.</p>
